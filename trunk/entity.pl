@@ -12,6 +12,13 @@ my $engine  = WWW::Google::CustomSearch->new(api_key => $api_key, cx => $cx);
 
 my $entity = "pgiogio\@mit.edu\n";
 
+sub juice
+{
+    my ($raw_msg) = @_;
+#extract the part that cite the main elements of the query and that ends with a . or ?
+    $raw_msg =~ /(.*?)[\.|\?|\-]/i;
+    $1;
+}
 sub ssnet
 {
     my ($msg) = @_;
@@ -19,12 +26,23 @@ sub ssnet
     $msg =~ s/(.*)NET(.*)/$1$2/g;
 
     print "\n SEARCHING: ";
-    print $msg; 
+    print $msg, "\n"; 
     my $result  = $engine->search($msg);
+    my $clean;
+    my $n = 0;
+
+    my @responses;
 
     foreach my $item ($result->items) {
-	print "---> ", $item->snippet, "\n" if defined $item->snippet;
+#print "RAW---> ", $item->snippet, "\n\n" if defined $item->snippet;
+	$clean = &juice($item->snippet);
+	push @responses, $clean;
+#print "CLEAN---> " , $clean, "\n\n";
+	$n++;
     }
+    my $chosen= int(rand($n));
+#print "CHOSEN IS " , $chosen;
+    $responses[$chosen];
 }
 
 sub typing
@@ -82,22 +100,19 @@ my $true++;
 
 while ($true) 
 {
-    print "You: ";
+    print "You> ";
     my $message = <STDIN>;
+    $message = $bot->transform($message);
 
     if ($message=~/NET/)
     {
 	$message = &ssnet($message)
     }
-    else
-    {
-	$message = $bot->transform($message);
-	my $debugging  = $bot->debug_text;
-	print $debugging;
-	$bot->_debug_memory();
-    }
+#    my $debugging  = $bot->debug_text;
+#    print $debugging;
+#    $bot->_debug_memory();
     sleep(1);
-    print "$message\n";
+    print "PGioio> $message\n";
 }
 
 exit;
