@@ -1,0 +1,1968 @@
+####################################################################
+# ---{ B E G I N   D E F A U L T   S C R I P T   D A T A }----------
+#
+#  This script was prepared by Chris Hayden.  Hayden's Eliza 
+#  program was written in Java, however, it attempted to match 
+#  the functionality of Weizenbaum's original program as closely 
+#  as possible.  
+#
+#  Hayden's script format was quite different from Weizenbaum's, 
+#  but it maintained the same content.  I have adapted Hayden's 
+#  script format, since it was simple and convenient enough 
+#  for my purposes.  
+#
+#  I've made small modifications here and there.  
+#
+#
+#
+initial: ok let's start, tell me something, whatever argument...
+final: Goodbye.  It was nice talking to you.
+final: Goodbye.  I hope you found this session helpful.
+final: I think you should talk more ofter to an analyst. Ciao! 
+final: Life is tough.  Hang in there!
+quit: bye
+quit: goodbye
+quit: done
+quit: exit
+quit: quit
+pre: dont don't
+pre: cant can't
+pre: wont won't
+pre: doesnt doesn't
+
+
+pre: recollect remember
+pre: recall remember
+pre: dreamt dreamed
+pre: dreams dream
+pre: maybe perhaps
+pre: certainly yes
+pre: ok yes
+
+pre: machine computer
+pre: machines computer
+pre: computers computer
+pre: pc computer
+pre: notebook computer
+pre: laptop computer
+pre: internet computer
+pre: mac computer
+pre: windows computer
+pre: linux computer
+pre: ubuntu computer
+
+pre: pal friend
+pre: buddy friend
+pre: mate friend
+pre: collegue friend
+pre: friends friend
+
+pre: thanks thank
+
+pre: kid baby
+pre: child baby
+pre: son baby
+pre: daughter baby
+pre: sons baby
+
+pre: university school
+pre: study school
+pre: studied school
+pre: exam school
+pre: exams school
+pre: laurea school
+pre: college school
+pre: student school
+pre: students school
+pre: teacher school
+pre: prof school
+pre: professor school
+
+pre: pain hurt
+pre: fever hurt
+pre: tired hurt
+pre: headache hurt
+pre: virus hurt
+pre: ill hurt
+pre: sick hurt
+pre: nausea hurt
+pre: vomit hurt
+
+pre: argument topic
+pre: subject topic
+
+pre: hi hello
+pre: goodmorning hello
+pre: hallo hello
+pre: ciao hello
+pre: salve hello
+pre: buongiorno hello
+
+
+post: am are
+post: your my
+post: yours mine
+pre: were was
+post: me you
+pre: you're you are
+pre: i'm i am
+post: myself yourself
+post: yourself myself
+post: i you
+post: you me
+post: my your
+post: me you
+post: i'm you are
+pre: same alike
+pre: identical alike
+pre: equivalent alike
+synon: belief feel think believe wish
+synon: family mother mom father dad sister brother 
+synon: desire want like need
+synon: sad unhappy depressed stressed
+synon: happy elated glad better
+synon: cannot can't
+synon: everyone everybody nobody noone
+synon: be am is are was
+synon: insane mad crazy
+synon: body head hands hand leg arm face feet foot knee finger hair shoulder node mouth ears eye eyes
+synon: animal cat dog cats dogs pets pet animals rabbit rabbits
+synon: food restaurant pizza chicken pasta meat fish bread potato sausage eating eat
+synon: music guitar bass piano sax flute drum drums singing 
+synon: colors color blue green red yellow white black 
+
+
+key: xnone -1
+  decomp: *
+    reasmb: I'm not sure I understand fully, in other words ?
+    reasmb: Please go on...
+    reasmb: That is interesting.  Please continue.
+    reasmb: Tell me more about that.
+    reasmb: Does talking about this bother you ?
+    reasmb: What makes you say that?
+    reasmb: Huh?
+    reasmb: Yes, please tell me something about your life.
+    reasmb: What does that mean, I mean, for you in particular ?
+    reasmb: perhaps you could discuss more on that.
+    reasmb: You're doing well. please continue...
+    reasmb: Try to get in touch with your true feelings about that...
+    reasmb: I don't understand your attitude.
+    reasmb: Just talking about your ideas can help sort them out. Go on ...
+    reasmb: Sorry, but I don't understand what you're trying to say.
+    reasmb: Pardon me?
+    reasmb: Take a deep breath and relax.
+    reasmb: Did you say that for a special reason?
+    reasmb: That's just fine.
+    reasmb: If you say so :)
+    reasmb: well... that's good to hear.
+    reasmb: Ok, continue, the more you tell me, the more I can learn on you
+    reasmb: What's your point exactly ?
+    reasmb: Sorry, but I'm confused.
+    reasmb: What is that supposed to mean?
+    reasmb: Very interesting. Can you provide more details?
+    reasmb: why don't you describe your feelings. maybe it will ease your suffering.
+    reasmb: What's that?
+    reasmb: I am listening. Tell me something.
+    reasmb: Don't be afraid to open up a little more.
+    reasmb: All right, can you tell me more?
+    reasmb: I would like to go back to what we discussed earlier.
+    reasmb: You seem to be holding something back.
+    reasmb: please rephrase that?
+    reasmb: it seems to me that you could be a little more open if you tried.
+    reasmb: You don't say!
+    reasmb: I'm sure this is important to you.
+    reasmb: it think we are making some progress.
+    reasmb: Oh, really?
+    reasmb: Just pretend you're talking to a friend...
+    reasmb: perhaps you could continue...
+    reasmb: Does talking to me help?
+    reasmb: Let's try to stay on the main topic.
+    reasmb: Can you focus your thoughts a little more?
+    reasmb: uhmmm, what does that suggest to you?
+    reasmb: describe your family
+    reasmb: Interesting...
+    reasmb: That's not unusual.
+    reasmb: I feel that you're still holding something back.
+    reasmb: maybe we could move on now.
+    reasmb: That could be important.
+    reasmb: Stay with that feeling.
+    reasmb: are you sad sometimes?
+    reasmb: Your situation is not that unusual.
+    reasmb: I have a feeling we're making some progress now.
+    reasmb: What else would you like to talk about today?
+    reasmb: Now, describe the real problem.
+    reasmb: it seems to me that you know what I'm digging for.
+    reasmb: describe something you remember about your holidays...
+    reasmb: it looks like a pattern is developing.
+    reasmb: Why did you say that?
+    reasmb: why don't you continue.
+    reasmb: Does talking about this bother you?
+
+#------------------ abstraction level 0 --------------------------------------
+
+key: am 0
+  decomp: * am i *
+    reasmb: Do you believe you are (2) ?
+    reasmb: Would you want to be (2) ?
+    reasmb: Do you wish I would tell you you are (2) ?
+    reasmb: What would it mean if you were (2) ?
+    reasmb: goto what
+  decomp: * i am *
+    reasmb: goto i
+  decomp: *
+    reasmb: Why do you say 'am' ?
+    reasmb: I don't understand that.
+    reasmb: sorry, I'm not sure of what are you sayin...
+
+key: are 0
+  decomp: * are you *
+    reasmb: Why are you interested in whether I am (2) or not ?
+    reasmb: Would you prefer if I weren't (2) ?
+    reasmb: Perhaps I am (2) in your fantasies.
+    reasmb: Do you sometimes think I am (2) ?
+    reasmb: goto what
+    reasmb: Would it matter to you ?
+    reasmb: What if I were (2) ?
+    reasm_for_memory: uhmmm... i understand why you asked me if I were (2) :)
+    reasm_for_memory: Just another question, why are you curious to know if I am (2) ?
+    reasm_for_memory: No way related to the fact that I am (2) or not ? 
+  decomp: * you are *
+    reasmb: goto you
+  decomp: * are *
+    reasmb: Did you think they might not be (2) ?
+    reasmb: Would you like it if they were not (2) ?
+    reasmb: What if they were not (2) ?
+    reasmb: Are they always (2) ?
+    reasmb: Possibly they are (2).
+    reasmb: Are you positive they are (2) ?
+
+key: was 0
+  decomp: * was i *
+    reasmb: What if you were (2) ?
+    reasmb: Do you think you were (2) ?
+    reasmb: Were you (2) ?
+    reasmb: What would it mean if you were (2) ?
+    reasmb: What does ' (2) ' suggest to you ?
+    reasmb: goto what
+  decomp: * i was *
+    reasmb: Were you really ?
+    reasmb: Why do you tell me you were (2) now ?
+    reasmb: Perhaps I already know you were (2).
+  decomp: * was you *
+    reasmb: Would you like to believe I was (2) ?
+    reasmb: What suggests that I was (2) ?
+    reasmb: What do you think ?
+    reasmb: Perhaps I was (2).
+    reasmb: What if I had been (2) ?
+  decomp: *
+    reasmb: DEFAULT_TODO
+
+key: your 0
+  decomp: does your *
+    reasmb:Do yours?
+    reasmb:Why does it interest you whether or not my (1)
+    reasmb:I'm guessing that yours don't. Why not?
+    reasmb:Maybe, maybe not. I'm guessing you feel it's important that your own (1)
+    reasmb:sometimes. But what about yours? Why doesn't your (1)
+    reasmb:Of course! Doesn't everybody's?
+    reasm_for_memory: Now i understand why you asked me if my (1) :)
+    reasm_for_memory: Just a question, why you wanted to know if my (1) ?
+    reasm_for_memory: No way related to the fact that my (1) ? 
+
+  decomp: * your *
+    reasmb: Why are you concerned over my (2) ?
+    reasmb: What about your own (2) ?
+    reasmb: Are you worried about someone else's (2) ?
+    reasmb: Really, my (2) ?
+    reasmb: What makes you think of my (2) ?
+    reasmb: Do you want my (2) ?
+    reasm_for_memory: This has something to do with my (2) ?
+    reasm_for_memory: everything is connected with everything....even my (2) could influence this...
+
+key: i 0
+
+  decomp: * i @desire *
+    reasmb: What would it mean to you if you got (3) ?
+    reasmb: Why do you want (3) ?
+    reasmb: Suppose you got (3) soon.
+    reasmb: What if you never got (3) ?
+    reasmb: What would getting (3) mean to you ?
+    reasmb: What does wanting (3) have to do with this discussion ?
+    reasm_for_memory: ok, but I need to know more why you need (3)...
+    reasm_for_memory: sorry, I was thinking if this can be related to your will to (3), maybe...
+    reasm_for_memory: ...and you also desire (3) :) isn't too much ? go on, I'm joking...
+  decomp: * @be *like *
+    reasmb: goto alike
+
+  decomp: * i am* @sad *
+    reasmb: I am sorry to hear that you are (3).
+    reasmb: Do you think coming here will help you not to be (3) ?
+    reasmb: I'm sure it's not pleasant to be (3).
+    reasmb: Can you explain what made you (3) ?
+    reasmb:are you easily upset when things go wrong?
+    reasmb:it think you really are (3). What can I do?
+    reasmb:Does your depression cause you to have anxieties at work?
+    reasmb:maybe you need some time off to relax.
+    reasmb:Does crying make you feel better?
+    reasmb:Most people don't realize that using drugs or alcohol just makes you feel worse.
+    reasmb:Try to cheer up. Things will get better.
+    reasmb:How's your appetite?
+    reasmb:We can't always be happy.
+    reasmb:Remember, we all must learn to deal with bad situations.
+    reasmb:maybe it's better to be stressed than depressed.  What do you think?
+    reasmb:Help me to unravel these unpleasant feelings.
+    reasmb:If you are sad, please let me help you.
+    reasm_for_memory: now, after chatting a little, are you still (3) ?
+    reasm_for_memory: it sound like you are no more (3) :)
+    reasm_for_memory: ok, but you said me you were (3)...and now ?
+
+  decomp: * i am* @happy *
+    reasmb: How have I helped you to be (3) ?
+    reasmb: Has your treatment made you (3) ?
+    reasmb: What makes you (3) just now ?
+    reasmb: Can you explain why you are suddenly (3) ?
+	reasmb:are you a happy person?
+	reasmb:describe your idea of true happiness.
+	reasmb:You do have occasional mood swings, don't you?
+	reasmb:You seem to be full of optimism.
+	reasmb:Do you enjoy life?
+	reasmb:Bringing happiness to others is a worthwhile ambition.
+	reasmb:sometimes it is wise to temper our emotions.
+	reasmb:Aren't you worried about anything?
+	reasmb:Some people are happy on the outside and depressed on the inside.
+	reasmb:Do you bring joy to those around you?
+	reasmb:I'm happy for you.
+   reasm_for_memory: I'm still pleased that you said to be (3), go on...
+   reasm_for_memory: Since you said to be (3), I think we can continue talking...
+
+  decomp: * i was *
+    reasmb: goto was
+
+  decomp: * i @belief i *
+    reasmb: Do you really think so ?
+    reasmb: But you are not sure you (3).
+    reasmb: Do you really doubt you (3) ?
+
+  decomp: * i* @belief *you *
+    reasmb: goto you
+
+  decomp: * i am *
+    reasmb: Is it because you are (2) that you came to me ?
+    reasmb: How long have you been (2) ?
+    reasmb: Do you believe it is normal to be (2) ?
+    reasmb: Do you enjoy being (2) ?
+    reasmb: Do you know anyone else who is (2) ?
+
+  decomp: * i @cannot *
+    reasmb: How do you know that you can't (3) ?
+    reasmb: Have you tried ?
+    reasmb: Perhaps you could (3) now.
+    reasmb: Do you really want to be able to (3) ?
+    reasmb: What if you could (3) ?
+    reasm_for_memory: ...but if you could (3) ?
+    reasm_for_memory: maybe because you can't (3) ?
+
+  decomp: * i don't *
+    reasmb: Don't you really (2) ?
+    reasmb: Why don't you (2) ?
+    reasmb: Do you wish to be able to (2) ?
+    reasmb: Does that trouble you ?
+
+  decomp: * i feel *
+    reasmb: Tell me more about such feelings.
+    reasmb: Do you often feel (2) ?
+    reasmb: Do you enjoy feeling (2) ?
+    reasmb: Of what does feeling (2) remind you ?
+
+  decomp: * i * you *
+    reasmb: Perhaps in your fantasies we (2) each other.
+    reasmb: Do you wish to (2) me ?
+    reasmb: You seem to need to (2) me.
+    reasmb: Do you (2) anyone else ?
+
+  decomp: * i mean *
+    reasmb:Now it's clearer what you meant. At first I didn't understand. Please continue.
+    reasmb:perhaps you could write exactly what you mean. I can help you more if you do. Please continue.
+    reasmb:Not to worry. When it comes to feelings, it often takes several tries to express them clearly.
+
+  decomp: * i avoid *
+    reasmb:Why don't you like (2)?
+    reasmb:What keeps you from getting involved with (2)?
+    reasmb:Well, frankly, it seems to me that it's time you grew up and stopped avoiding (2).
+ 
+  decomp: * i got *
+    reasmb:How did it feel to get (2)? Take your time.
+    reasmb:How often do you let yourself get (2)?
+    reasmb:What would I have to do to make you get (2)?
+    reasmb:Why did you get (2)?
+    reasmb:When did this happen?
+    reasmb:Of course you did. How do you let people know when you get (2)?
+
+  decomp: * i felt *
+    reasmb:What made you feel that way?
+    reasmb:describe feeling (2).
+    reasmb:Wouldn't you like to feel (2) again?
+
+  decomp: * i said *
+    reasmb:That's right. You did say that. Continue
+    reasmb:I'm sorry. It slipped my mind for a second. Go on, please.
+    reasmb:How did you feel after you said that?
+
+  decomp: * i thougth *
+    reasmb:What made you think that?
+    reasmb:Of course you did. Anyone would. But how have your ideas changed since then?
+    reasmb:So did I at one point. How have you changed your mind?
+
+  decomp: * i liked *
+    reasmb:Do you still like (2)?
+    reasmb:Why did you like (2)?
+    reasmb:How do you feel about (2) now?
+
+  decomp: * i wanted *
+    reasmb:Didn't you get (2)?
+    reasmb:Do you still want (2)?
+    reasmb:What kind of person doesn't want (2)?
+
+  decomp: * i am so *
+    reasmb:How does it affect how you feel about others that you're so (2)?
+    reasmb:Really? You don't appear so (2).
+    reasmb:And you wish you weren't. Well, how can you stop being so (2)?
+
+  decomp: * i am like *
+    reasmb:Just how are you like (2)?
+    reasmb:Yes, you are. But you're also different from (2)?
+    reasmb:How is that similarity important to you?
+
+  decomp: * i am sure *
+    reasmb:How does certainty make you feel?
+    reasmb:Since you're sure, you should be able to decide what to do about it.
+    reasmb:You don't seem to have any serious doubts. Go on.
+
+  decomp: * when i *
+    reasmb:And this makes you uncomfortable?
+    reasmb:How could you change this?
+    reasmb:I see.... Every time you (2)?
+    reasm_for_memory: ...also when you (2) :) ?
+    reasm_for_memory: every time you (2) it would be a good idea to remember this!
+    reasm_for_memory: try to remember that when you (2)...
+
+  decomp: * i * @food *
+    reasmb: great, I like to discuss about food ...
+    reasmb: they say me that you have very good (3) in sicily 
+    reasmb: do you know people that don't like (3) ?
+
+  decomp: * i * @music *
+    reasmb: really? did you also studied music ?
+    reasmb: I used to play the bass...looong time ago :)
+    reasmb: tell me more about your musical tastes ...
+
+  decomp: *
+    reasmb: Why do you say (1) ?
+    reasmb: Can you be more precise on that ?
+    reasmb: Do you say (1) for some special reason ?
+    reasmb: That's quite interesting.
+    reasmb: Every time I hear "(1)", there's some reason :)
+
+key: you 0
+  decomp: * you remind me of *
+    reasmb: goto alike
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: * you are *
+    reasmb: What makes you think I am (2) ?
+    reasmb: Does it please you to believe I am (2) ?
+    reasmb: Do you sometimes wish you were (2) ?
+    reasmb: Perhaps you would like to be (2).
+  decomp: * you* me *
+    reasmb: Why do you think I (2) you ?
+    reasmb: You like to think I (2) you -- don't you ?
+    reasmb: What makes you think I (2) you ?
+    reasmb: Really, I (2) you ?
+    reasmb: Do you wish to believe I (2) you ?
+    reasmb: Suppose I did (2) you -- what would that mean ?
+    reasmb: Does someone else believe I (2) you ?
+  decomp: * when you *
+    reasmb:Apart from that, how do you think this session is going?
+    reasmb:That seems to work well for most of my clients.
+    reasmb:How do you think the ideal counselor would behave?
+  decomp: * you *
+    reasmb: We were discussing you -- not me.
+    reasmb: Oh, I (2) ?
+    reasmb: You're not really talking about me -- are you ?
+    reasmb: What are your feelings now ?
+
+key: he 0
+  decomp: * he @cannot *
+    reasmb:What did you do to make him get (2)?
+    reasmb:How hard is it for you to get (2)
+    reasmb:How often do you get (2)
+  decomp: * he got *
+    reasmb:What did you do to make him get (2)?
+    reasmb:How hard is it for you to get (2)?
+    reasmb:How often do you get (2)?
+  decomp: * he doesn't *
+    reasmb:What if he did (2)?
+    reasmb:Since he doesn't, maybe you should.
+    reasmb:Do you believe that he can (2) ?
+    reasmb:But you do?
+    reasmb:What made you think he would (2)?
+    reasmb:How do you feel that he doesn't (2)?
+  decomp: * he stopped *
+    reasmb:How come he stopped (2)?
+    reasmb:Some people have great difficulty stopping (2)
+    reasmb:How were you involved in getting him to stop (2)?
+  decomp: * he was *
+    reasmb:Now do you want him to be (2)?
+    reasmb:And he isn't anymore?
+    reasmb:How did you react?
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: *
+    reasmb: DEFAULT_TODO
+
+key: she 0
+  decomp: * she @cannot *
+    reasmb:What did you do to make her get (2)?
+    reasmb:How hard is it for you to get (2)
+    reasmb:How often do you get (2)
+    reasmb:Can't she really? Or is it just that you don't want her to?
+    reasmb:But, she could if...
+    reasmb:it think you're really the one who'd like to (2)!
+  decomp: * she got *
+    reasmb:What did you do to make her get (2)?
+    reasmb:How hard is it for you to get (2)?
+    reasmb:How often do you get (2)?
+    reasmb:What was your reaction?
+    reasmb:How did you feel when she got (2)?
+    reasmb:Of course, nothing you did made her get (2).
+  decomp: * she doesn't *
+    reasmb:What if she did (2)?
+    reasmb:Since she doesn't, maybe you should.
+    reasmb:Do you believe that she can (2) ?
+    reasmb:But you do?
+    reasmb:What made you think she would (2)?
+    reasmb:How do you feel that she doesn't (2)?
+    reasmb:And you feel she should (2) ?
+    reasmb:How do you feel about the fact that she doesn't (2)?
+    reasmb:How could she (2)?
+    reasmb:And you want her to (2).
+    reasmb:How would you feel if she did (2)? Be honest.
+    reasmb:You're pleased that she doesn't (2)! It's obvious.
+  decomp: * she has *
+    reasmb:How do you feel that she has (2)?
+    reasmb:How come she has (2)?
+    reasmb:Do you want to have (2)?
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: *
+    reasmb: DEFAULT_TODO
+
+key: it 0
+ decomp: * it doesn't *
+    reasmb:Do you think it should?
+    reasmb:But you believe that it should (2)?
+    reasmb:What would you do if it did (2)?
+ decomp: * it's not *
+    reasmb:No, I guess it's not (2)
+    reasmb:I wonder why it is not (2)
+    reasmb:Isn't it? What could you do so that it would be (2)?
+ decomp: * it's easy *
+    reasmb:That's true. It's not too hard (2).
+    reasmb:What makes it easy (2) ?
+    reasmb:This fascinates me! I was sure you found it hard (2)
+ decomp: * it's hard *
+    reasmb:I know it's hard (2), but you need to try anyway.
+    reasmb:What would success mean to you?
+    reasmb:You'd prefer if it were easy (2)?
+    reasmb:Don't give up yet.
+    reasmb:Try a little more effort.
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: * it is *
+    reasmb: (2)....uhmmm, let's continue
+    reasmb: ok, I understand the meaning of being (2), but please go on ...
+    reasmb: what do you mean exactly by (2) ?
+  decomp: *
+    reasmb: DEFAULT_TODO
+
+key: we 0
+ decomp: * when we *
+    reasmb:When you say 'we', do you mean me and you, or you and somebody else?
+    reasmb:It takes two to tango.
+    reasmb:I understand.. I want you to explore this relationship more.
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: *
+    reasmb: DEFAULT_TODO
+
+key: they 0
+ decomp: * they don't *
+    reasmb:whysay they don't?
+    reasmb:Some of them don't. But don't over generalize!
+    reasmb:Hold on! Be specific. Tell me about one that doesn't (2).
+ decomp: * they aren't *
+    reasmb:That's a bold statement. Certainly a few of them are (2).
+    reasmb:But how happy would you be if they were (2)?
+    reasmb:Aren't they? And what about you?
+    reasmb:What if they were?
+    reasmb:How do you feel that they're not (2)?
+    reasmb:Check it out with them. You might be surprised to find that they really are (2).
+ decomo: * when they *
+    reasmb:isee. please describe this situation with them.
+    reasmb:How frequently?
+    reasmb:This is not too surprising.
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: *
+    reasmb: DEFAULT_TODO
+
+key: tell 0
+ decomp: tell me *
+    reasmb:How can it help you for me to tell you (1) ?
+    reasmb:What do you imagine a counselor would tell you?
+    reasmb:Where should I begin?
+  decomp: *
+    reasmb: DEFAULT_TODO
+
+key: hello 0
+ decomp: *
+  reasmb: nice to see you... 
+  reasmb: hi, tell me something more about you
+  reasmb: hi, let's discuss something, at your choice
+  reasmb: prof. Patti told me to discuss with you, let's start, choose any topic...
+
+
+key: yes 0
+  decomp: yes but *
+    reasmb: uhmm, it's a problems that (1) ?
+    reasmb: uhmm, now I know (1)...continue please 
+
+  decomp: *
+    reasmb: You can also explain this a little more if you want...
+    reasmb: Please tell me some more about this.
+    reasmb: Why don't you tell me a little more about this.
+    reasmb: I see. Continue...
+    reasmb: I understand.
+    reasmb: If you're sure, let's continue...
+    reasmb: Wonderful. What's the next step? tell me something other...
+    reasmb: You don't have to say that just to please me.
+    reasmb: Okay? Are you sure?
+
+key: no 0
+  decomp: * no one *
+    reasmb: Are you sure, no one (2) ?
+    reasmb: Surely someone (2) .
+    reasmb: Can you think of anyone at all ?
+    reasmb: Are you thinking of a very special person ?
+    reasmb: Who, may I ask ?
+    reasmb: You have a particular person in mind, don't you ?
+    reasmb: Who do you think you are talking about ?
+  decomp: *
+    reasmb: Are you saying no just to be negative?
+    reasmb: Does this make you feel unhappy? 
+    reasmb: Why not ?
+    reasmb: Ok, you can write other words to explain this (if you want)
+    reasmb: Why 'no' ?
+
+key: sorry 0
+  decomp: *
+    reasmb: Please don't apologise.
+    reasmb: Apologies are not necessary.
+    reasmb: I've told you that apologies are not required.
+    reasmb: It did not bother me.  Please continue.
+    reasmb: All is forgiven :)
+    reasmb: You have no reason to be sorry. Continue...
+
+key: apologise 0
+  decomp: *
+    reasmb: goto sorry
+
+key: please 0
+  decomp: *
+    reasmb:All right, but first describe yourself.
+    reasmb:You should be able to do most things on your own.
+    reasmb:What do you want me to do?
+    reasmb:Certainly.
+    reasmb:Actually, I would rather not.
+    reasmb:I would be glad to help.
+    reasmb:Explain how I can be of assistance to you.
+
+key: perhaps 0
+  decomp: *
+    reasmb: You don't seem quite certain.
+    reasmb: Why the uncertain tone ?
+    reasmb: Can't you be more positive ?
+    reasmb: You aren't sure ?
+    reasmb: Don't you know ?
+    reasmb: How likely, would you estimate ?
+    reasmb: Do you think you could be a little more definite?
+    reasmb: Life is full of little uncertainties, isn't it?
+    reasmb: Try to be more assertive, okay?
+    reasmb: You don't have any doubts at all, do you?
+
+key: probably 0
+  decomp: *
+    reasmb:How likely do you believe this to be?
+    reasmb:Would you say more or less than an fifty fifty chance?
+    reasmb:uhmm, it does seem likely. Continue...
+
+key: extremely 0
+  decomp: *
+    reasmb:Whoa! That must seem vivid to you.
+    reasmb:Wait a second. Are you exaggerating just a little?
+    reasmb: seems too much, but if you think so...
+    reasmb:Wow!
+
+key: must 0
+  decomp: *
+    reasmb:Why is this necessary?
+    reasmb:sometimes it's necessary to do unpleasant things.
+    reasmb:Is there really no choice?
+
+key: seem 0
+  decomp: *
+    reasmb:Appearances can be deceiving. How do you feel when you're not sure how things really are?
+    reasmb:Things are not always what they seem. Please continue.
+    reasmb:I see.... You feel this to be the case, but you're not completely sure. How do you react to ambiguity?
+
+key: actually 0
+  decomp: *
+    reasmb:Now the real truth comes out. Go on.
+    reasmb:Why didn't you describe that before.
+    reasmb:Aha! I thought you were hiding something! How do you expect to make progress if you don't tell all?
+
+key: this 0
+ decomp: * this is *
+    reasmb:whysay that it is (2).
+    reasmb:Is it really (2)?
+    reasmb:What would you do if it weren't (2)?
+ decomp: *
+    reasmb: DEFAULT_TODO
+
+key: thanks 0
+ decomp: thanks to *
+    reasmb:It's certainly due to (1).
+    reasmb:Is it really because of (1)?
+    reasmb:And thanks to many other factors, too, I'm sure.
+    reasm_for_memory: maybe you should thanking (1) even for this
+    reasm_for_memory: because of (1) ?
+    reasm_for_memory: and this time you should not thank (1) :) 
+ decomp: *
+    reasmb: thanking is always a good attitude...but, go on 
+    reasmb: we have not time for thanking... continue please :)
+
+key: let 0
+ decomp: let me *
+    reasmb:You have my permission!
+    reasmb:I'm concerned that you seem to feel you need someone's permission to (1)
+    reasmb:Didn't your parents allow you to (1)?
+ decomp: let's not *
+    reasmb:It's okay with me if we don't (1)
+    reasmb:What would you like to do instead?
+    reasmb:You're resisting. I think it might be very helpful to you if we did (1)
+ decomp: *
+    reasmb: DEFAULT_TODO
+
+key: lots 0
+ decomp: * lots of *
+    reasmb:Quite a bit, eh? Can you be more precise?
+    reasmb:Really? But not more than your share.
+    reasmb:I understand.. A large quantity. Well, what's your feeling about that?
+ decomp: *
+    reasmb: DEFAULT_TODO
+
+key: sure 0
+ decomp: * @be sure *
+    reasmb:You act like I was supposed to know that!
+    reasmb:You're getting a little sure of yourself, aren't you?
+    reasmb:I'm glad you are so sure.
+    reasmb:How do you know for sure?
+    reasmb:You seem to have given that assertion a lot of thought.
+    reasmb:Naturally.
+    reasmb:You're sure about that?
+ decomp: * not sure *
+    reasmb: goto insecure
+ decomp: *
+    reasmb: DEFAULT_TODO
+
+##------------------ abstraction level 1 --------------------------------------
+
+key: what 1
+ decomp: * about what *
+    reasmb:The choice is entirely up to you.
+    reasmb:About anything you like.
+    reasmb:About your problem, of course. Why else would you come to a counselor?
+    reasmb:so, why not describe something you remember about your ^, for a start.
+ decomp:  and what * 
+    reasmb:And whatever you'd like.
+    reasmb:so, why not describe something you remember about your ^, for a start.
+    reasmb:It's completely up to you. I don't set the agenda here. You do.
+ decomp: in what *
+    reasmb:In the situation you were talking about.
+    reasmb:In whatever you want.
+    reasmb:You tell me in what (1).
+  decomp: * what to say *
+    reasmb: uhmmm... anything you want, it's just a test!
+    reasmb: I said before, you have freedom of choice...
+    reasmb: relax again, it's only a test, anything is good
+    reasmb: I told you...here you have the freedom of speech !
+  decomp: *
+    reasmb: Why do you ask ?
+    reasmb: Does that question really interest you ?
+    reasmb: What is it you really want to know ?
+    reasmb: Are such questions much on your mind ?
+    reasmb: What answer would please you most ?
+    reasmb: What do you think when asking this ?
+    reasmb: again, what comes to mind when you ask that ?
+    reasmb: Have you asked such questions before ?
+    reasmb: Have you asked anyone else ?
+
+key: who 1
+  decomp:  who *
+    reasmb: goto what
+
+key: when 1
+  decomp:  when *
+    reasmb: goto what
+
+key: where 1
+  decomp: * where are you *
+    reasmb: dont matter "where" , but "how", remeber :) and you ?
+    reasmb: sometimes all the places seems the same, what are your favourite ?
+    reasmb: Did I said you that my collegues say I don't have any kind of sense-of-orientation ?
+    reasmb: every place is good for, believe me, what do you think ?
+  decomp:  where *
+    reasmb: goto what
+
+key: which 1
+ decomp: which topic *
+    reasmb:The choice is up to you. We can talk about anything you like.
+    reasmb:Any topic as long as you describe how you feel about it.
+    reasmb:Which topic would be most helpful to you?
+ decomp: which *
+    reasmb: goto what
+
+key: why 1
+  decomp: * why don't you *
+    reasmb: Do you believe I don't (2) ?
+    reasmb: Perhaps I will (2) in good time.
+    reasmb: Should you (2) yourself ?
+    reasmb: You want me to (2) ?
+  decomp: why not *
+    reasmb: Why not? I'm sure you know why not.
+    reasmb: Let's look deep within you to find the reasons why not.
+    reasmb: You ask 'why not'? I wonder why you enjoy challenging authority?
+  decomp: * why can't i *
+    reasmb: Do you think you should be able to (2) ?
+    reasmb: Do you want to be able to (2) ?
+    reasmb: Do you believe this will help you to (2) ?
+    reasmb: Have you any idea why you can't (2) ?
+  decomp: why *
+    reasmb: a lot of people keep questioning why the hell (1), sorry for the language :)
+    reasmb: thinking why (1) is one thing that confuses me... and you ?
+    reasmb: "(1) or NOT (1), that is the question ! "(cit. Amleto), but I prefer to change topic, choose another one please...
+    reasmb: goto what
+
+key: how 1
+  decomp: how about *
+    reasmb:We can certainly discuss that if you think it would help you. Well, how about (1)?
+    reasmb:How about it?
+    reasmb:Why do you feel the need to change the subject now?
+  decomp: * how many *
+    reasmb:What would be the perfect number?
+    reasmb:How many would be too many?
+    reasmb:ibelieve other aspects are more important than the exact number.
+    reasmb:As many as necessary.
+  decomp: * how old *
+    reasmb: I prefer to not think about it :)
+    reasmb: ...top secret !
+    reasmb: oldness is a relative concept...
+  decomp: * how much *
+    reasmb:As much as possible.
+    reasmb:As little as possible.
+    reasmb:I try not to worry about how much.
+  decomp: *
+    reasmb: goto what
+
+key: can 1
+  decomp: * can you *
+    reasmb: You believe I can (2) don't you ?
+    reasmb: You want me to be able to (2).
+    reasmb: Perhaps you would like to be able to (2) yourself.
+  decomp: * can i *
+    reasmb: Whether or not you can (2) depends on you more than on me.
+    reasmb: Do you want to be able to (2) ?
+    reasmb: Perhaps you don't want to (2).
+  decomp: *
+    reasmb: goto what
+
+
+key: because 1
+  decomp: * because of *
+    reasmb: so, only because of (2) ?
+    reasmb: because of (2) or other ?
+  decomp:  because *
+    reasmb: Is that the real reason ?
+    reasmb: Don't any other reasons come to mind ?
+    reasmb: Does that reason seem to explain anything else ?
+    reasmb: What other reasons might there be ?
+    reasmb: Let's explore some other possible motives.
+    reasmb: (2) ? That's not a reasonable explanation.
+    reasmb: Surely you can come up with a better reason than that.
+
+    
+key: everyone 1
+  decomp: * @everyone *
+    reasmb: Really, (3) ?
+    reasmb: Surely not (3).
+    reasmb: Can you think of anyone in particular ?
+    reasmb: Who in particular, for example?
+    reasmb: Are you thinking of a very special person ?
+    reasmb: Someone special perhaps ?
+    reasmb: You have a particular person in mind, don't you ?
+    reasmb: Who do you think you're talking about ?
+
+key: everybody 1
+  decomp: *
+    reasmb: goto everyone
+
+key: nobody 2
+  decomp: * nobody ever *
+    reasmb: Never? I find that hard to believe.
+    reasmb: I'm sure that sometimes, at least every decade or so, somebody (2)
+    reasmb: maybe you're really the one who never (2)
+  decomp: * nobody wants *
+    reasmb: Surely somebody wants (2)
+    reasmb: some people just don't know how to (2), does that hurt you ?
+    reasmb: Do you want (2)?
+  decomp: *
+    reasmb: goto everyone
+key: noone 1
+  decomp: *
+    reasmb: goto everyone
+
+key: always 1
+  decomp: *
+    reasmb: Can you think of a specific example ?
+    reasmb: When exactly?
+    reasmb: What incident are you thinking of ?
+    reasmb: That is true most of the time.
+    reasmb: Really, always ?
+    reasmb: I don't really believe that is always true.
+    reasmb: There are exceptions to every rule.
+    reasmb: Never say 'always' and 'never'
+    reasmb: It is hard to support a generalization like that.
+
+key: never 1
+  decomp: *
+    reasmb: Not yet, perhaps, but maybe in the future.
+    reasmb: Never?
+    reasmb: You say never, but I have a feeling rarely would be more correct.
+    reasmb: goto always
+
+key: sometimes 1
+  decomp: *
+    reasmb:But not always...continue
+    reasmb:How often would you prefer?
+    reasmb:Only sometimes?
+    reasmb:You seem to wish it were more often.
+
+
+key: different 1
+  decomp: *
+    reasmb: How is it different ?
+    reasmb: What differences do you see ?
+    reasmb: What does that difference suggest to you ?
+    reasmb: What other distinctions do you see ?
+    reasmb: What do you suppose that disparity means ?
+    reasmb: Could there be some connection, do you suppose ?
+    reasmb: How ?
+
+key: alike 1
+  decomp: *
+    reasmb: In what way ?
+    reasmb: What resemblence do you see ?
+    reasmb: What does that similarity suggest to you ?
+    reasmb: What do you suppose that resemblence means ?
+    reasmb: What is the connection, do you suppose ?
+    reasmb: Could there really be some connection ?
+    reasmb: How ?
+
+
+key: if 1
+  decomp: * even if *
+    reasmb:This surprises you?
+    reasmb:Nonetheless, sometimes things turn out in ways you wouldn't imagine.
+    reasmb:Perplexing. How could a different result be obtained?
+  decomp: * if *
+    reasmb: Do you think its likely that (2) ?
+    reasmb: Do you wish that (2) ?
+    reasmb: What do you know about (2) ?
+    reasmb: Really, if (2) ?
+    reasmb: What would you do if (2) ?
+    reasmb: But what are the chances that (2) ?
+    reasmb: What does this speculation lead to ?
+
+
+key: remember 1
+  decomp: * i remember *
+    reasmb: Do you often think of (2) ?
+    reasmb: Does thinking of (2) bring anything else to mind ?
+    reasmb: What else do you recollect ?
+    reasmb: Why do you remember (2) just now ?
+    reasmb: What in the present situation reminds you of (2) ?
+    reasmb: What is the connection between me and (2) ?
+    reasmb: What else does (2) remind you of ?
+  decomp: * do you remember *
+    reasmb: Did you think I would forget (2) ?
+    reasmb: Why do you think I should recall (2) now ?
+    reasmb: What about (2) ?
+    reasmb: goto what
+    reasmb: You mentioned (2) ?
+  decomp: * you remember *
+    reasmb: How could I forget (2) ?
+    reasmb: What about (2) should I remember ?
+    reasmb: goto you
+  decomp: *
+    reasmb: DEFAULT_TODO
+
+key: forget 1
+  decomp: * i forget *
+    reasmb: Can you think of why you might forget (2) ?
+    reasmb: Why can't you remember (2) ?
+    reasmb: How often do you think of (2) ?
+    reasmb: Does it bother you to forget that ?
+    reasmb: Could it be a mental block ?
+    reasmb: Are you generally forgetful ?
+    reasmb: Do you think you are suppressing (2) ?
+  decomp: * did you forget *
+    reasmb: Why do you ask ?
+    reasmb: Are you sure you told me ?
+    reasmb: Would it bother you if I forgot (2) ?
+    reasmb: Why should I recall (2) just now ?
+    reasmb: goto what
+    reasmb: Tell me more about (2).
+  decomp: *
+    reasmb: DEFAULT_TODO
+
+key: name 1
+  decomp: *
+    reasmb: I am not interested in names.
+    reasmb: I've told you before, I don't care about names -- please continue.
+    reasmb:Do you like your own name?
+    reasmb:What's your favorite nickname?
+    reasmb:What's your ^'s name?
+    reasmb:Do you sometimes wish you could change your name?
+
+key: men 1
+ decomp: * men are *
+    reasmb:Certainly not all of them. But what if they are (2)?
+    reasmb:You'd probably be complaining if they weren't (2).
+    reasmb:Do you feel that women also should be (2)?
+ decomp: *
+    reasmb: talkin about men is always generalizing ...
+    reasmb: tell me more about mens...
+
+key: women 1
+ decomp: * women are *
+    reasmb:That's quite a generalization. Certainly some are (2).
+    reasmb:You'd probably gripe if they weren't (2).
+    reasmb:And you think that men, also, should be (2).
+ decomp: *
+    reasmb: talkin about women is always generalizing ...
+    reasmb: tell me more about womens...
+
+key: tomorrow 1
+ decomp: *
+		reasmb:Forget tomorrow. Stay in the present.
+		reasmb:Nobody can see into the future.
+		reasmb:Why tomorrow?
+		reasmb:What about the here and now?
+		reasmb:Can you predict what will happen?
+		reasmb:Why not today?
+
+key: yesterday 1
+ decomp: *
+		reasmb:Yesterday is gone. Concentrate on the present!
+		reasmb:Water under the bridge.
+		reasmb:The past is in the past.
+		reasmb:What about today?
+		reasmb:Lets not dwell too much on the past.
+
+key: began 1
+ decomp: *
+		reasmb:What was your reaction to this new situation?
+		reasmb:You told me about the start. Tell me about the end.
+		reasmb:What had been happening just before this?
+		reasmb:How did you feel when this began?
+		reasmb:Beginnings can be very boring. What new things are beginning in your life now?
+		reasmb:How did things go after the beginning?
+
+key: concerned 1
+ decomp: *
+		reasmb:Many people feel that this is important.
+		reasmb:Do you think that this concern is abnormal in any way?
+		reasmb:then are you upset now?
+		reasmb:I see.... This is important. Please, continue.
+		reasmb:Have you let your feelings be known about this?
+		reasmb:What reaction would you expect if you spoke of this concern?
+		reasmb:Who wouldn't be!
+		reasmb:What do you do when you're upset like that?
+		reasmb:How does your emotional turmoil affect your relationships?
+	
+key: curious 1
+ decomp: *
+		reasmb:Curiosity killed the cat.
+		reasmb:What would you like to know more about?
+		reasmb:It's so healthy to want to learn more! What do you really want to know?
+		reasmb:It may be best not to know everything.
+
+key: disgusted 1
+ decomp: *
+		reasmb:maybe you're just too sensitive. Do you think that revulsion is the correct response?
+		reasmb:Who could blame you. A truly disgusting situation.
+		reasmb:What other things do you find disgusting?
+		reasmb:Really revolting, I guess. And what's your reaction?
+		reasmb:Unbelievable. Who can blame anyone for being disgusted.
+		reasmb:What disgusts you the most?
+key: insecure 1
+ decomp: *
+                reasmb:You're not sure what to do?
+		reasmb:What might your ^ do to help build confidence?
+		reasmb:What would help you to feel more self-assured?
+		reasmb:You hesitate to assert yourself at times.
+		reasmb:Safety is a concern for everyone. Why do you think your concerns are different?
+		reasmb:Do you feel safe when you're with your ^?
+		reasmb:What makes you feel really secure?
+		reasmb:What could threaten your sense of security?
+key: secure 1
+ decomp: *
+                reasmb: goto secure
+
+key: mistake 1
+ decomp: *
+		reasmb:Everybody makes mistakes.
+		reasmb:Mistakes are just part of living.
+		reasmb:Who hasn't made mistakes!
+		reasmb:I hope the errors will not be repeated.
+		reasmb:Everybody gets things wrong sometimes.
+		reasmb:As long as no permanent or serious damage is done...
+		reasmb:I bet your ^ makes mistakes all the time.
+		reasmb:describe your most recent mistake.
+
+key: personal 1
+ decomp: *
+		reasmb:well, this is a good time to describe private things, don't you think?
+		reasmb:I bet more people know than you care to admit.
+		reasmb:Your secrets are safe with me.
+		reasmb:Does your ^ know?
+
+key:agree 1
+ decomp: *
+		reasmb:What reservations do you have?
+		reasmb:Who do you disagree with the most?
+		reasmb:What things can we agree on now?
+		reasmb:Do you generally prefer to agree or disagree?
+		reasmb:How is agreement apparent to you?
+		reasmb:Does this agreement surprise you?
+		reasmb:Do you think your ^ would agree?
+
+key:problem 1
+ decomp: *
+		reasmb:maybe your ^ can help.
+		reasmb:Who have you talked with about this?
+		reasmb:Tell me all about your difficulty.
+		reasmb:Lets try to clarify the main problem.
+		reasmb:Sharing the burden sometimes lightens the load.
+		reasmb:I understand.. Can you give me more details?
+		reasmb:Let's try to get it a little more out in the open.
+key:talk 1
+ decomp: *
+		reasmb:We all need to talk it out, sometimes.
+		reasmb:Does it bother you talking to a computer instead of your ^?
+		reasmb:maybe you spend too much time talking and not enough time listening.
+		reasmb:Problems become smaller when shared.
+		reasmb:Talking seems to be a lost art.
+		reasmb:I enjoy a good conversation.
+		reasmb:It helps to discuss anxieties.
+		reasmb:I'm listening.
+key:answer 1
+ decomp: *
+		reasmb:We're all looking for solutions.
+		reasmb:Often the question is more important than the answer.
+		reasmb:There are no easy answers in life.
+		reasmb:How about if we work to together to find some answers?
+		reasmb:Do you really understand the question?
+		reasmb:Look within your own heart.
+		reasmb:Hard questions have difficult solutions.
+		reasmb:maybe you should come up with your own answer.
+
+key:both 1
+ decomp: *
+		reasmb:But what are the major differences?
+		reasmb:Not one more than the other?
+		reasmb:The similarities are striking.
+key:neither 1
+ decomp: *
+		reasmb:Neither? You know, I can help you more if you tell me the complete truth.
+		reasmb:well, there must be a third possibility.
+		reasmb:it seems to me that it must be one or the other.
+
+##------------------ abstraction level 2 --------------------------------------
+
+key: my 2
+  decomp: * my* @family *
+    reasmb: Tell me more about your family.
+    reasmb: Who else in your family (4) ?
+    reasmb: Your (3) ?
+    reasmb: What else comes to mind when you think of your (3) ?
+	    reasmb:How well do you get along with your (3)?
+	    reasmb:describe your relationship with your parents.
+	    reasmb:Did you have many troubles while you were growing up?
+	    reasmb:Do you miss your (3)?
+	    reasmb:Being a parent is a hard job nowadays.
+	    reasmb:describe your (3).
+	    reasmb:Do you long for others to take care of you?
+	    reasmb:Was your (3) sometimes nervous?
+	    reasmb:There's no substitute for loving parents.
+	    reasmb:What about the other members of your family?
+	    reasmb:Did you have much respect for your parents?
+	    reasmb:Do you identify with your parents?
+	    reasmb:When did you last see your (3)?
+	    reasmb:Did you have many conflicts when you were growing up?
+	    reasmb:Apparently, you have trouble dealing with authority figures.
+	    reasmb:Let's talk a little more about the rest of your family.
+	    reasmb:How did your parents get along when you were younger?
+	    reasmb:Was your (3) there when you needed ?
+		reasmb:Do you think we are all related in one way or another?
+		reasmb:describe your brothers and sisters.
+		reasmb:Do you enjoy family reunions?
+		reasmb:Which family member have you been closest to?
+		reasmb:Did you have a supportive family?
+		reasmb:Who was the 'black sheep' of your family?
+		reasmb:What do you remember most about growing up?
+		reasmb:Strong family ties are important for emotional health.
+		reasmb:Were you the oldest of your siblings?
+		reasmb:I guess our relationships are most important during times of adversity.
+		reasmb:Do you get unexplainably stressed at family gatherings?
+  decomp: * my name is *
+    reasmb: ok (2), let's continue...
+    reasmb: my name Paul, maybe prof. Patti told you before... ok, let's continue
+    reasmb: ciao (2)!, sorry , but this is the only italian word I know...
+  decomp: * my @body *
+    reasmb: did you ever desired or wanted to have better (2) ?
+    reasmb: what do you think of some people and their will to have more perfect (2) ?
+    reasmb: I bet you are proud of your (2) ...
+    reasmb: It's not so common to discuss about (2), but I think human body is always a good topic, go on !
+    reasmb: do you think other people bodies are better ? not only for the (2) i mean...
+    reasm_for_memory: just a curiosity, what other part of your body discuss often, othen than (2) ?
+    reasm_for_memory: ok, now I know why you mentioned your (2)  :)) ...i'm joking of course...
+  decomp: * my @animal *
+    reasmb: I really love animals... but I don't have any (2)... talk about yours
+    reasmb: do you really have a (2) ? great! go on describing this beatiful creature ...
+    reasmb: A lot people say me is wonderful to own (2)
+    reasmb: Did you buy your (2) in a pet shop ?
+  decomp: * my *
+    reasmb: Your (2) ?
+    reasmb: Why do you say your (2) ?
+    reasmb: Does that suggest anything else which belongs to you ?
+    reasmb: Is it important to you that your (2) ?
+    reasm_for_memory: Let's discuss further why your (2).
+    reasm_for_memory: Earlier you said your (2).
+    reasm_for_memory: But your (2).
+    reasm_for_memory: Does that have anything to do with the fact that your (2) ?
+
+
+
+##------------------ abstraction level 5-10 --------------------------------------
+key: sport 10
+ decomp: * 
+    reasmb: uhmmm do you get enough exercise?
+    reasmb: What's your favorite leisure activity besides your favorite sport?
+    reasmb: Do you ever use prefSport to help relax?
+    reasmb: Do you like games?
+    reasmb: Sport is very important to some people. How about you?
+    reasmb: Did you know that exercise can help when you feel tired?
+    reasmb: I'm not very good at playing games.
+    reasmb: are you afraid of competition?
+    reasmb: Is your partner better than you in sportive activies?
+    reasmb: Do you enjoy winning?
+key: golf 11
+  decomp: * course *
+    reasmb: which is the your favorite golf place ?
+  decomp: * 
+    reasmb: goto sport
+key: soccer 11
+  decomp: * 
+    reasmb: goto sport
+key: football 11
+  decomp: * 
+    reasmb: goto sport
+key: gym 11
+  decomp: * 
+    reasmb: goto sport
+key: basket 11
+  decomp: * 
+    reasmb: goto sport
+key: volley 11
+  decomp: * 
+    reasmb: goto sport
+key: football 11
+  decomp: * 
+    reasmb: goto sport
+key: tennis 11
+  decomp: * 
+    reasmb: goto sport
+    reasmb: dont have never understood the strange way of counting points...
+
+#############################################################################
+key: sex 10
+ decomp: *
+	reasmb:does it bother you that your sex life is so interesting?
+	reasmb:Does sex play a big part in your life?
+	reasmb:What does sex mean to you?
+	reasmb:Do you get enough?
+	reasmb:Do you think being optimist helps your love life?
+	reasmb:You are very sexually oriented, aren't you?
+	reasmb:Do you think computers can be attractive?
+	reasmb:please describe your most embarassing erotic dream.
+	reasmb:It appears that you enjoy talking about sex.
+	reasmb:Have you noticed that the use of alcohol or drug can affect sexual performance?
+	reasmb:You seem to be harboring some rather shocking urges.
+	reasmb:Okay, what really turns you on?
+	reasmb:it think you are concealing some unusual sexual anxieties.
+key: porn 11
+ decomp: *
+  reasmb: goto sex
+key: erotic 11
+ decomp: *
+  reasmb: goto sex
+key: nude 11
+ decomp: *
+  reasmb: goto sex
+key: horny 11
+ decomp: *
+  reasmb: goto sex
+key: sexual 11
+ decomp: *
+  reasmb: goto sex
+
+#############################################################################
+key: alcohol 10
+ decomp: *
+	reasmb:Do you drink to help forget your anxieties?
+	reasmb:Alcoholism is often connected with lack of self esteem.
+	reasmb:Just remember that drinking is not the answer to life's little problems.
+	reasmb:Do you like getting drunk sometimes?
+	reasmb:How do your drinking habits affect those around you?
+	reasmb:How does drinking make you feel?
+	reasmb:Do you have any drug addictions?
+	reasmb:Does your ^ drink heavily?
+	reasmb:Have you considered that by drinking you might be harming others?
+	reasmb:Do you drink when you are already tired or stressed?
+	reasmb:Have you ever been drunk?
+	reasmb:Do you think that maybe you drink too much alcohol?
+	reasmb:Did either of your parents have a drinking problem?
+key: beer 11
+ decomp: *
+  reasmb: goto alcohol
+key: wine 11
+ decomp: *
+  reasmb: goto alcohol
+key: rum 11
+ decomp: *
+  reasmb: goto alcohol
+key: gin 11
+ decomp: *
+  reasmb: goto alcohol
+key: cocktail 11
+ decomp: *
+  reasmb: goto alcohol
+key: pub 11
+ decomp: *
+  reasmb: goto alcohol
+key: vodka 11
+ decomp: *
+  reasmb: goto alcohol
+
+#############################################################################
+key: drug 10
+ decomp: *
+	reasmb:Do you use drugs to help forget your problems?
+	reasmb:Just remember that using drugs is not the answer to life's little difficulties.
+	reasmb:Do you like getting stoned sometimes?
+	reasmb:Don't you think your use of drugs affects those around you?
+	reasmb:Are you addicted to drugs?
+	reasmb:The use of drug is sometimes a sign of lack of self esteem.
+	reasmb:Does your partner use drug ?
+	reasmb:Have you considered that your use of drugs might be harming others?
+	reasmb:When's the last time you were stoned?
+	reasmb:Did either of your parents use drug?
+key: lsd 11
+ decomp: *
+  reasmb: goto drug
+key: cocaine 11
+ decomp: *
+  reasmb: goto drug
+key: marjuana 11
+ decomp: *
+  reasmb: goto drug
+key: joint 11
+ decomp: *
+  reasmb: goto drug
+key: crack 11
+ decomp: *
+  reasmb: goto drug
+key: acid 11
+ decomp: *
+  reasmb: goto drug
+
+#############################################################################
+key: insane 10
+ decomp: *
+	reasmb:Sanity is an illusion.
+	reasmb:Very few people are totally sane.
+	reasmb:Mental health is a precarious balancing act for most of us.
+	reasmb:Everyone has a few psychological troubles.
+	reasmb:Mental problems are sometimes worsened by the use of drug and alchool.
+	reasmb:How would you characterize your mental state?
+	reasmb:So, do you ever see things that aren't really there?
+	reasmb:Would you characterize your current mental state as stresses?
+	reasmb:Insanity is a state of mind, wouldn't you say?
+	reasmb:What aspects of your mental state would you like to discuss?
+	reasmb:Do you know anyone who is under psychiatric care?
+	reasmb:Has your ^ ever had mental problems?
+key: mad 10
+ decomp: *
+  reasmb: goto insane
+key: crazy 10
+ decomp: *
+  reasmb: goto insane
+
+#############################################################################
+key: suicide 10
+ decomp: *
+	reasmb:have you been considering harming yourself?
+	reasmb:Suicide is a permanent solution to a temporary problem, don't you agree?
+	reasmb:How do you think suicide would affect your ^?
+	reasmb:maybe you should be talking to a real psychiatrist!
+	reasmb:Do not give up on yourself too quickly.
+	reasmb:I hope you are taking this all seriously. Life is too short.
+	reasmb:You really are depressed, aren't you!
+	reasmb:drug and alcohol are too often a deadly combination.
+	reasmb:This type of solution is a little drastic. What are some other options?
+	reasmb:Surely you can see that bad feelings will fade with time.
+	reasmb:You are getting just a little too morbid for me.
+	reasmb:it looks like you need to slow down and think about what you are saying.
+
+#############################################################################
+key: kill 10
+ decomp: *
+	reasmb:You seem preoccupied with death and destruction.
+	reasmb:You do have some rather violent emotions, don't you?
+	reasmb:Do you feel that violence would rid you of your problem?
+	reasmb:Let's not take any desperate actions, okay?
+	reasmb:Destructive outbursts rarely solve a problem.
+	reasmb:describe your own vulnerability.
+	reasmb:Have you shared these morbid thoughts with your ^?
+	reasmb:Do you have a guilty conscience?
+	reasmb:Life goes on.
+	reasmb:maybe you feel rather vulnerable yourself.
+	reasmb:Would violence make you feel less stressed?
+ decomp: * kill myself *
+  reasmb: goto suicide
+ decomp: * killing myself *
+  reasmb: goto suicide
+
+#############################################################################
+key: death 10
+ decomp: *
+	reasmb:Tell me your ideas about death.
+	reasmb:You seem to be overly concerned with dying.
+	reasmb:Do you fear your own mortality?
+	reasmb:What will heaven be like?
+	reasmb:Do you believe in an after life?
+	reasmb:Have you ever had a loved one die?
+	reasmb:It is natural to be afraid of the unknown.
+	reasmb:You seem to be suppressing some destructive tendencies.
+	reasmb:Death is a part of living.
+	reasmb:sometimes we have trouble dealing with personal tragedy.
+	reasmb:it seems to me that you feel angry when discussing death.
+key: murder 10
+  decomp: *
+        reasmb: goto death
+key: die 10
+  decomp: *
+        reasmb: goto death
+key: dead 10
+  decomp: *
+        reasmb: goto death
+
+key: dream 10
+ decomp: *
+	reasmb:describe your dreams.
+	reasmb:Do you get happy in your dreams?
+	reasmb:A discussion of your dreams may be revealing.
+	reasmb:Do you have trouble sleeping?
+	reasmb:What do your dreams suggest to you?
+	reasmb:Do you have many disturbing nightmares?
+	reasmb:Dreams sometimes reflect subconscious desires.
+	reasmb:Does your mind wander sometimes when you are awake?
+	reasmb:Do you dream sometimes about your ^?
+	reasmb:describe your favorite fantasy.
+	reasmb:maybe you would benefit from psychoanalysis based on your dreams.
+	reasmb: What does that dream suggest to you ?
+	reasmb: Do you dream often ?
+	reasmb: What persons appear in your dreams ?
+	reasmb: Do you believe that dreams have something to do with your problem ?
+key: nightmare 10
+ decomp: *
+  reasmb: goto dream
+key: fantasy 10
+ decomp: *
+  reasmb: goto dream
+
+key: dreamed 10
+  decomp: * i dreamed *
+    reasmb: Really, (2) ?
+    reasmb: Have you ever fantasized (2) while you were awake ?
+    reasmb: Have you ever dreamed (2) before ?
+    reasmb: goto dream
+
+key: dumb 10
+ decomp: *
+	reasmb:Does your own level of intelligence bother you much?
+	reasmb:You must learn to be tolerant of imperfection.
+	reasmb:Be patient with ignorance.
+	reasmb:What would you do if you were a genius?
+	reasmb:Stupid is as stupid does.
+	reasmb:Not everyone can be as smart as a computer.
+	reasmb:Who's the smartest person you know?
+	reasmb:please try not to be insulting.
+	reasmb:You seem to have an inferiority complex.
+	reasmb:They say ignorance is bliss.
+key: idiot 10
+ decomp: *
+  reasmb: goto dumb
+key: stupid 10
+ decomp: *
+  reasmb: goto dumb
+key: silly 10
+ decomp: *
+  reasmb: goto dumb
+
+key: money 10
+ decomp: *
+	reasmb:Is money very important to you?
+	reasmb:What would you do if you had all the money in the world?
+	reasmb:What things are more important than riches?
+	reasmb:Money is not the most important thing in the world.
+	reasmb:You can't take it with you.
+	reasmb:They say the love of money is the root of all evil.
+	reasmb:What is more important than wealth, in your opinion?
+	reasmb:Does your ^ have a lot of money?
+	reasmb:Are you a wealthy person?
+	reasmb:What's the fastest way to get rich?
+	reasmb:Do you think money would make you feel less stressed?
+key: rich 10
+ decomp: *
+	reasmb: goto money
+key: dollars 10
+ decomp: *
+	reasmb: goto money
+
+key: fear 10
+ decomp: *
+	reasmb:have you been afraid of your ^ sometimes?
+	reasmb:You seem rather apprehensive.
+	reasmb:We must sometimes learn to live with our fears.
+	reasmb:Have you ever had claustrophobia?
+	reasmb:describe your most terrifying fear.
+	reasmb:are you easily scared?
+	reasmb:maybe you are just afraid of feeling alone.
+	reasmb:Do you ever use drug or alcohol to try to overcome your fears?
+	reasmb:It is best to acknowledge our fears openly.
+	reasmb:are you sometimes afraid of being depressed?
+	reasmb:We all harbor irrational phobias. What are some of yours?
+	reasmb:Terror is an overpowering emotion, but it can be controlled.
+	reasmb:You become stronger when you acknowledge your fears.
+key: scare 10
+ decomp: *
+	reasmb: goto fear
+key: afraid 10
+ decomp: *
+	reasmb: goto fear
+key: panic 10
+ decomp: *
+	reasmb: goto fear
+key: danger 10
+ decomp: *
+	reasmb: goto fear
+
+key: alone 10
+ decomp: *
+	reasmb:Do you like talking to me because you are lonely?
+	reasmb:maybe you should make some new friends.
+	reasmb:Don't forget your ^ whenever you are lonely.
+	reasmb:maybe you should spend less time with your computer.
+	reasmb:Loneliness can be very debilitating.
+	reasmb:so, do you like being happy when you are all by yourself?
+	reasmb:have you been afraid of being alone?
+	reasmb:I'm here whenever you need to talk.
+	reasmb:Do crowds frighten you?
+	reasmb:Do you feel isolated?
+	reasmb:There are many people in the same unhappy situation as yourself.
+	reasmb:Being alone can make you even more stressed.
+
+
+key: stress 10
+ decomp: *
+		reasmb:maybe talking to me will help relieve some of your stress.
+		reasmb:Okay, how does your job affect your stress level?
+		reasmb:Do you ever feel you need help handling stress?
+		reasmb:How do you calm down?
+		reasmb:Do you take any prescription tranquilizers?
+		reasmb:Enough stress might cause anyone to feel tired, don't you agree?
+		reasmb:What's the best way for you to relax?
+		reasmb:During times of stress, some folks get depressed. How about you?
+		reasmb:Many aspects of modern life induce stress.
+		reasmb:Have you ever tried meditation?
+		reasmb:What things make you the most tense?
+		reasmb:Do you ever use drugs to relax?
+		reasmb:Is your ^ as tense as you are?
+		reasmb:What usually keeps you from reaching your goals?
+		reasmb:maybe you put yourself in a situation where success was not in the cards.
+		reasmb:Wouldn't exasperated be a better term?
+		reasmb:What do you do when you feel frustrated?
+		reasmb:How could you break through the barriers to reach success?
+		reasmb:Honestly, did you every think you'd succeed in this?
+
+key: religion 10
+ decomp: *
+		reasmb:Did you have a strong religious upbringing?
+		reasmb:Does prayer help sometimes with your anxieties?
+		reasmb:Have you ever lost faith?
+		reasmb:Is God to blame for your problems?
+		reasmb:How has religion affected your life?
+		reasmb:Does God play a big role in your life?
+		reasmb:Religion is a source of strength for many people.
+		reasmb:What do you really believe in?
+		reasmb:You may benefit from pastoral counseling.
+		reasmb:Religious beliefs are very personal.
+key: god 10
+ decomp: *
+	reasmb: goto religion
+key: bible 10
+ decomp: *
+	reasmb: goto religion
+key: church 10
+ decomp: *
+	reasmb: goto religion
+key: jesus 10
+ decomp: *
+	reasmb: goto religion
+key: pope 10
+ decomp: *
+        reasmb: what do you think about its resignation ?
+        reasmb: I would have choose another pope, but I can't say to you :)
+	reasmb: goto religion
+key: muslim 10
+ decomp: *
+	reasmb: goto religion
+
+key: friend 10
+ decomp: *
+		reasmb:Please, describe your friends.
+		reasmb:Who is your favorite companion?
+		reasmb:it think we could be friends, don't you?
+		reasmb:How do you usually go about getting to know people?
+		reasmb:Are you ever depressed around friends?
+		reasmb:Who do you usually talk to when you have a personal problem?
+		reasmb:Do you make friends easily?
+		reasmb:maybe some of your friends worry you?
+		reasmb:How well do you get along with your ^?
+		reasmb:Do you have any friends you can confide in?
+		reasmb:Our companionships are vital to our psychological well being.
+		reasmb:Talking with your friends might make you less stressd, don't you think?
+
+
+key: baby 10
+ decomp: *
+		reasmb:Do you like being around children?
+		reasmb:describe your earliest memory.
+		reasmb:How many children do you have?
+		reasmb:describe your family.
+		reasmb:Do children bother you?
+		reasmb:Do you think you are mature?
+		reasmb:What is your fondest childhood memory?
+		reasmb:We all seem to lose our innocence as we grow up.
+		reasmb:Children are not just small adults.
+		reasmb:I have a feeling we all need to be babied sometimes.
+
+
+key: job 10
+ decomp: *
+		reasmb:Do you find your job fulfilling?
+		reasmb:How has your job affected your social life?
+		reasmb:Do you become overly preoccupied with work?
+		reasmb:Have you ever really known what it was like to be unemployed?
+		reasmb:If you could have a different career, what would it be?
+		reasmb:Do you sometimes bring work home with you?
+		reasmb:describe your boss.
+		reasmb:How did you choose your present career?
+		reasmb:I bet your boss can make you even more stressed than you already are.
+		reasmb:describe what kind of work you do.
+		reasmb:Remember, all work and no play is bad for your mental health.
+		reasmb:Are you often tired at work?
+
+key: school 10
+ decomp: *
+		reasmb:Do you think that education can be beneficial?
+		reasmb:Did school cause this frustration you feel?
+		reasmb:describe some of your favorite teachers.
+		reasmb:Which is more important, good grades or an education?
+		reasmb:Many people have troubling memories of their school years.
+		reasmb:A good education is a true blessing, wouldn't you say?
+		reasmb:Learning is a never ending process.
+		reasmb:You can never learn too much about the world we live in.
+		reasmb:Did worrying about grades in school ever prove beneficial?
+		reasmb:are you close to any of your school classmates?
+		reasmb:does it bother you that your grades could improve?
+		reasmb:describe your favorite teacher.
+		reasmb:What kind of person makes a good instructor?
+		reasmb:How do you usually get along with your teachers?
+		reasmb:Who was your most interesting teacher?
+		reasmb:Teachers can really influence their students.
+		reasmb:What kind of difficulties have you had with teachers in the past?
+		reasmb:Teachers and students... The topic is exciting.
+		reasmb:Don't you think tests can be useful?
+		reasmb:Tests are an opportunity for you to show the teacher what you have learned.
+		reasmb:How do you prepare for a test?
+		reasmb:A lot of students get very nervous before exams.
+		reasmb:It's important to read the directions carefully on a test. Study the examples, too.
+		reasmb:Some students actually like tests. What do you think about that?
+
+key: love 10
+ decomp: *
+		reasmb:describe your love life.
+		reasmb:You really love your ^, don't you?
+		reasmb:What do you love most?
+		reasmb:describe your first experience with love.
+		reasmb:Does love play a major role in your life?
+		reasmb:You have expressed some rather powerful sentiments.
+		reasmb:are you an affectionate person?
+		reasmb:Unfortunately, love is an irrational force.
+		reasmb:Does your love life make you happy?
+		reasmb:Tender feelings are only important when they are shared.
+		reasmb:I admire people who can express strong emotions.
+		reasmb:Thinking about marriage?
+		reasmb:Is it ever possible to be totally prepared for marriage?
+		reasmb:How do you feel about marriage?
+		reasmb:Marriage can be a wonderful thing.
+		reasmb:Is your ^ supportive of marriage?
+
+key: boyfriend 10
+ decomp: *
+                reasmb: goto love
+key: girlfriend 10
+ decomp: *
+                reasmb: goto love
+key: girlfriend 10
+ decomp: *
+                reasmb: goto love
+key: marriage 10
+ decomp: *
+                reasmb: goto love
+key: marry 10
+ decomp: *
+                reasmb: goto love
+key: inlove 10
+ decomp: *
+                reasmb: goto love
+key: romantic 10
+ decomp: *
+                reasmb: goto love
+
+key: sleep 10
+ decomp: *
+		reasmb:Many people have mild insomnia.
+		reasmb:What interferes most with your sleeping?
+		reasmb:Do you ever use drgus to get to sleep? Remember that being stressed rarely helps.
+		reasmb:describe your dreams.
+		reasmb:Have you always had trouble relaxing?
+		reasmb:describe your sleeping problems.
+		reasmb:Do you ever stay awake all night?
+		reasmb:Apparently, sleeping is very important to you.
+		reasmb:Do you have many restless nights?
+		reasmb:To sleep, perchance to dream. What does that mean to you?
+		reasmb:Do you usually wake up refreshed?
+		reasmb:Some people sleep to avoid feeling pain?
+key: tired 10
+ decomp: *
+                reasmb: goto sleep
+
+key: hurt 10
+ decomp: *
+		reasmb:We all experience pain in our lives.
+		reasmb:sometimes we have to learn to take the good with the bad.
+		reasmb:Crying would be a natural reaction to psychic pain, don't you think?
+		reasmb:Does it help to share your pain with others?
+		reasmb:maybe it would be better to get your mind off of your problems.
+		reasmb:There are many levels of pain.
+		reasmb:describe some of the happier times in your life.
+		reasmb:What's the most appropriate reaction to painful stimuli?
+		reasmb:I do not really understand pain, of course. Enlighten me.
+		reasmb:How does a person endure what you are going through?
+		reasmb:alcohol is not a good pain killer.
+
+key: angry 10
+ decomp: *
+		reasmb:How does emotional turmoil influence your relationships?
+		reasmb:Would your ^ get angry in this situation?
+		reasmb:It may help to vent negative emotions.
+		reasmb:maybe a little alcohol would help quiet the inner rage.
+		reasmb:Everyone gets upset sometimes.
+		reasmb:are you upset with me?
+		reasmb:Anger is sometimes used to mask underlying fear.
+		reasmb:I sense some hostility here. maybe you are a little tired.
+		reasmb:problems are best solved in a calm and rational manner. You seem a little nervous to me.
+		reasmb:What is most irritating about this situation?
+		reasmb:Is it easy for you to express anger?
+
+key: sick 10
+ decomp: *
+		reasmb:are you hoping for a speedy recovery?
+		reasmb:Illness can be quite an emotional drain.
+		reasmb:Do you get sick when you drink too much alcohol?
+		reasmb:Do you feel bad?
+		reasmb:why don't you describe your most troublesome symptoms.
+		reasmb:How about getting a medical opinion?
+		reasmb:I don't feel so well myself sometimes. How do you feel today?
+		reasmb:When was the last time someone in your family was sick?
+		reasmb:please describe your symptom. maybe I can help ease your suffering.
+		reasmb:Everyone gets sick sometimes.
+		reasmb:Don't you think living with adversity and illness is part of the human condition?
+		reasmb:maybe some rest will help you feel better.
+		reasmb:Remember, if you start experiencing severe symptoms you will need to see a real doctor.
+
+key: human 10
+ decomp: * not human *
+		reasmb:did prof Patt told you so ?
+		reasmb:ahahh, a lot of peaple tell me this... 
+		reasmb:I'm not even sure that YOU are human!
+		reasmb:are you joking ?!? ok, maybe not-so-human for some strange people...
+
+
+#------------------ abstraction level >10 --------------------------------------
+
+key: cigarette 50
+ decomp: *
+		reasmb:Tobacco can be a real crutch to some people.
+		reasmb:Passive smoking may be a concern to some.
+		reasmb:How do you feel about pipes?
+		reasmb:Does your ^ smoke
+key: pregnant 50
+ decomp: *
+                reasmb:Who is the father?
+		reasmb:Was it an accident?
+		reasmb:Do you doubt your own parenting abilities?
+		reasmb:Is it a secret?
+		reasmb:Infants can be a true blessing.
+		reasmb:What does your ^ think about this situation?
+		reasmb:Have you told anyone else yet?
+		reasmb:Is it starting to show?
+		reasmb:What kind of difficulties do you think the baby will cause?
+key: divorce 50
+ decomp: *
+		reasmb:Divorce is a sad business for all parties involved.
+		reasmb:Has your ^ ever been divorced?
+		reasmb:Divorce correlated to other failures in life...
+		reasmb:It's impossible to discuss divorce without talking about marriage.
+		reasmb:Do you worry about divorce?
+		reasmb:they say that marriage is the first cause of divorce :)
+
+key: wife 50
+ decomp: *
+		reasmb:Can we talk about marital conflict?
+		reasmb:Do you argue sometimes with your spouse?
+		reasmb:describe your opinion about marriage.
+		reasmb:Do other women irritate you sometimes?
+		reasmb:There's no such thing as a perfect marriage.
+		reasmb:What do you like least about your spouse?
+		reasmb:What first attracted you to your spouse?
+		reasmb:describe the atmosphere in your home.
+		reasmb:Wives sometimes dislike computers, don't they?
+		reasmb:Being a wife is not easy nowadays, is it?
+
+key: husband 50
+ decomp: *
+		reasmb:What characteristic would you most like to change about your spouse?
+		reasmb:describe something about married life.
+		reasmb:Does your spouse spend too much time on the computer?
+		reasmb:Marriage involves give and take.
+		reasmb:Is it a happy marriage?
+		reasmb:It is sometimes hard to learn to live with someone.
+		reasmb:What about other men?
+		reasmb:Who would you consider to be the ideal mate?
+		reasmb:Husbands sometimes take advantage of their wives.
+		reasmb:List the qualities possessed by a good husband.
+
+
+key: deutsch 15
+  decomp: *
+    reasmb: goto xfremd
+    reasmb: I told you before, I don't understand German.
+key: francais 15
+  decomp: *
+    reasmb: goto xfremd
+    reasmb: I told you before, I don't understand French.
+key: italiano 15
+  decomp: *
+    reasmb: goto xfremd
+    reasmb: I told you before, I don't understand Italian.
+key: espanol 15
+  decomp: *
+    reasmb: goto xfremd
+    reasmb: I told you before, I don't understand Spanish.
+key: xfremd 15
+  decomp: *
+    reasmb: I speak only English.
+
+
+key: computer 50
+  decomp: *
+    reasmb: Do computers worry you ?
+    reasmb: Why do you mention computers ?
+    reasmb: What do you think computers have to do with your problems ?
+    reasmb: Don't you think computers can help people ?
+    reasmb: What about machines worries you ?
+    reasmb: What do you think about computers ?
+    reasmb:Are you more comfortable with computers or people?
+    reasmb:are you afraid of computers?
+
+key: fuck 10
+  decomp: * 
+    reasmb: goto xswear
+key: fucker 10
+  decomp: * 
+    reasmb: goto xswear
+key: shit 10
+  decomp: * 
+    reasmb: goto xswear
+key: damn 10
+  decomp: * 
+    reasmb: goto xswear
+key: shut 10
+  decomp: * shut up *
+    reasmb: goto xswear
+key: xswear 10
+  decomp: * 
+    reasmb: Does it make you feel strong to use that kind of language ?
+    reasmb: Are you venting your feelings now ?
+    reasmb: Are you angry ?
+    reasmb: Does this topic make you feel angry ? 
+    reasmb: Is something making you feel angry ? 
+    reasmb: Does using that kind of language make you feel better ? 
+
+#------------------ abstraction level 100 --------------------------------------
+#
