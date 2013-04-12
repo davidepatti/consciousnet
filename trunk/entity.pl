@@ -10,41 +10,54 @@ my $cx      = '002983251636507551537:jfswnqh-cd8';
 my $engine  = WWW::Google::CustomSearch->new(api_key => $api_key, cx => $cx);
 
 
-my $entity = "pgiogio\@mit.edu\n";
+my $entity_mail = "pgiogio\@mit.edu";
+my $entity_name = "PGioio";
+my $debug_on = 0;
+my $net_on = 0;
 
+###############################################################################
 sub juice
 {
     my ($raw_msg) = @_;
 #extract the part that cite the main elements of the query and that ends with a . or ?
-    $raw_msg =~ /(.*?)[\.|\?|\-]/i;
-    $1;
+    $raw_msg =~ /(.*?)([\.|\?])/i;
+    my $msg = "$1$2";
 }
+###############################################################################
 sub ssnet
 {
     my ($msg) = @_;
 
-    $msg =~ s/(.*)NET(.*)/$1$2/g;
+    $msg =~ s/(.*)NET(.*)/$2/g;
 
-    print "\n SEARCHING: ";
-    print $msg, "\n"; 
+    if ($debug_on)
+    {
+	print "\n SEARCHING: ";
+	print $msg, "\n"; 
+    }
     my $result  = $engine->search($msg);
     my $clean;
     my $n = 0;
 
     my @responses;
 
-    foreach my $item ($result->items) {
-#print "RAW---> ", $item->snippet, "\n\n" if defined $item->snippet;
+    foreach my $item ($result->items) 
+    {
 	$clean = &juice($item->snippet);
 	push @responses, $clean;
-#print "CLEAN---> " , $clean, "\n\n";
 	$n++;
+
+	if ($debug_on)
+	{
+	    print "\nRAW---> ", $item->snippet, "\n\n" if defined $item->snippet;
+	    print "\nCLEAN---> " , $clean, "\n\n";
+	}
     }
     my $chosen= int(rand($n));
-#print "CHOSEN IS " , $chosen;
     $responses[$chosen];
 }
 
+###############################################################################
 sub typing
 {
     my ($msg,$delay) = @_;
@@ -52,17 +65,18 @@ sub typing
     {
 	sleep($delay);
     }
-    print "PAUL: $msg \n";
+    print "$entity_name>$msg \n";
 }
 
+###############################################################################
 sub greetings
 {
     print "\n______________________________________________________\n";
-    print "   c0n5c10u55n3t   v 02.10.2013 \n";
+    print "   c0n5c10u55n3t   v 02.10.2012 \n";
     print "______________________________________________________\n";
     
     print " > Connecting to system....\n";
-    print " > entity: ", $entity;
+    print " > entity: ", $entity_mail, "\n";
     print " PLEASE WAIT\n";
 
     my $x = 10;
@@ -84,9 +98,23 @@ sub greetings
     typing ("Tell me something about you (family, work, hobby, ideas, etc...)");
 }
 
+sub parse_cmdline
+{
+    for my $arg (@ARGV)
+    {
+	$debug_on = 1 if $arg eq "debug";
+	$net_on = 1 if $arg eq "net";
+    }
+
+    print "debug = $debug_on";
+    print "net = $net_on";
+
+}
+
 
 $|++;
 &greetings;
+&parse_cmdline;
 
 my $bot = new Chatbot::Eliza {
 	name       => "Paul", scriptfile => "language.txt",
@@ -108,11 +136,15 @@ while ($true)
     {
 	$message = &ssnet($message)
     }
-#    my $debugging  = $bot->debug_text;
-#    print $debugging;
-#    $bot->_debug_memory();
+
+    if ($debug_on)
+    {
+	my $debugging  = $bot->debug_text;
+	print $debugging;
+	$bot->_debug_memory();
+    }
     sleep(1);
-    print "PGioio> $message\n";
+    print $entity_name, ">$message\n";
 }
 
 exit;
