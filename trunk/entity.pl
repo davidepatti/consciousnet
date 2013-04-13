@@ -3,6 +3,7 @@
 use Chatbot::Eliza;
 use WWW::Google::CustomSearch;
 use POSIX;
+use Time::HiRes qw(sleep);
 
 use strict; 
 use warnings;
@@ -72,8 +73,19 @@ sub ssnet
 sub typing
 {
     my ($msg) = @_;
-    sleep(int(length($msg)/10)) unless $quick_on;
-    print "$entity_name> $msg \n";
+#sleep(int(length($msg)/10)) unless $quick_on;
+    print "$entity_name> ";
+
+    my $start = 0;
+    my $count = 0;
+    while ( $start<length($msg) )
+    {
+	$count = int(rand(10));
+	sleep($count*0.1);
+	print substr($msg,$start,$count);
+	$start+=$count;
+    }
+    print "\n";
 }
 
 ###############################################################################
