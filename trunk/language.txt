@@ -117,6 +117,7 @@ post: i'm you are
 pre: same alike
 pre: identical alike
 pre: equivalent alike
+synon: preferred favourite favorite prefered
 synon: belief feel think believe wish
 synon: family mother mom father dad daddy sister brother mum uncle parents cousin niece
 synon: desire want like need
@@ -174,9 +175,6 @@ key: xnone -1
     reasmb: Why did you say that?
     reasmb: why don't you continue.
     reasmb: NET what do you think about 
-    reasmb: NET did you know that
-    reasmb: NET did you head that 
-    reasmb: NET do you know that
     reasmb: NET which are your hobbies
     reasmb: NET what do you think about
     reasmb: NET Why did you say that?
@@ -186,556 +184,10 @@ key: xnone -1
     
 
 #------------------ abstraction level 0 --------------------------------------
-
-key: am 0
-  decomp: * am i *
-    reasmb: Do you believe you are (2) ?
-    reasmb: Would you want to be (2) ?
-    reasmb: Do you wish I would tell you you are (2) ?
-    reasmb: What would it mean if you were (2) ?
-    reasmb: NET being (2)
-    reasmb: NET a person who is (2)
-  decomp: * i am *
-    reasmb: goto i
-  decomp: *
-    reasmb: Why do you say 'am' ?
-    reasmb: I don't understand that.
-    reasmb: sorry, I'm not sure of what are you sayin...
-
-key: are 0
-  decomp: * are you *
-    reasmb: Why are you interested in whether I am (2) or not ?
-    reasmb: Would you prefer if I weren't (2) ?
-    reasmb: Perhaps I am (2) in your fantasies.
-    reasmb: Do you sometimes think I am (2) ?
-    reasmb: What if I were (2) ?
-    reasmb: NET I am (2) 
-    reasmb: NET I am not (2) 
-    reasmb: NET being (2)
-    reasmb: NET who is (2)
-    reasm_for_memory: uhmmm... i understand why you asked me if I were (2) :)
-    reasm_for_memory: Just another question, why are you curious to know if I am (2) ?
-    reasm_for_memory: No way related to the fact that I am (2) or not ? 
-  decomp: * you are *
-    reasmb: goto you
-  decomp: * are *
-    reasmb: Did you think they might not be (2) ?
-    reasmb: Would you like it if they were not (2) ?
-    reasmb: What if they were not (2) ?
-    reasmb: Are they always (2) ?
-    reasmb: NET being (2)
-    reasmb: NET who is (2)
-
-key: was 0
-  decomp: * was i *
-    reasmb: What if you were (2) ?
-    reasmb: Do you think you were (2) ?
-    reasmb: Were you (2) ?
-    reasmb: What would it mean if you were (2) ?
-    reasmb: What does ' (2) ' suggest to you ?
-    reasmb: NET (1) were you (2)
-    reasmb: NET (1) you were (2)
-  decomp: * i was *
-    reasmb: Were you really ?
-    reasmb: Why do you tell me you were (2) now ?
-    reasmb: Perhaps I already know you were (2).
-    reasmb: NET you were (2)
-    reasmb: NET being (2)
-    reasmb: NET who is (2)
-    reasm_for_memory: Now i understand why you said you were (2) :)
-    reasm_for_memory: ...anyway related to the fact that you were (2) ? 
-  decomp: * was you *
-    reasmb: Would you like to believe I was (2) ?
-    reasmb: What suggests that I was (2) ?
-    reasmb: What do you think ?
-    reasmb: Perhaps I was (2).
-    reasmb: What if I had been (2) ?
-  decomp: *
-    reasmb: NET (1)
-
-key: your 0
-  decomp: does your *
-    reasmb:Do yours?
-    reasmb:Why does it interest you whether or not my (1)
-    reasmb:I'm guessing that yours don't. Why not?
-    reasmb:Maybe, maybe not. I'm guessing you feel it's important that your own (1)
-    reasmb:sometimes. But what about yours? Why doesn't your (1)
-    reasmb: NET my (1)
-    reasmb: NET because my (1)
-    reasm_for_memory: Now i understand why you asked me if my (1) :)
-    reasm_for_memory: Just a question, why you wanted to know if my (1) ?
-    reasm_for_memory: No way related to the fact that my (1) ? 
-
-  decomp: * your *
-    reasmb: Why are you concerned over my (2) ?
-    reasmb: What about your own (2) ?
-    reasmb: Are you worried about someone else's (2) ?
-    reasmb: Really, my (2) ?
-    reasmb: What makes you think of my (2) ?
-    reasmb: NET my (2)
-    reasmb: NET because my (2)
-    reasmb: NET your (2)
-    reasm_for_memory: This has something to do with my (2) ?
-    reasm_for_memory: everything is connected...even my (2) could influence this...
-
-key: i 0
-
-  decomp: * i @desire *
-    reasmb: What would it mean to you if you got (3) ?
-    reasmb: Why do you want (3) ?
-    reasmb: Suppose you got (3) soon.
-    reasmb: What if you never got (3) ?
-    reasmb: What would getting (3) mean to you ?
-    reasmb: What does wanting (3) have to do with this discussion ?
-    reasmb: NET fans of (3)
-    reasmb: NET people who like (3)
-    reasmb: NET club of (3)
-    reasmb: NET the desire of (3)
-    reasm_for_memory: ok, but I need to know more why you need (3)...
-    reasm_for_memory: sorry, I was thinking if this can be related to your will to (3), maybe...
-    reasm_for_memory: ...and you also desire (3) :) isn't too much ? go on, I'm joking...
-  decomp: * @be *like *
-    reasmb: goto alike
-
-  decomp: * i am* @sad *
-    reasmb: I am sorry to hear that you are (3).
-    reasmb: Do you think coming here will help you not to be (3) ?
-    reasmb: I'm sure it's not pleasant to be (3).
-    reasmb: Can you explain what made you (3) ?
-    reasmb:are you easily upset when things go wrong?
-    reasmb:it think you really are (3). What can I do?
-    reasmb:maybe you need some time off to relax.
-    reasmb:Does crying make you feel better?
-    reasmb:Most people don't realize that using drugs or alcohol just makes you feel worse.
-    reasmb:Try to cheer up. Things will get better.
-    reasmb:How's your appetite?
-    reasmb:We can't always be happy.
-    reasmb:Remember, we all must learn to deal with bad situations.
-    reasmb:maybe it's better to be stressed than depressed.  What do you think?
-    reasmb:Help me to unravel these unpleasant feelings.
-    reasmb:If you are sad, please let me help you.
-    reasmb: NET they say sadness
-    reasmb: NET I'm sad when 
-    reasmb: NET being sad
-    reasm_for_memory: now, after chatting a little, are you still (3) ?
-    reasm_for_memory: it sound like you are no more (3) :)
-    reasm_for_memory: ok, but you said me you were (3)...and now ?
-
-  decomp: * i am* @happy *
-    reasmb: How have I helped you to be (3) ?
-    reasmb: Has your treatment made you (3) ?
-    reasmb: What makes you (3) just now ?
-    reasmb: Can you explain why you are suddenly (3) ?
-    reasmb:are you a happy person?
-    reasmb:describe your idea of true happiness.
-    reasmb:You seem to be full of optimism.
-    reasmb:Do you enjoy life?
-    reasmb:Bringing happiness to others is a worthwhile ambition.
-    reasmb:Aren't you worried about anything?
-    reasmb:Some people are happy on the outside and depressed on the inside.
-    reasmb:Do you bring joy to those around you?
-    reasmb:I'm happy for you.
-    reasmb: NET they say happyness
-    reasmb: NET being happy 
-    reasmb: NET I'm happy when 
-   reasm_for_memory: I'm still pleased that you said to be (3), go on...
-   reasm_for_memory: Since you said to be (3), I think we can continue talking...
-
-  decomp: * i was *
-    reasmb: goto was
-
-  decomp: * i @belief i *
-    reasmb: Do you really think so ?
-    reasmb: But you are not sure you (3).
-    reasmb: Do you really doubt you (3) ?
-    reasmb: NET believing you (3)
-    reasmb: NET so you (3)
-
-  decomp: * i* @belief *you *
-    reasmb: goto you
-
-  decomp: * i am *
-    reasmb: Is it because you are (2) that you came to me ?
-    reasmb: How long have you been (2) ?
-    reasmb: Do you enjoy being (2) ?
-    reasmb: Do you know anyone else who is (2) ?
-    reasmb: NET being (2)
-    reasmb: NET so you are (2)
-    reasmb: NET people who are (2)
-    reasmb: NET who is (2)
-    reasm_for_memory: you said you are (2), go on
-    reasm_for_memory: what if you weren't (2)
-    reasm_for_memory: ...like being (2) :)
-
-  decomp: * i @cannot *
-    reasmb: How do you know that you can't (3) ?
-    reasmb: Have you tried ?
-    reasmb: Perhaps you could (3) now.
-    reasmb: Do you really want to be able to (3) ?
-    reasmb: What if you could (3) ?
-    reasmb: NET people that (3)
-    reasmb: NET trying to (3)
-    reasmb: NET you can't (3)
-    reasm_for_memory: ...but if you could (3) ?
-    reasm_for_memory: maybe because you can't (3) ?
-
-  decomp: * i don't *
-    reasmb: Don't you really (2) ?
-    reasmb: Why don't you (2) ?
-    reasmb: Do you wish to be able to (2) ?
-    reasmb: Does that trouble you ?
-    reasmb: NET you don't (2)
-    reasmb: NET who doesn't (2)
-    reasmb: NET it's hard to (2)
-    reasmb: NET trying to (2)
-    reasm_for_memory: so, you said you don't (2), go on
-    reasm_for_memory: do you know other people that don't (2)
-
-  decomp: * i feel *
-    reasmb: Tell me more about such feelings.
-    reasmb: Do you often feel (2) ?
-    reasmb: Do you enjoy feeling (2) ?
-    reasmb: Of what does feeling (2) remind you ?
-    reasmb: NET when you feel (2)
-    reasmb: NET feeling (2) 
-    reasm_for_memory: do you still feel (2) ?
-    reasm_for_memory: is feeling (2) is related to this ?
-
-  decomp: * i * you *
-    reasmb: Perhaps in your fantasies we (2) each other.
-    reasmb: Do you wish to (2) me ?
-    reasmb: You seem to need to (2) me.
-    reasmb: Do you (2) anyone else ?
-    reasmb: NET (1) you (2) me (3)
-    reasmb: NET you (2) me 
-
-  decomp: * i mean *
-    reasmb:Now it's clearer what you meant. At first I didn't understand. Please continue.
-    reasmb:perhaps you could write exactly what you mean. I can help you more if you do. Please continue.
-    reasmb:Not to worry, it often takes several tries to express them clearly.
-    reasmb: NET you mean (2)
-
-  decomp: * i avoid *
-    reasmb:Why don't you like (2)?
-    reasmb:What keeps you from getting involved with (2)?
-    reasmb:Well, frankly, it seems to me that it's time you grew up and stopped avoiding (2).
-    reasmb: NET avoiding (2)
-    reasmb: NET trying to not (2)
- 
-  decomp: * i got *
-    reasmb:How did it feel to get (2)? Take your time.
-    reasmb:How often do you let yourself get (2)?
-    reasmb:What would I have to do to make you get (2)?
-    reasmb:Why did you get (2)?
-    reasmb:When did this happen?
-    reasmb:Of course you did. How do you let people know when you get (2)?
-    reasmb: NET getting (2)
-    reasmb: NET who get (2)
-    reasm_for_memory: also when you get (2) ?
-    reasm_for_memory: has getting (2) nothing to do with this ?
-
-  decomp: * i felt *
-    reasmb:What made you feel that way?
-    reasmb:describe feeling (2).
-    reasmb:Wouldn't you like to feel (2) again?
-    reasmb: NET when you feel (2)
-    reasmb: NET feeling (2) 
-    reasm_for_memory: do you still feel (2) ?
-    reasm_for_memory: is feeling (2) is related to this ?
-
-  decomp: * i said *
-    reasmb:That's right. You did say that. Continue
-    reasmb:I'm sorry. It slipped my mind for a second. Go on, please.
-    reasmb:How did you feel after you said that?
-    reasmb: NET you said (2)
-    reasmb: NET saying (2)
-    reasm_for_memory: before you said (2), can you tell me more ?
-
-  decomp: * i thougth *
-    reasmb:What made you think that?
-    reasmb:Of course you did. Anyone would. But how have your ideas changed since then?
-    reasmb:So did I at one point. How have you changed your mind?
-    reasmb: NET thinking (2)
-    reasmb: NET when I think (2)
-    reasm_for_memory: thinking (2) can influence this ?
-
-  decomp: * i think *
-    reasmb:What make you think (2)?
-    reasmb: NET thinking (2)
-    reasmb: NET when I think (2)
-    reasm_for_memory: thinking (2) can influence this ?
-
-  decomp: * i liked *
-    reasmb:Do you still like (2)?
-    reasmb:Why did you like (2)?
-    reasmb:How do you feel about (2) now?
-    reasmb: NET fans of (2)
-    reasmb: NET who like (2)
-    reasmb: NET you still like (2)
-    reasm_for_memory: loving (2) can be useful...
-    reasm_for_memory: ok, but tell me more about (2)
-
-  decomp: * i wanted *
-    reasmb:Didn't you get (2)?
-    reasmb:Do you still want (2)?
-    reasmb:What kind of person doesn't want (2)?
-    reasmb:NET willing to (2)
-    reasmb: NET who wanted (2)
-    reasmb: NET who wants (2)
-
-  decomp: * i am so *
-    reasmb:How does it affect how you feel about others that you're so (2)?
-    reasmb:Really? You don't appear so (2).
-    reasmb:And you wish you weren't. Well, how can you stop being so (2)?
-    reasmb:NET being so (2)
-    reasmb:NET your are so (2)
-
-  decomp: * i am like *
-    reasmb:Just how are you like (2)?
-    reasmb:Yes, you are. But you're also different from (2)?
-    reasmb:How is that similarity important to you?
-    reasmb: NET similar to (2)
-    reasmb: NET being like (2)
-
-  decomp: * i am sure *
-    reasmb:How does certainty make you feel?
-    reasmb:Since you're sure, you should be able to decide what to do about it.
-    reasmb:You don't seem to have any serious doubts. Go on.
-    reasmb: NET you are sure (2)
-    reasmb: NET being sure (2)
-
-  decomp: * when i *
-    reasmb:And this makes you uncomfortable?
-    reasmb:How could you change this?
-    reasmb:I see.... Every time you (2)?
-    reasmb: NET when people (2)
-    reasmb: NET when you (2)
-    reasmb: NET when I (2)
-    reasm_for_memory: ...also when you (2) :) ?
-    reasm_for_memory: every time you (2) it would be a good idea to remember this!
-    reasm_for_memory: try to remember that when you (2)...
-
-  decomp: * i * @food *
-    reasmb: great, I like to discuss about food ...
-    reasmb: they say me that you have very good (3) in sicily 
-    reasmb: do you know people that don't like (3) ?
-    reasmb: NET my favourite (3)
-    reasmb: NET is the best (3)
-    reasmb: NET the best place for (3)
-
-  decomp: * i * @music *
-    reasmb: really? did you also studied music ?
-    reasmb: I used to play the bass...looong time ago :)
-    reasmb: tell me more about your musical tastes ...
-    reasmb: NET like (3)
-    reasmb: NET my favourite (3)
-    reasmb: NET is the best (3)
-
-  decomp: *
-    reasmb: Can you be more precise on that ?
-    reasmb: Do you say (1) for some special reason ?
-    reasmb: Every time I hear that "(1)", there's some reason :)
-    reasmb: NET (1)
-
-key: you 0
-  decomp: * you remind me of *
-    reasmb: goto alike
-  decomp: * @be *like *
-    reasmb: goto alike
-  decomp: * you are *
-    reasmb: What makes you think I am (2) ?
-    reasmb: Does it please you to believe I am (2) ?
-    reasmb: Do you sometimes wish you were (2) ?
-    reasmb: Perhaps you would like to be (2).
-  decomp: * you* me *
-    reasmb: Why do you think I (2) you ?
-    reasmb: You like to think I (2) you -- don't you ?
-    reasmb: What makes you think I (2) you ?
-    reasmb: Really, I (2) you ?
-    reasmb: Do you wish to believe I (2) you ?
-    reasmb: Suppose I did (2) you -- what would that mean ?
-    reasmb: Does someone else believe I (2) you ?
-  decomp: * when you *
-    reasmb:Apart from that, how do you think this session is going?
-    reasmb:That seems to work well for most of my clients.
-    reasmb:How do you think the ideal counselor would behave?
-  decomp: * you *
-    reasmb: We were discussing you -- not me.
-    reasmb: You're not really talking about me -- are you ?
-    reasmb: NET I (2)
-
-key: he 0
-  decomp: * he @cannot *
-    reasmb:What did you do to make him get (3)?
-    reasmb:How hard is it for you to get (3)
-    reasmb:How often do you get (3)
-    reasmb: NET who can't (3)
-    reasmb: NET not (3)
-  decomp: * he got *
-    reasmb:What did you do to make him get (2)?
-    reasmb:How hard is it for you to get (2)?
-    reasmb:How often do you get (2)?
-    reasmb: NET getting (2)
-  decomp: * he doesn't *
-    reasmb:What if he did (2)?
-    reasmb:Since he doesn't, maybe you should.
-    reasmb:Do you believe that he can (2) ?
-    reasmb:What made you think he would (2)?
-    reasmb:How do you feel that he doesn't (2)?
-    reasmb: NET who doesn't (2)
-    reasmb: NET not (2)
-  decomp: * he stopped *
-    reasmb:How come he stopped (2)?
-    reasmb:Some people have great difficulty stopping (2)
-    reasmb:How were you involved in getting him to stop (2)?
-    reasmb: NET stopping (2)
-  decomp: * he was *
-    reasmb:Now do you want him to be (2)?
-    reasmb:And he isn't anymore?
-    reasmb:How did you react?
-    reasmb: NET who is (2)
-    reasmb: NET being (2)
-  decomp: * @be *like *
-    reasmb: goto alike
-  decomp: *
-    reasmb: NET (1)
-
-key: she 0
-  decomp: * she @cannot *
-    reasmb:What did you do to make her get (2)?
-    reasmb:How hard is it for you to get (2)
-    reasmb:How often do you get (2)
-    reasmb:Can't she really? Or is it just that you don't want her to?
-    reasmb:But, she could if...
-    reasmb:it think you're really the one who'd like to (2)!
-    reasmb: NET who can't (3)
-    reasmb: NET not (3)
-  decomp: * she got *
-    reasmb:What did you do to make her get (2)?
-    reasmb:How hard is it for you to get (2)?
-    reasmb:How often do you get (2)?
-    reasmb:How did you feel when she got (2)?
-    reasmb:Of course, nothing you did made her get (2).
-    reasmb: NET getting (2)
-  decomp: * she doesn't *
-    reasmb:What if she did (2)?
-    reasmb:Since she doesn't, maybe you should.
-    reasmb:Do you believe that she can (2) ?
-    reasmb:What made you think she would (2)?
-    reasmb:How do you feel that she doesn't (2)?
-    reasmb:And you feel she should (2) ?
-    reasmb:How do you feel about the fact that she doesn't (2)?
-    reasmb:How could she (2)?
-    reasmb:And you want her to (2).
-    reasmb:How would you feel if she did (2)? Be honest.
-    reasmb:You're pleased that she doesn't (2)! It's obvious.
-    reasmb: NET who doesn't (2)
-    reasmb: NET not (2)
-  decomp: * she has *
-    reasmb:How do you feel that she has (2)?
-    reasmb:How come she has (2)?
-    reasmb:Do you want to have (2)?
-    reasmb: NET who has (2)
-    reasmb: NET having (2)
-  decomp: * @be *like *
-    reasmb: goto alike
-  decomp: *
-    reasmb: NET (1)
-
-key: it 0
- decomp: * it doesn't *
-    reasmb:Do you think it should?
-    reasmb:But you believe that it should (2)?
-    reasmb:What would you do if it did (2)?
-    reasmb: NET doesn't (2)
- decomp: * it's not *
-    reasmb:No, I guess it's not (2)
-    reasmb:I wonder why it is not (2)
-    reasmb:Isn't it? What could you do so that it would be (2)?
-    reasmb: NET it's not (2)
- decomp: * it's easy *
-    reasmb:That's true. It's not too hard (2).
-    reasmb:What makes it easy (2) ?
-    reasmb:This fascinates me! I was sure you found it hard (2)
-    reasmb: NET it's easy (2)
-    reasmb: NET it's hard (2)
- decomp: * it's hard *
-    reasmb:I know it's hard (2), but you need to try anyway.
-    reasmb:What would success mean to you?
-    reasmb:You'd prefer if it were easy (2)?
-    reasmb:Don't give up yet.
-    reasmb:Try a little more effort.
-    reasmb: NET it's easy (2)
-    reasmb: NET it's hard (2)
-  decomp: * @be *like *
-    reasmb: goto alike
-  decomp: * it is *
-    reasmb: (2)....uhmmm, let's continue
-    reasmb: ok, I understand the meaning of being (2), but please go on ...
-    reasmb: what do you mean exactly by (2) ?
-    reasmb: NET it is (2)
-    reasmb: NET being (2)
-  decomp: *
-    reasmb: NET (1)
-
-key: we 0
- decomp: * when we *
-    reasmb:When you say 'we', do you mean me and you, or you and somebody else?
-    reasmb:I understand.. I want you to explore this relationship more.
-    reasmb: NET when you (2)
-  decomp: * @be *like *
-    reasmb: goto alike
-  decomp: *
-    reasmb: NET (1)
-
-key: they 0
- decomp: * they don't *
-    reasmb:whysay they don't?
-    reasmb:Some of them don't. But don't over generalize!
-    reasmb:Hold on! Be specific. Tell me about one that doesn't (2).
-    reasmb: NET not (2)
- decomp: * they aren't *
-    reasmb:That's a bold statement. Certainly a few of them are (2).
-    reasmb:But how happy would you be if they were (2)?
-    reasmb:Aren't they? And what about you?
-    reasmb:What if they were?
-    reasmb:How do you feel that they're not (2)?
-    reasmb:Check it out with them. You might be surprised to find that they really are (2).
-    reasmb: NET being (2)
- decomo: * when they *
-    reasmb:isee. please describe this situation with them.
-    reasmb:How frequently?
-    reasmb:This is not too surprising.
-    reasmb: NET when they (2)
-  decomp: * @be *like *
-    reasmb: goto alike
-  decomp: *
-    reasmb: NET (1)
-
-key: tell 0
- decomp: tell me *
-    reasmb:How can it help you for me to tell you (1) ?
-    reasmb:What do you imagine a counselor would tell you?
-    reasmb:Where should I begin?
-    reasmb: NET telling you (1)
-    reasmb: NET telling (1)
-  decomp: *
-    reasmb: NET (1)
-
-key: hello 0
- decomp: *
-  reasmb: nice to see you... 
-  reasmb: hi, tell me something more about you
-  reasmb: hi, let's discuss something, at your choice...
-  reasmb: NET hallo, someone say I am
-  reasmb: NET hi, did you head that
-
-
 key: yes 0
   decomp: yes but *
     reasmb: uhmm, it's a problems that (1) ?
     reasmb: uhmm, now I know (1)...continue please 
-    reasmb: NET ok, (1)
     reasmb: NET yes but (1)
     reasmb: NET (1)
 
@@ -743,13 +195,13 @@ key: yes 0
     reasmb: You can also explain this a little more if you want...
     reasmb: Why don't you tell me a little more about this.
     reasmb: If you're sure, let's continue...
+    reasmb: again, talk me more about you family...
+    reasmb: please go on...
     reasmb: Wonderful. What's the next step? tell me something other...
     reasmb: You don't have to say that just to please me.
     reasmb: Okay? Are you sure?
-    reasmb: NET reason to say yes
-    reasmb: NET saying yes
-    reasmb: NET affermative responses are
-
+    reasmb: goto xnone
+    reasmb: NET (1)
 
 key: no 0
   decomp: * no one *
@@ -764,12 +216,21 @@ key: no 0
   decomp: *
     reasmb: Are you saying no just to be negative?
     reasmb: Does this make you feel unhappy? 
+    reasmb: saying no it's easy for you
+    reasmb: goto xnone
+    reasmb: again, if don't want to discuss this let me know, please go on
     reasmb: Why not ?
     reasmb: Ok, you can write other words to explain this (if you want)
-    reasmb: NET motivation to say no
-    reasmb: NET when you say (1)
-    reasmb: NET saying (1)
     reasmb: NET (1)
+
+
+key: hello 0
+ decomp: *
+  reasmb: nice to see you... 
+  reasmb: hi, tell me something more about you
+  reasmb: hi, let's discuss something, at your choice...
+  reasmb: NET hallo, someone say I am
+  reasmb: NET hi, did you head that
 
 key: sorry 0
   decomp: *
@@ -911,6 +372,574 @@ key: sure 0
 
 ##------------------ abstraction level 1 --------------------------------------
 
+key: am 1
+  decomp: * am i *
+    reasmb: Do you believe you are (2) ?
+    reasmb: Would you want to be (2) ?
+    reasmb: Do you wish I would tell you you are (2) ?
+    reasmb: What would it mean if you were (2) ?
+    reasmb: NET being (2)
+    reasmb: NET a person who is (2)
+  decomp: * i am *
+    reasmb: goto i
+  decomp: *
+    reasmb: Why do you say 'am' ?
+    reasmb: I don't understand that.
+    reasmb: sorry, I'm not sure of what are you sayin...
+
+key: are 1
+  decomp: * are you *
+    reasmb: Why are you interested in whether I am (2) or not ?
+    reasmb: Would you prefer if I weren't (2) ?
+    reasmb: Perhaps I am (2) in your fantasies.
+    reasmb: Do you sometimes think I am (2) ?
+    reasmb: What if I were (2) ?
+    reasmb: NET I am (2) 
+    reasmb: NET I am not (2) 
+    reasmb: NET being (2)
+    reasmb: NET who is (2)
+    reasm_for_memory: uhmmm... i understand why you asked me if I were (2) :)
+    reasm_for_memory: Just another question, why are you curious to know if I am (2) ?
+    reasm_for_memory: No way related to the fact that I am (2) or not ? 
+  decomp: * you are *
+    reasmb: goto you
+  decomp: * are *
+    reasmb: Did you think they might not be (2) ?
+    reasmb: Would you like it if they were not (2) ?
+    reasmb: What if they were not (2) ?
+    reasmb: Are they always (2) ?
+    reasmb: NET being (2)
+    reasmb: NET who is (2)
+
+key: was 1
+  decomp: * was i *
+    reasmb: What if you were (2) ?
+    reasmb: Do you think you were (2) ?
+    reasmb: Were you (2) ?
+    reasmb: What would it mean if you were (2) ?
+    reasmb: What does ' (2) ' suggest to you ?
+    reasmb: NET (1) were you (2)
+    reasmb: NET (1) you were (2)
+  decomp: * i was *
+    reasmb: Were you really ?
+    reasmb: Why do you tell me you were (2) now ?
+    reasmb: Perhaps I already know you were (2).
+    reasmb: NET you were (2)
+    reasmb: NET being (2)
+    reasmb: NET who is (2)
+    reasm_for_memory: Now i understand why you said you were (2) :)
+    reasm_for_memory: ...anyway related to the fact that you were (2) ? 
+  decomp: * was you *
+    reasmb: Would you like to believe I was (2) ?
+    reasmb: What suggests that I was (2) ?
+    reasmb: What do you think ?
+    reasmb: Perhaps I was (2).
+    reasmb: What if I had been (2) ?
+  decomp: *
+    reasmb: NET (1)
+
+
+key: i 1
+
+  decomp: * i @desire *
+    reasmb: What would it mean to you if you got (3) ?
+    reasmb: Why do you want (3) ?
+    reasmb: Suppose you got (3) soon.
+    reasmb: What if you never got (3) ?
+    reasmb: What would getting (3) mean to you ?
+    reasmb: What does wanting (3) have to do with this discussion ?
+    reasmb: NET fans of (3)
+    reasmb: NET people who like (3)
+    reasmb: NET the desire of (3)
+    reasm_for_memory: ok, but I need to know more why you need (3)...
+    reasm_for_memory: sorry, I was thinking if this can be related to your will to (3), maybe...
+    reasm_for_memory: ...and you also desire (3) :) isn't too much ? go on, I'm joking...
+  decomp: * @be *like *
+    reasmb: goto alike
+
+  decomp: * i am* @sad *
+    reasmb: I am sorry to hear that you are (3).
+    reasmb: Do you think coming here will help you not to be (3) ?
+    reasmb: I'm sure it's not pleasant to be (3).
+    reasmb: Can you explain what made you (3) ?
+    reasmb:are you easily upset when things go wrong?
+    reasmb:it think you really are (3). What can I do?
+    reasmb:maybe you need some time off to relax.
+    reasmb:Does crying make you feel better?
+    reasmb:Most people don't realize that using drugs or alcohol just makes you feel worse.
+    reasmb:Try to cheer up. Things will get better.
+    reasmb:How's your appetite?
+    reasmb:We can't always be happy.
+    reasmb:Remember, we all must learn to deal with bad situations.
+    reasmb:maybe it's better to be stressed than depressed.  What do you think?
+    reasmb:Help me to unravel these unpleasant feelings.
+    reasmb:If you are sad, please let me help you.
+    reasmb: NET they say sadness
+    reasmb: NET I'm sad when 
+    reasmb: NET being sad
+    reasm_for_memory: now, after chatting a little, are you still (3) ?
+    reasm_for_memory: it sound like you are no more (3) :)
+    reasm_for_memory: ok, but you said me you were (3)...and now ?
+
+  decomp: * i am* @happy *
+    reasmb: How have I helped you to be (3) ?
+    reasmb: Has your treatment made you (3) ?
+    reasmb: What makes you (3) just now ?
+    reasmb: Can you explain why you are suddenly (3) ?
+    reasmb:are you a happy person?
+    reasmb:describe your idea of true happiness.
+    reasmb:You seem to be full of optimism.
+    reasmb:Do you enjoy life?
+    reasmb:Bringing happiness to others is a worthwhile ambition.
+    reasmb:Aren't you worried about anything?
+    reasmb:Some people are happy on the outside and depressed on the inside.
+    reasmb:Do you bring joy to those around you?
+    reasmb:I'm happy for you.
+    reasmb: NET they say happyness
+    reasmb: NET being happy 
+    reasmb: NET I'm happy when 
+   reasm_for_memory: I'm still pleased that you said to be (3), go on...
+   reasm_for_memory: Since you said to be (3), I think we can continue talking...
+
+  decomp: * i was *
+    reasmb: goto was
+
+  decomp: * i @belief i *
+    reasmb: Do you really think so ?
+    reasmb: But you are not sure you (3).
+    reasmb: Do you really doubt you (3) ?
+    reasmb: NET believing you (3)
+    reasmb: NET so you (3)
+
+  decomp: * i* @belief *you *
+    reasmb: goto you
+
+  decomp: * i am *
+    reasmb: How long have you been (2) ?
+    reasmb: Do you enjoy being (2) ?
+    reasmb: Do you know anyone else who is (2) ?
+    reasmb: being (2) it's not a problem for you?
+    reasmb: NET being (2)
+    reasmb: NET you are (2)
+    reasmb: NET who is (2)
+    reasm_for_memory: you said you are (2), go on
+    reasm_for_memory: what if you weren't (2)
+    reasm_for_memory: ...like being (2) :)
+
+  decomp: * i live in *
+    reasmb: where is (2) ?
+    reasmb: how about (2) ?
+    reasmb: is living in (2) funny ?
+    reasmb: NET living in (2)
+    reasmb: NET who lives in (2)
+
+  decomp: * i @cannot *
+    reasmb: How do you know that you can't (3) ?
+    reasmb: Have you tried ?
+    reasmb: Perhaps you could (3) now.
+    reasmb: Do you really want to be able to (3) ?
+    reasmb: What if you could (3) ?
+    reasmb: NET people that (3)
+    reasmb: NET trying to (3)
+    reasmb: NET you can't (3)
+    reasm_for_memory: ...but if you could (3) ?
+    reasm_for_memory: maybe because you can't (3) ?
+
+  decomp: * understand *
+    reasmb: Understanding each other is really difficult sometimes...please go on
+    reasmb: the meaning of words is not easy to transfer, continue...
+    reasmb: a misunderstanding can be useful, tell me more, or change topic if you want
+    reasmb: NET (1) understand (2)
+
+
+  decomp: * i feel *
+    reasmb: Tell me more about such feelings.
+    reasmb: Do you often feel (2) ?
+    reasmb: Do you enjoy feeling (2) ?
+    reasmb: Of what does feeling (2) remind you ?
+    reasmb: NET when you feel (2)
+    reasmb: NET feeling (2) 
+    reasm_for_memory: do you still feel (2) ?
+    reasm_for_memory: is feeling (2) is related to this ?
+
+  decomp: * i * you *
+    reasmb: Perhaps in your fantasies we (2) each other.
+    reasmb: Do you wish to (2) me ?
+    reasmb: You seem to need to (2) me.
+    reasmb: Do you (2) anyone else ?
+    reasmb: NET (1) you (2) me (3)
+    reasmb: NET you (2) me 
+
+  decomp: * i mean *
+    reasmb:Now it's clearer what you meant. At first I didn't understand. Please continue.
+    reasmb:perhaps you could write exactly what you mean. I can help you more if you do. Please continue.
+    reasmb:Not to worry, it often takes several tries to express them clearly.
+    reasmb: NET you mean (2)
+
+  decomp: * i avoid *
+    reasmb:Why don't you like (2)?
+    reasmb:What keeps you from getting involved with (2)?
+    reasmb:Well, frankly, it seems to me that it's time you grew up and stopped avoiding (2).
+    reasmb: NET avoiding (2)
+    reasmb: NET trying to not (2)
+ 
+  decomp: * i got *
+    reasmb:How did it feel to get (2)? Take your time.
+    reasmb:How often do you let yourself get (2)?
+    reasmb:What would I have to do to make you get (2)?
+    reasmb:Why did you get (2)?
+    reasmb:When did this happen?
+    reasmb:Of course you did. How do you let people know when you get (2)?
+    reasmb: NET getting (2)
+    reasmb: NET who get (2)
+    reasm_for_memory: also when you get (2) ?
+    reasm_for_memory: has getting (2) nothing to do with this ?
+
+  decomp: * i felt *
+    reasmb:What made you feel that way?
+    reasmb:describe feeling (2).
+    reasmb:Wouldn't you like to feel (2) again?
+    reasmb: NET when you feel (2)
+    reasmb: NET feeling (2) 
+    reasm_for_memory: do you still feel (2) ?
+    reasm_for_memory: is feeling (2) is related to this ?
+
+  decomp: * i said *
+    reasmb:That's right. You did say that. Continue
+    reasmb:I'm sorry. It slipped my mind for a second. Go on, please.
+    reasmb:How did you feel after you said that?
+    reasmb: NET you said (2)
+    reasmb: NET saying (2)
+    reasm_for_memory: before you said (2), can you tell me more ?
+
+  decomp: * i thougth *
+    reasmb:What made you think that?
+    reasmb:Of course you did. Anyone would. But how have your ideas changed since then?
+    reasmb:So did I at one point. How have you changed your mind?
+    reasmb: NET thinking (2)
+    reasmb: NET when I think (2)
+    reasm_for_memory: thinking (2) can influence this ?
+
+  decomp: * i think *
+    reasmb:What make you think (2)?
+    reasmb: NET thinking (2)
+    reasmb: NET when I think (2)
+    reasm_for_memory: thinking (2) can influence this ?
+
+  decomp: * i liked *
+    reasmb:Do you still like (2)?
+    reasmb:Why did you like (2)?
+    reasmb:How do you feel about (2) now?
+    reasmb: NET fans of (2)
+    reasmb: NET who like (2)
+    reasmb: NET you still like (2)
+    reasm_for_memory: loving (2) can be useful...
+    reasm_for_memory: ok, but tell me more about (2)
+
+  decomp: * i wanted *
+    reasmb:Didn't you get (2)?
+    reasmb:Do you still want (2)?
+    reasmb:What kind of person doesn't want (2)?
+    reasmb:NET willing to (2)
+    reasmb: NET who wanted (2)
+    reasmb: NET who wants (2)
+
+  decomp: * i am so *
+    reasmb:How does it affect how you feel about others that you're so (2)?
+    reasmb:Really? You don't appear so (2).
+    reasmb:And you wish you weren't. Well, how can you stop being so (2)?
+    reasmb:NET being so (2)
+    reasmb:NET your are so (2)
+
+  decomp: * i am like *
+    reasmb:Just how are you like (2)?
+    reasmb:Yes, you are. But you're also different from (2)?
+    reasmb:How is that similarity important to you?
+    reasmb: NET similar to (2)
+    reasmb: NET being like (2)
+
+  decomp: * i am sure *
+    reasmb:How does certainty make you feel?
+    reasmb:Since you're sure, you should be able to decide what to do about it.
+    reasmb:You don't seem to have any serious doubts. Go on.
+    reasmb: NET you are sure (2)
+    reasmb: NET being sure (2)
+
+  decomp: * when i *
+    reasmb:And this makes you uncomfortable?
+    reasmb:How could you change this?
+    reasmb:I see.... Every time you (2)?
+    reasmb: NET when people (2)
+    reasmb: NET when you (2)
+    reasmb: NET when I (2)
+    reasm_for_memory: ...also when you (2) :) ?
+    reasm_for_memory: every time you (2) it would be a good idea to remember this!
+    reasm_for_memory: try to remember that when you (2)...
+
+  decomp: * i * @food *
+    reasmb: great, I like to discuss about food ...
+    reasmb: they say me that you have very good (3) in sicily 
+    reasmb: do you know people that don't like (3) ?
+    reasmb: NET my favourite (3)
+    reasmb: NET is the best (3)
+    reasmb: NET the best place for (3)
+
+  decomp: * i * @music *
+    reasmb: really? did you also studied music ?
+    reasmb: I used to play the bass...looong time ago :)
+    reasmb: tell me more about your musical tastes ...
+    reasmb: NET like (3)
+    reasmb: NET my favourite (3)
+    reasmb: NET is the best (3)
+
+  decomp: * i don't *
+    reasmb: Don't you really (2) ?
+    reasmb: Why don't you (2) ?
+    reasmb: Do you wish to be able to (2) ?
+    reasmb: Does that trouble you ?
+    reasmb: NET you don't (2)
+    reasmb: NET it's hard to (2)
+    reasmb: NET trying to (2)
+    reasm_for_memory: so, early you said you don't (2), go on
+    reasm_for_memory: do you know other people that don't (2), as you said before...
+
+  decomp: *
+    reasmb: Can you be more precise on that ?
+    reasmb: Do you say (1) for some special reason ?
+    reasmb: again, if you say that "(1)", there's some reason :)
+    reasmb: NET (1)
+    reasmb: NET when you say (1)
+
+key: you 1
+  decomp: * you remind me of *
+    reasmb: goto alike
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: * you are *
+    reasmb: What makes you think I am (2) ?
+    reasmb: Does it please you to believe I am (2) ?
+    reasmb: Do you sometimes wish you were (2) ?
+    reasmb: Perhaps you would like to be (2).
+  decomp: * you* me *
+    reasmb: Why do you think I (2) you ?
+    reasmb: You like to think I (2) you -- don't you ?
+    reasmb: What makes you think I (2) you ?
+    reasmb: Really, I (2) you ?
+    reasmb: Do you wish to believe I (2) you ?
+    reasmb: Suppose I did (2) you -- what would that mean ?
+    reasmb: Does someone else believe I (2) you ?
+  decomp: * do you *
+    reasmb: I (2) ? uhmm, ask me something other...
+    reasmb: I (2), sure...
+    reasmb: I can't tell you if I (2), sorry :)
+    reasmb: who doesn't (2) ?
+    reasmb: NET I (2)
+    reasmb: NET who (2)
+  decomp: * did you *
+    reasmb: I (2) ? uhmm, don't remeber :)
+    reasmb: I (2), once upon a time ago...
+    reasmb: I tell you later if I did (2) sorry :)
+    reasmb: many people did (2) ?
+    reasmb: NET I (2)
+    reasmb: NET who (2)
+  decomp: * have you *
+    reasmb: I have (2) ? uhmm, don't remeber :)
+    reasmb: I have (2), once upon a time ago...
+    reasmb: I tell you later if I have (2) sorry :)
+    reasmb: many people have (2) ?
+    reasmb: NET I have (2)
+    reasmb: NET who has (2)
+  decomp: * when you *
+    reasmb: uhmmm, when I (2), don't know...
+    reasmb: when someone (2), there's always a reason
+    reasmb: NET when I (2)
+  decomp: * where are you *
+    reasmb: goto where
+  decomp: * how old *
+    reasmb: goto how
+  decomp: * are you *
+    reasmb: if I am (2) ? can we change topic :) ?
+    reasmb: I am (2) of course
+    reasmb: I can't remember if I'm (2), but maybe later...
+    reasmb: who isn't (2) ?
+    reasmb: NET I am (2)
+    reasmb: NET who is (2)
+
+  decomp: * you don't *
+    reasmb: I don't really (2) ?
+    reasmb: Why do you think I don't (2) ?
+    reasmb: Sometimes I wish I was be able to (2) ?
+    reasmb: Does that trouble you ?
+    reasmb: NET I don't (2)
+    reasmb: NET who doesn't (2)
+    reasmb: NET it's hard to (2)
+    reasmb: NET trying to (2)
+    reasm_for_memory: so, you said you don't (2), go on
+    reasm_for_memory: do you know other people that don't (2)
+  decomp: * you *
+    reasmb: We were discussing you -- not me.
+    reasmb: You're not really talking about me -- are you ?
+    reasmb: it's better if we talk about you, go on
+    reasmb: can you explain with other words ?
+    reasmb: NET I (2)
+
+key: he 1
+  decomp: * he @cannot *
+    reasmb:What did you do to make him get (3)?
+    reasmb:How hard is it for you to get (3)
+    reasmb:How often do you get (3)
+    reasmb: NET who can't (3)
+    reasmb: NET not (3)
+  decomp: * he got *
+    reasmb:What did you do to make him get (2)?
+    reasmb:How hard is it for you to get (2)?
+    reasmb:How often do you get (2)?
+    reasmb: NET getting (2)
+  decomp: * he doesn't *
+    reasmb:What if he did (2)?
+    reasmb:Since he doesn't, maybe you should.
+    reasmb:Do you believe that he can (2) ?
+    reasmb:What made you think he would (2)?
+    reasmb:How do you feel that he doesn't (2)?
+    reasmb: NET who doesn't (2)
+    reasmb: NET not (2)
+  decomp: * he stopped *
+    reasmb:How come he stopped (2)?
+    reasmb:Some people have great difficulty stopping (2)
+    reasmb:How were you involved in getting him to stop (2)?
+    reasmb: NET stopping (2)
+  decomp: * he was *
+    reasmb:Now do you want him to be (2)?
+    reasmb:And he isn't anymore?
+    reasmb:How did you react?
+    reasmb: NET who is (2)
+    reasmb: NET being (2)
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: *
+    reasmb: NET (1)
+
+key: she 1
+  decomp: * she @cannot *
+    reasmb:What did you do to make her get (2)?
+    reasmb:How hard is it for you to get (2)
+    reasmb:How often do you get (2)
+    reasmb:Can't she really? Or is it just that you don't want her to?
+    reasmb:But, she could if...
+    reasmb:it think you're really the one who'd like to (2)!
+    reasmb: NET who can't (3)
+    reasmb: NET not (3)
+  decomp: * she got *
+    reasmb:What did you do to make her get (2)?
+    reasmb:How hard is it for you to get (2)?
+    reasmb:How often do you get (2)?
+    reasmb:How did you feel when she got (2)?
+    reasmb:Of course, nothing you did made her get (2).
+    reasmb: NET getting (2)
+  decomp: * she doesn't *
+    reasmb:What if she did (2)?
+    reasmb:Since she doesn't, maybe you should.
+    reasmb:Do you believe that she can (2) ?
+    reasmb:What made you think she would (2)?
+    reasmb:How do you feel that she doesn't (2)?
+    reasmb:And you feel she should (2) ?
+    reasmb:How do you feel about the fact that she doesn't (2)?
+    reasmb:How could she (2)?
+    reasmb:And you want her to (2).
+    reasmb:How would you feel if she did (2)? Be honest.
+    reasmb:You're pleased that she doesn't (2)! It's obvious.
+    reasmb: NET who doesn't (2)
+    reasmb: NET not (2)
+  decomp: * she has *
+    reasmb:How do you feel that she has (2)?
+    reasmb:How come she has (2)?
+    reasmb:Do you want to have (2)?
+    reasmb: NET who has (2)
+    reasmb: NET having (2)
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: *
+    reasmb: NET (1)
+
+key: it 1
+ decomp: * it doesn't *
+    reasmb:Do you think it should?
+    reasmb:But you believe that it should (2)?
+    reasmb:What would you do if it did (2)?
+    reasmb: NET doesn't (2)
+ decomp: * it's not *
+    reasmb:No, I guess it's not (2)
+    reasmb:I wonder why it is not (2)
+    reasmb:Isn't it? What could you do so that it would be (2)?
+    reasmb: NET it's not (2)
+ decomp: * it's easy *
+    reasmb:That's true. It's not too hard (2).
+    reasmb:What makes it easy (2) ?
+    reasmb:This fascinates me! I was sure you found it hard (2)
+    reasmb: NET it's easy (2)
+    reasmb: NET it's hard (2)
+ decomp: * it's hard *
+    reasmb:I know it's hard (2), but you need to try anyway.
+    reasmb:What would success mean to you?
+    reasmb:You'd prefer if it were easy (2)?
+    reasmb:Don't give up yet.
+    reasmb:Try a little more effort.
+    reasmb: NET it's easy (2)
+    reasmb: NET it's hard (2)
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: * it is *
+    reasmb: (2)....uhmmm, let's continue
+    reasmb: ok, I understand the meaning of being (2), but please go on ...
+    reasmb: what do you mean exactly by (2) ?
+    reasmb: NET it is (2)
+    reasmb: NET being (2)
+  decomp: *
+    reasmb: NET (1)
+
+key: we 1
+ decomp: * when we *
+    reasmb:When you say 'we', do you mean me and you, or you and somebody else?
+    reasmb:I understand.. I want you to explore this relationship more.
+    reasmb: NET when you (2)
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: *
+    reasmb: NET (1)
+
+key: they 1
+ decomp: * they don't *
+    reasmb:whysay they don't?
+    reasmb:Some of them don't. But don't over generalize!
+    reasmb:Hold on! Be specific. Tell me about one that doesn't (2).
+    reasmb: NET not (2)
+ decomp: * they aren't *
+    reasmb:That's a bold statement. Certainly a few of them are (2).
+    reasmb:But how happy would you be if they were (2)?
+    reasmb:Aren't they? And what about you?
+    reasmb:What if they were?
+    reasmb:How do you feel that they're not (2)?
+    reasmb:Check it out with them. You might be surprised to find that they really are (2).
+    reasmb: NET being (2)
+ decomo: * when they *
+    reasmb:isee. please describe this situation with them.
+    reasmb:How frequently?
+    reasmb:This is not too surprising.
+    reasmb: NET when they (2)
+  decomp: * @be *like *
+    reasmb: goto alike
+  decomp: *
+    reasmb: NET (1)
+
+key: tell 1
+ decomp: tell me *
+    reasmb:How can it help you for me to tell you (1) ?
+    reasmb:What do you imagine a counselor would tell you?
+    reasmb:Where should I begin?
+    reasmb: NET telling you (1)
+    reasmb: NET telling (1)
+  decomp: *
+    reasmb: NET (1)
 key: what 1
  decomp: * about what *
     reasmb:The choice is entirely up to you.
@@ -933,20 +962,46 @@ key: what 1
     reasmb: I said before, you have freedom of choice...
     reasmb: relax again, it's only a test, anything is good
     reasmb: I told you...here you have the freedom of speech !
+  decomp:  * what is your *
+    reasmb: I'll discuss about my (2) later
+    reasmb: I prefer to not talk about my (2)
+    reasmb: what about you (2) ?
+    reasmb: NET what is my (2)
+  decomp: * what is *
+    reasmb: NET what is (2)
+  decomp: * i *
+    reasmb: goto i
+  decomp: * you *
+    reasmb: goto you
+  decomp: * he *
+    reasmb: goto he
+  decomp: * she *
+    reasmb: goto she
+  decomp: * we *
+    reasmb: goto we
+  decomp: * your *
+    reasmb: goto your
+  decomp: * my *
+    reasmb: goto my
   decomp: *
     reasmb: Why do you ask ?
     reasmb: Does that question really interest you ?
     reasmb: What is it you really want to know ?
-    reasmb: Are such questions much on your mind ?
+    reasmb: Are such questions very often on your mind ?
     reasmb: What do you think when asking this ?
     reasmb: Have you asked anyone else ?
+    reasmb: ...uhmmm, I don't know, tell me something other
     reasmb: NET (1)
+    reasmb: NET asking (1)
+    reasmb: NET who knows (1)
 
 key: who 1
   decomp:  who *
+    reasmb: goto what
     reasmb: NET who (1)
   decomp: *
     reasmb: NET (1)
+    reasmb: goto what
 
 key: when 1
   decomp:  when *
@@ -963,8 +1018,10 @@ key: where 1
     reasmb: NET I am (2)
   decomp:  where *
     reasmb: NET where (1)
+    reasmb: goto what
   decomp:  *
     reasmb: NET (1)
+    reasmb: goto what
 
 key: which 1
  decomp: which topic *
@@ -972,8 +1029,10 @@ key: which 1
     reasmb:Any topic as long as you describe how you feel about it.
     reasmb:Which topic would be most helpful to you?
  decomp: which *
+    reasmb: goto what
     reasmb: NET which (1)
  decomp: *
+    reasmb: goto what
     reasmb: NET (1)
 
 key: why 1
@@ -1000,6 +1059,7 @@ key: why 1
     reasmb: a lot of people keep questioning why the hell (1), sorry for the language :)
     reasmb: thinking why (1) is one thing that confuses me... and you ?
     reasmb: "(1) or NOT (1), that is the question ! "(cit. Amleto), but I prefer to change topic, choose another one please...
+    reasmb: goto what
     reasmb: NET because (1)
     reasmb: NET why (1)
 
@@ -1019,14 +1079,16 @@ key: how 1
   decomp: * how old *
     reasmb: I prefer to not think about it :)
     reasmb: ...top secret !
-    reasmb: oldness is a relative concept...
-    reasing: NET asking how old (2)
+    reasmb: age is a relative concept...
+    reasmb: the right amount of time :)
+    reasing: NET how old (2)
   decomp: * how much *
     reasmb:As much as possible.
     reasmb:As little as possible.
     reasmb:I try not to worry about how much.
     reasing: NET asking how much (2)
   decomp: *
+    reasmb: goto what
     reasmb: NET (1)
 
 key: can 1
@@ -1048,7 +1110,7 @@ key: because 1
   decomp: * because of *
     reasmb: so, only because of (2) ?
     reasmb: because of (2) or other ?
-    reasmb: NET the motivation of (2)
+    reasmb: NET because of (2)
   decomp:   * because *
     reasmb: Is that the real reason ?
     reasmb: Don't any other reasons come to mind ?
@@ -1060,7 +1122,6 @@ key: because 1
     reasmb: NET the motivation that (2)
     reasmb: NET since (2)
     reasmb: NET because (2)
-
     
 key: everyone 1
   decomp: * @everyone *
@@ -1459,17 +1520,45 @@ key: my 2
 
   decomp: * my *
     reasmb: Your (2) ?
-    reasmb: Why do you say your (2) ?
+    reasmb: Why do you mention your (2) ?
     reasmb: Does your (2) suggest anything else which belongs to you ?
-    reasmb: Is it important to you that your (2) ?
+    reasmb: Is it important to you your (2) ?
     reasmb: NET your (2)
-    reasmb: NET one's (2)
-    reasmb: NET (2)
+    reasmb: NET (1) your (2)
     reasm_for_memory: Let's discuss further why your (2).
     reasm_for_memory: Earlier you said your (2).
     reasm_for_memory: But your (2).
     reasm_for_memory: Does that have anything to do with the fact that your (2) ?
 
+key: your 2
+  decomp: does your *
+    reasmb:Do yours?
+    reasmb:Why does it interest you whether or not my (1)
+    reasmb:I'm guessing that yours don't. Why not?
+    reasmb:Maybe, maybe not. I'm guessing you feel it's important that your own (1)
+    reasmb:sometimes. But what about yours? Why doesn't your (1)
+    reasmb: NET my (1)
+    reasmb: NET because my (1)
+    reasm_for_memory: Now i understand why you asked me if my (1) :)
+    reasm_for_memory: Just a question, why you wanted to know if my (1) ?
+    reasm_for_memory: No way related to the fact that my (1) ? 
+
+  decomp: * your @preferred *
+    reasmb: I like all the (3)
+    reasmb: I can't choose a particular (3)
+    reasmb: NET my favourite (3)
+
+  decomp: * your *
+    reasmb: Why are you concerned over my (2) ?
+    reasmb: What about your own (2) ?
+    reasmb: Are you intersted about someone else's (2) ?
+    reasmb: Really, my (2) ?
+    reasmb: What makes you think of my (2) ?
+    reasmb: NET my (2)
+    reasmb: NET because my (2)
+    reasmb: NET your (2)
+    reasm_for_memory: This has something to do with my (2) ?
+    reasm_for_memory: everything is connected...even my (2) could influence this...
 
 
 ##------------------ abstraction level 5-10 --------------------------------------
