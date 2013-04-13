@@ -2,6 +2,8 @@
 
 use Chatbot::Eliza;
 use WWW::Google::CustomSearch;
+use POSIX;
+
 use strict; 
 use warnings;
 
@@ -14,7 +16,15 @@ my $entity_mail = "pgiogio\@mit.edu";
 my $entity_name = "PGioio";
 my $debug_on = 0;
 my $net_on = 0;
+my $quick_on = 0;
 
+###############################################################################
+sub searchable
+{
+    my ($msg) = @_;
+    return 1 if (length($msg)>4);
+    return 0;
+}
 ###############################################################################
 sub juice
 {
@@ -28,14 +38,12 @@ sub ssnet
 {
     my ($msg) = @_;
 
-    $msg =~ s/(.*)NET(.*)/$2/g;
-
     if ($debug_on)
     {
-	print "\n SEARCHING: ";
+	print "\n DEBUG--> Google API searching: ";
 	print $msg, "\n"; 
     }
-    my $result  = $engine->search($msg);
+    my $result = $engine->search($msg);
     my $clean;
     my $n = 0;
 
@@ -44,13 +52,16 @@ sub ssnet
     foreach my $item ($result->items) 
     {
 	$clean = &juice($item->snippet);
-	push @responses, $clean;
-	$n++;
+	if (length($clean)>11)
+	{
+	    push @responses, $clean;
+	    $n++;
+	}
 
 	if ($debug_on)
 	{
-	    print "\nRAW---> ", $item->snippet, "\n\n" if defined $item->snippet;
-	    print "\nCLEAN---> " , $clean, "\n\n";
+	    print "\nDEBUG:RAW--> ", $item->snippet, "\n" if defined $item->snippet;
+	    print "\nDEBUG:CLEAN--> " , $clean, "\n";
 	}
     }
     my $chosen= int(rand($n));
@@ -60,24 +71,23 @@ sub ssnet
 ###############################################################################
 sub typing
 {
-    my ($msg,$delay) = @_;
-    if ($delay)
-    {
-	sleep($delay);
-    }
-    print "$entity_name>$msg \n";
+    my ($msg) = @_;
+    sleep(int(length($msg)/10)) unless $quick_on;
+    print "$entity_name> $msg \n";
 }
 
 ###############################################################################
 sub greetings
 {
+    my $now = localtime;
+
     print "\n______________________________________________________\n";
     print "   c0n5c10u55n3t   v 02.10.2012 \n";
     print "______________________________________________________\n";
+    print " Session local time: $now\n";
     
-    print " > Connecting to system....\n";
-    print " > entity: ", $entity_mail, "\n";
-    print " PLEASE WAIT\n";
+    print " > Connecting to system entity: ", $entity_mail, "\n";
+    print " > PLEASE WAIT\n";
 
     my $x = 10;
 
@@ -90,11 +100,8 @@ sub greetings
     print "\n OK !\n";
 
     print "\n=====================================================\n";
-    sleep(0);
 
-    typing ("Hi there, I'm Paul Gioio",1);
-    typing ("prof. Patti told me we have about 3-4 minutes....",1);
-    typing ("Don't care about argument, let's talk in freedom");
+    typing ("Hi there, I'm doctor Gioio, prof. Patti told me we have about 3-4 minutes....");
     typing ("Tell me something about you (family, work, hobby, ideas, etc...)");
 }
 
@@ -104,17 +111,15 @@ sub parse_cmdline
     {
 	$debug_on = 1 if $arg eq "debug";
 	$net_on = 1 if $arg eq "net";
+	$quick_on = 1 if $arg eq "quick";
     }
-
-    print "debug = $debug_on";
-    print "net = $net_on";
 
 }
 
-
+######################################################################
 $|++;
-&greetings;
 &parse_cmdline;
+&greetings;
 
 my $bot = new Chatbot::Eliza {
 	name       => "Paul", scriptfile => "language.txt",
@@ -122,19 +127,39 @@ my $bot = new Chatbot::Eliza {
 	myrand     => sub { my $N = defined $_[0] ? $_[0] : 1;  rand($N); },
 };
 
-print $bot->{initial}->[0] . "\n";
+# typing($bot->{initial}->[0] . "\n");
 
 my $true++;
 
+open(LOG, ">> log.txt");
+
 while ($true) 
 {
+    select((select(LOG), $|=1)[0]);
     print "You> ";
     my $message = <STDIN>;
-    $message = $bot->transform($message);
+    print LOG $message;
 
-    if ($message=~/NET/)
+    my $answer = $bot->transform($message);
+
+# check for net powered knowledge answers
+    if ($answer=~/NET/)
     {
-	$message = &ssnet($message)
+	$answer =~ s/(.*)NET(.*)/$2/g;
+	if (&searchable($answer))
+	{
+	    $answer = &ssnet($answer)
+	}
+	else
+	{
+	    print "\n  DEBUG--> skipping not searchable $answer" if ($debug_on);
+	    my $tmp_answer;
+	    until ( ($tmp_answer = $bot->transform($answer))!~/NET/) 
+	    {
+		print "\n DEBUG--> skipping NET powered response $tmp_answer" if ($debug_on);
+	    };
+	    $answer = $tmp_answer;
+	}
     }
 
     if ($debug_on)
@@ -143,8 +168,9 @@ while ($true)
 	print $debugging;
 	$bot->_debug_memory();
     }
-    sleep(1);
-    print $entity_name, ">$message\n";
+    sleep(1) if (!$quick_on);
+    typing("$answer\n");
+    print LOG "$entity_name> $answer\n";
 }
 
 exit;
