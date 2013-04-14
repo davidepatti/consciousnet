@@ -78,12 +78,21 @@ sub typing
 
     my $start = 0;
     my $count = 0;
-    while ( $start<length($msg) )
+
+    if (!$quick_on)
     {
-	$count = int(rand(10));
-	sleep($count*0.1);
-	print substr($msg,$start,$count);
-	$start+=$count;
+	while ( $start<length($msg) )
+	{
+	    $count = int(rand(5));
+	    my $speed = (rand)/3;
+	    sleep($count*$speed);
+	    print substr($msg,$start,$count);
+	    $start+=$count;
+	}
+    }
+    else
+    {
+	print $msg;
     }
     print "\n";
 }
@@ -180,7 +189,7 @@ while ($true)
 	print $debugging;
 	$bot->_debug_memory();
     }
-    sleep(1) if (!$quick_on);
+    sleep(length($message)*0.1) if (!$quick_on);
     typing("$answer\n");
     print LOG "$entity_name> $answer\n";
 }
