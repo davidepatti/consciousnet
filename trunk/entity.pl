@@ -35,6 +35,16 @@ sub juice
     my $msg = "$1$2";
 }
 ###############################################################################
+sub sanity_check
+{
+    my ($msg) = @_;
+    my $pass = 1; # ok is default
+    $pass=0 if (length($msg)<15);
+
+    print "\n SANITY CHECK RETURNS $pass";
+    $pass;
+}
+
 sub ssnet
 {
     my ($msg) = @_;
@@ -53,16 +63,20 @@ sub ssnet
     foreach my $item ($result->items) 
     {
 	$clean = &juice($item->snippet);
-	if (length($clean)>11)
+	if (&sanity_check($clean))
 	{
 	    push @responses, $clean;
 	    $n++;
 	}
+	elsif ($debug_on)
+	{
+	    print "\n DEBUG: **DISCARDING RESULT** (sanity_check false)";
+	}
 
 	if ($debug_on)
 	{
-	    print "\nDEBUG:RAW--> ", $item->snippet, "\n" if defined $item->snippet;
-	    print "\nDEBUG:CLEAN--> " , $clean, "\n";
+	    print "\nDEBUG raw: <<< ", $item->snippet, " >>>" if defined $item->snippet;
+	    print "\nDEBUG clean: <<< " , $clean, " >>>\n";
 	}
     }
     my $chosen= int(rand($n));
@@ -84,7 +98,7 @@ sub typing
 	while ( $start<length($msg) )
 	{
 	    $count = int(rand(5));
-	    my $speed = (rand)/3;
+	    my $speed = (rand)*0.3;
 	    sleep($count*$speed);
 	    print substr($msg,$start,$count);
 	    $start+=$count;
@@ -143,7 +157,8 @@ $|++;
 &greetings;
 
 my $bot = new Chatbot::Eliza {
-	name       => "Paul", scriptfile => "language.txt",
+	name       => "Paul", 
+        scriptfile => "language.txt",
 	debug      => 1, prompts_on => 1, memory_on  => 1,
 	myrand     => sub { my $N = defined $_[0] ? $_[0] : 1;  rand($N); },
 };
@@ -175,7 +190,7 @@ while ($true)
 	{
 	    print "\n  DEBUG--> skipping not searchable $answer" if ($debug_on);
 	    my $tmp_answer;
-	    until ( ($tmp_answer = $bot->transform($answer))!~/NET/) 
+	    until ( ($tmp_answer = $bot->transform($answer))!~/NET/  ) 
 	    {
 		print "\n DEBUG--> skipping NET powered response $tmp_answer" if ($debug_on);
 	    };
