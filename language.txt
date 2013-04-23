@@ -26,6 +26,7 @@ quit: done
 quit: exit
 quit: quit
 pre: dont don't
+pre: didnt din't
 pre: cant can't
 pre: wont won't
 pre: doesnt doesn't
@@ -138,14 +139,17 @@ key: xnone -1
   decomp: xnone * 
     reasmb: All right, can you tell me more?
     reasmb: Very interesting. Can you provide more details?
+    reasmb: I am listening. Continue...
+    reasmb: Ok, continue, the more you tell me, the more I can learn on you
     reasmb: Interesting...
     reasmb: Why did you say that?
+    reasmb: Tell me more about that.
     reasmb: NET what do you think about (1)
     reasmb: NET do you know that (1)
-    reasmb: NET did you hear that (1)
-    reasmb: NET what do you think about (1)
-    reasmb: NET Why did you say that (1)?
-    reasmb: NET talk me about (1)
+    reasmb: NET I know (1)
+    reasmb: NET talking about (1)
+    reasmb: NET Why (1)?
+    reasmb: NET because (1)
     reasmb: NET (1)
     
 key: NOT_USED -1
@@ -164,10 +168,8 @@ key: NOT_USED -1
     reasmb: Sorry, but I don't understand what you're trying to say.
     reasmb: Pardon me?
     reasmb: Did you say that for a special reason?
-    reasmb: Ok, continue, the more you tell me, the more I can learn on you
     reasmb: What's your point exactly ?
     reasmb: What is that supposed to mean?
-    reasmb: I am listening. Tell me something.
     reasmb: Don't be afraid to open up a little more.
     reasmb: I would like to go back to what we discussed earlier.
     reasmb: You seem to be holding something back.
@@ -178,10 +180,8 @@ key: NOT_USED -1
     reasmb: Let's try to stay on the main topic.
     reasmb: Can you focus your thoughts a little more?
     reasmb: uhmmm, what does that suggest to you?
-    reasmb: describe your family
-    reasmb: are you sad sometimes?
+    reasmb: ok, describe your family
     reasmb: What else would you like to talk about today?
-    reasmb: Now, describe the real problem.
     reasmb: describe something you remember about your holidays...
     reasmb: why don't you continue.
 
@@ -190,7 +190,6 @@ key: yes 0
   decomp: yes but *
     reasmb: uhmm, it's a problems that (1) ?
     reasmb: uhmm, now I know (1)...continue please 
-    reasmb: NET ok, (1)
     reasmb: NET yes but (1)
     reasmb: NET (1)
 
@@ -199,12 +198,13 @@ key: yes 0
     reasmb: Why don't you tell me a little more about this.
     reasmb: If you're sure, let's continue...
     reasmb: Wonderful. What's the next step? tell me something other...
-    reasmb: You don't have to say that just to please me.
-    reasmb: Okay? Are you sure?
-    reasmb: NET saying yes
-    reasmb: NET affermative responses are
+    reasmb: uhmmm, what does that suggest to you?
+    reasmb: ok, continue describing your family...
+    reasmb: Can you focus your thoughts a little more?
+    reasmb: again, don't have to say that just to please me.
+    reasmb: Okay, Are you sure?
     reasmb: NET (1)
-    reasmb: NET saying (1)
+    reasmb: NET when you say (1)
 
 key: no 0
   decomp: * no one *
@@ -216,18 +216,179 @@ key: no 0
     reasmb: Who do you think you are talking about ?
     reasmb: NET someone (2)
     reasmb: NET nobody (2)
-  decomp: *
+  decomp: no *
     reasmb: Are you saying no just to be negative?
     reasmb: Does this make you feel unhappy? 
     reasmb: Why not ?
+    reasmb: no... ok, continue please
+    reasmb: What else would you like to talk about today?
+    reasmb: are you sad sometimes?
     reasmb: Can you focus your thoughts a little more?
+    reasmb: Don't be afraid to open up a little more.
     reasmb: again, you can write other words to explain this if you want
-    reasmb: NET motivation to say no
+    reasmb: NET (1)
     reasmb: NET when you say (1)
-    reasmb: NET saying (1)
+
+key: tell 0
+ decomp: tell me *
+    reasmb:How can it help you for me to tell you (1) ?
+    reasmb:What do you imagine a counselor would tell you?
+    reasmb:Where should I begin?
+    reasmb: NET telling you (1)
+    reasmb: NET telling (1)
+  decomp: *
     reasmb: NET (1)
 
-key: am 0
+key: hello 0
+ decomp: *
+  reasmb: nice to see you... 
+  reasmb: hi, tell me something more about you
+  reasmb: hi, let's discuss something, at your choice...
+  reasmb: NET hallo, someone say I am
+  reasmb: NET hi, did you know that
+
+key: sorry 0
+  decomp: *
+    reasmb: Please don't apologise.
+    reasmb: Apologies are not necessary.
+    reasmb: I've told you that apologies are not required.
+    reasmb: It did not bother me.  Please continue.
+    reasmb: All is forgiven :)
+    reasmb: You have no reason to be sorry. Continue...
+    reasmb: NET (1)
+
+key: apologise 0
+  decomp: *
+    reasmb: goto sorry
+
+key: please 0
+  decomp: *
+    reasmb:All right, but first describe yourself.
+    reasmb:You should be able to do most things on your own.
+    reasmb:What do you want me to do?
+    reasmb:Certainly.
+    reasmb:Actually, I would rather not.
+    reasmb:I would be glad to help.
+    reasmb:Explain how I can be of assistance to you.
+    reasmb: NET (1)
+
+key: perhaps 0
+  decomp: *
+    reasmb: You don't seem quite certain.
+    reasmb: Why the uncertain tone ?
+    reasmb: Can't you be more positive ?
+    reasmb: You aren't sure ?
+    reasmb: Don't you know ?
+    reasmb: How likely, would you estimate ?
+    reasmb: Do you think you could be a little more definite?
+    reasmb: Life is full of little uncertainties, isn't it?
+    reasmb: Try to be more assertive, okay?
+    reasmb: You don't have any doubts at all, do you?
+    reasmb: NET (1)
+
+key: probably 0
+  decomp: *
+    reasmb:How likely do you believe this to be?
+    reasmb:Would you say more or less than an fifty fifty chance?
+    reasmb:uhmm, it does seem likely. Continue...
+    reasmb: NET (1)
+
+key: extremely 0
+  decomp: *
+    reasmb:Whoa! That must seem vivid to you.
+    reasmb:Wait a second. Are you exaggerating just a little?
+    reasmb: seems too much, but if you think so...
+    reasmb:Wow!
+    reasmb: NET (1)
+
+key: must 0
+  decomp: *
+    reasmb:Why is this necessary?
+    reasmb:sometimes it's necessary to do unpleasant things.
+    reasmb:Is there really no choice?
+    reasmb: NET (1)
+
+key: seem 0
+  decomp: *
+    reasmb:Appearances can be deceiving. How do you feel when you're not sure how things really are?
+    reasmb:Things are not always what they seem. Please continue.
+    reasmb:I see.... You feel this to be the case, but you're not completely sure. How do you react to ambiguity?
+    reasmb: NET (1)
+    
+
+key: actually 0
+  decomp: *
+    reasmb:Now the real truth comes out. Go on.
+    reasmb:Why didn't you describe that before.
+    reasmb:Aha! I thought you were hiding something! How do you expect to make progress if you don't tell all?
+    reasmb: NET (1)
+
+key: this 0
+ decomp: * this is *
+    reasmb:whysay that it is (2).
+    reasmb:Is it really (2)?
+    reasmb:What would you do if it weren't (2)?
+    reasmb: NET that is (2)
+ decomp: *
+    reasmb: NET (1)
+
+key: thanks 0
+ decomp: thanks to *
+    reasmb:It's certainly due to (1).
+    reasmb:Is it really because of (1)?
+    reasmb:And thanks to many other factors, too, I'm sure.
+    reasmb: NET thanking (1)
+    reasmb: NET thanks to (1)
+    reasm_for_memory: maybe you should thanking (1) even for this
+    reasm_for_memory: because of (1) ?
+    reasm_for_memory: and this time you should not thank (1) :) 
+ decomp: *
+    reasmb: thanking is always a good attitude...but, go on 
+    reasmb: we have not time for thanking... continue please :)
+    reasmb: NET (1)
+
+key: let 0
+ decomp: let me *
+    reasmb:You have my permission!
+    reasmb:I'm concerned that you seem to feel you need someone's permission to (1)
+    reasmb:Didn't your parents allow you to (1)?
+    reasmb: NET i let you (1)
+    reasmb: NET letting (1)
+ decomp: let's not *
+    reasmb:It's okay with me if we don't (1)
+    reasmb:What would you like to do instead?
+    reasmb:You're resisting. I think it might be very helpful to you if we did (1)
+    reasmb: NET don't (1)
+ decomp: *
+    reasmb: NET (1)
+
+key: lots 0
+ decomp: * lots of *
+    reasmb:Quite a bit, eh? Can you be more precise?
+    reasmb:Really? But not more than your share.
+    reasmb:I understand.. A large quantity. Well, what's your feeling about that?
+ decomp: *
+    reasmb: NET (1)
+
+key: sure 0
+ decomp: * @be sure *
+    reasmb:You act like I was supposed to know that!
+    reasmb:You're getting a little sure of yourself, aren't you?
+    reasmb:I'm glad you are so sure.
+    reasmb:How do you know for sure?
+    reasmb:You seem to have given that assertion a lot of thought.
+    reasmb:You're sure about that?
+    reasm_for_memory: you were sure (3)
+    reasm_for_memory: being sure (3) can be related to this...
+    reasmb: NET being sure (3)
+    reasmb: NET sure (3)
+ decomp: * not sure *
+    reasmb: goto insecure
+ decomp: *
+    reasmb: NET (1)
+
+#------------------ abstraction level 1 --------------------------------------
+key: am 1
   decomp: * am i *
     reasmb: Do you believe you are (2) ?
     reasmb: Would you want to be (2) ?
@@ -242,22 +403,13 @@ key: am 0
     reasmb: I don't understand that.
     reasmb: sorry, I'm not sure of what are you sayin...
 
-key: are 0
+key: are 1
   decomp: * are you *
-    reasmb: Why are you interested in whether I am (2) or not ?
-    reasmb: Would you prefer if I weren't (2) ?
-    reasmb: Perhaps I am (2) in your fantasies.
-    reasmb: Do you sometimes think I am (2) ?
-    reasmb: What if I were (2) ?
-    reasmb: NET I am (2) 
-    reasmb: NET I am not (2) 
-    reasmb: NET being (2)
-    reasmb: NET who is (2)
-    reasm_for_memory: uhmmm... i understand why you asked me if I were (2) :)
-    reasm_for_memory: Just another question, why are you curious to know if I am (2) ?
-    reasm_for_memory: No way related to the fact that I am (2) or not ? 
+    reasmb: goto you
+
   decomp: * you are *
     reasmb: goto you
+
   decomp: * are *
     reasmb: Did you think they might not be (2) ?
     reasmb: Would you like it if they were not (2) ?
@@ -266,7 +418,7 @@ key: are 0
     reasmb: NET being (2)
     reasmb: NET who is (2)
 
-key: was 0
+key: was 1
   decomp: * was i *
     reasmb: What if you were (2) ?
     reasmb: Do you think you were (2) ?
@@ -295,7 +447,7 @@ key: was 0
     reasmb: NET (1)
 
 
-key: i 0
+key: i 1
 
   decomp: * i @desire *
     reasmb: What would it mean to you if you got (3) ?
@@ -360,6 +512,9 @@ key: i 0
   decomp: * i was *
     reasmb: goto was
 
+  decomp: * was i *
+    reasmb: goto was
+
   decomp: * i @belief i *
     reasmb: Do you really think so ?
     reasmb: But you are not sure you (3).
@@ -374,9 +529,9 @@ key: i 0
     reasmb: How long have you been (2) ?
     reasmb: Do you enjoy being (2) ?
     reasmb: Do you know anyone else who is (2) ?
+    reasmb: (2)... ok, go on...
     reasmb: NET being (2)
     reasmb: NET so you are (2)
-    reasmb: NET people who are (2)
     reasmb: NET who is (2)
     reasm_for_memory: you said you are (2), go on
     reasm_for_memory: what if you weren't (2)
@@ -388,6 +543,9 @@ key: i 0
     reasmb: is living in (2) funny ?
     reasmb: NET living in (2)
     reasmb: NET who lives in (2)
+    reasmb: NET people of (2)
+    reasm_for_memory: ...like living in (2) :) go on...
+    reasm_for_memory: maybe all these things related to living in (2) ?
 
   decomp: * i @cannot *
     reasmb: How do you know that you can't (3) ?
@@ -412,6 +570,17 @@ key: i 0
     reasmb: NET trying to (2)
     reasm_for_memory: so, you said you don't (2), go on
     reasm_for_memory: do you know other people that don't (2)
+
+  decomp: * i didn't *
+    reasmb: you really not (2) ?
+    reasmb: Why did not (2) ?
+    reasmb: Did you wanted to be able to (2) ?
+    reasmb: that troubled you ?
+    reasmb: NET you didn't (2)
+    reasmb: NET it's hard to (2)
+    reasmb: NET trying to (2)
+    reasm_for_memory: so, ealry you said you not (2), continue
+    reasm_for_memory: do you know other people that did not (2)
 
   decomp: * i feel *
     reasmb: Tell me more about such feelings.
@@ -561,20 +730,25 @@ key: i 0
     reasmb: NET my favourite (3)
     reasmb: NET is the best (3)
 
+  decomp: because i *
+    reasmb: goto because
+
   decomp: *
     reasmb: Can you be more precise on that ?
     reasmb: Do you say (1) for some special reason ?
     reasmb: Every time I hear that "(1)", there's some reason :)
     reasmb: NET (1)
     reasmb: NET reason (1)
-    reasmb: NET when you say (1)
+    reasmb: NET when I say (1)
     reasmb: NET told me (1)
 
-key: you 0
+key: you 1
   decomp: * you remind me of *
     reasmb: goto alike
+
   decomp: * @be *like *
     reasmb: goto alike
+
   decomp: * you are *
     reasmb: What makes you think I am (2) ?
     reasmb: Does it please you to believe I am (2) ?
@@ -582,6 +756,21 @@ key: you 0
     reasmb: Perhaps you would like to be (2).
     reasmb: NET being (2)
     reasmb: NET who is (2)
+
+  decomp: * are you *
+    reasmb: Why are you interested in whether I am (2) or not ?
+    reasmb: Would you prefer if I weren't (2) ?
+    reasmb: Perhaps I am (2) in your fantasies.
+    reasmb: Do you sometimes think I am (2) ?
+    reasmb: What if I were (2) ?
+    reasmb: NET I am (2) 
+    reasmb: NET I am not (2) 
+    reasmb: NET being (2)
+    reasmb: NET who is (2)
+    reasm_for_memory: uhmmm... i understand why you asked me if I were (2) :)
+    reasm_for_memory: Just another question, why are you curious to know if I am (2) ?
+    reasm_for_memory: No way related to the fact that I am (2) or not ? 
+
   decomp: * you* me *
     reasmb: Why do you think I (2) you ?
     reasmb: You like to think I (2) you -- don't you ?
@@ -589,6 +778,7 @@ key: you 0
     reasmb: Really, I (2) you ?
     reasmb: Suppose I did (2) you -- what would that mean ?
     reasmb: NET I (2) you (3)
+
   decomp: * when you *
     reasmb:Apart from that, how do you think this session is going?
     reasmb:That seems to work well for most of my clients.
@@ -596,20 +786,27 @@ key: you 0
     reasmb: NET when I (2)
     reasmb: NET when you (2)
     reasmb: NET (2)
+
   decomp: do you *
     reasmb: not sure... continue
     reasmb: can you repeat using other words ?
     reasmb: NET I (1)
     reasmb: NET when people (1)
     reasmb: NET (1)
+
+  decomp: * why don't you *
+    reasmb: goto why
+
   decomp: * you *
     reasmb: We were discussing you -- not me.
     reasmb: You're not really talking about me, are you ?
+    reasmb: that's fine, go on, I prefer to not talk about me
+    reasmb: continue by talking about you...
+    reasmb: ...pardon ?
     reasmb: NET (2)
-    reasmb: NET I (2)
     reasmb: NET (1) you (2)
 
-key: he 0
+key: he 1
   decomp: * he @cannot *
     reasmb:What did you do to make him get (3)?
     reasmb:How hard is it for you to get (3)
@@ -646,7 +843,7 @@ key: he 0
   decomp: *
     reasmb: NET (1)
 
-key: she 0
+key: she 1
   decomp: * she @cannot *
     reasmb:What did you do to make her get (2)?
     reasmb:How hard is it for you to get (2)
@@ -688,7 +885,7 @@ key: she 0
   decomp: *
     reasmb: NET (1)
 
-key: it 0
+key: it 1
  decomp: * it doesn't *
     reasmb:Do you think it should?
     reasmb:But you believe that it should (2)?
@@ -721,10 +918,14 @@ key: it 0
     reasmb: what do you mean exactly by (2) ?
     reasmb: NET it is (2)
     reasmb: NET being (2)
+  decomp: * is it *
+    reasmb: ...dont know, go on please
+    reasmb: I prefer to not talk about this, tell me something other about you
+    reasmb: goto what
   decomp: *
     reasmb: NET (1)
 
-key: we 0
+key: we 1
  decomp: * when we *
     reasmb:When you say 'we', do you mean me and you, or you and somebody else?
     reasmb:I understand.. I want you to explore this relationship more.
@@ -734,12 +935,20 @@ key: we 0
   decomp: *
     reasmb: NET (1)
 
-key: they 0
+key: they 1
  decomp: * they don't *
     reasmb:whysay they don't?
     reasmb:Some of them don't. But don't over generalize!
     reasmb:Hold on! Be specific. Tell me about one that doesn't (2).
     reasmb: NET not (2)
+ decomp: * they are *
+    reasmb:That's a bold statement. Certainly a few of them are (2).
+    reasmb:But how happy would you be if they were not (2)?
+    reasmb:Are they? And what about you?
+    reasmb:What if they were?
+    reasmb:How do you feel that they are (2)?
+    reasmb:Check it out with them. You might be surprised to find that they really aren't (2).
+    reasmb: NET not being (2)
  decomp: * they aren't *
     reasmb:That's a bold statement. Certainly a few of them are (2).
     reasmb:But how happy would you be if they were (2)?
@@ -756,164 +965,6 @@ key: they 0
   decomp: * @be *like *
     reasmb: goto alike
   decomp: *
-    reasmb: NET (1)
-
-key: tell 0
- decomp: tell me *
-    reasmb:How can it help you for me to tell you (1) ?
-    reasmb:What do you imagine a counselor would tell you?
-    reasmb:Where should I begin?
-    reasmb: NET telling you (1)
-    reasmb: NET telling (1)
-  decomp: *
-    reasmb: NET (1)
-
-key: hello 0
- decomp: *
-  reasmb: nice to see you... 
-  reasmb: hi, tell me something more about you
-  reasmb: hi, let's discuss something, at your choice...
-  reasmb: NET hallo, someone say I am
-  reasmb: NET hi, did you head that
-
-key: sorry 0
-  decomp: *
-    reasmb: Please don't apologise.
-    reasmb: Apologies are not necessary.
-    reasmb: I've told you that apologies are not required.
-    reasmb: It did not bother me.  Please continue.
-    reasmb: All is forgiven :)
-    reasmb: You have no reason to be sorry. Continue...
-    reasmb: NET (1)
-
-key: apologise 0
-  decomp: *
-    reasmb: goto sorry
-
-key: please 0
-  decomp: *
-    reasmb:All right, but first describe yourself.
-    reasmb:You should be able to do most things on your own.
-    reasmb:What do you want me to do?
-    reasmb:Certainly.
-    reasmb:Actually, I would rather not.
-    reasmb:I would be glad to help.
-    reasmb:Explain how I can be of assistance to you.
-    reasmb: NET (1)
-
-key: perhaps 0
-  decomp: *
-    reasmb: You don't seem quite certain.
-    reasmb: Why the uncertain tone ?
-    reasmb: Can't you be more positive ?
-    reasmb: You aren't sure ?
-    reasmb: Don't you know ?
-    reasmb: How likely, would you estimate ?
-    reasmb: Do you think you could be a little more definite?
-    reasmb: Life is full of little uncertainties, isn't it?
-    reasmb: Try to be more assertive, okay?
-    reasmb: You don't have any doubts at all, do you?
-    reasmb: NET (1)
-
-key: probably 0
-  decomp: *
-    reasmb:How likely do you believe this to be?
-    reasmb:Would you say more or less than an fifty fifty chance?
-    reasmb:uhmm, it does seem likely. Continue...
-    reasmb: NET (1)
-
-key: extremely 0
-  decomp: *
-    reasmb:Whoa! That must seem vivid to you.
-    reasmb:Wait a second. Are you exaggerating just a little?
-    reasmb: seems too much, but if you think so...
-    reasmb:Wow!
-    reasmb: NET (1)
-
-key: must 0
-  decomp: *
-    reasmb:Why is this necessary?
-    reasmb:sometimes it's necessary to do unpleasant things.
-    reasmb:Is there really no choice?
-    reasmb: NET (1)
-
-key: seem 0
-  decomp: *
-    reasmb:Appearances can be deceiving. How do you feel when you're not sure how things really are?
-    reasmb:Things are not always what they seem. Please continue.
-    reasmb:I see.... You feel this to be the case, but you're not completely sure. How do you react to ambiguity?
-    reasmb: NET (1)
-    
-
-key: actually 0
-  decomp: *
-    reasmb:Now the real truth comes out. Go on.
-    reasmb:Why didn't you describe that before.
-    reasmb:Aha! I thought you were hiding something! How do you expect to make progress if you don't tell all?
-    reasmb: NET (1)
-
-key: this 0
- decomp: * this is *
-    reasmb:whysay that it is (2).
-    reasmb:Is it really (2)?
-    reasmb:What would you do if it weren't (2)?
-    reasmb: NET that is (2)
- decomp: *
-    reasmb: NET (1)
-
-key: thanks 0
- decomp: thanks to *
-    reasmb:It's certainly due to (1).
-    reasmb:Is it really because of (1)?
-    reasmb:And thanks to many other factors, too, I'm sure.
-    reasmb: NET thanking (1)
-    reasmb: NET thanks to (1)
-    reasm_for_memory: maybe you should thanking (1) even for this
-    reasm_for_memory: because of (1) ?
-    reasm_for_memory: and this time you should not thank (1) :) 
- decomp: *
-    reasmb: thanking is always a good attitude...but, go on 
-    reasmb: we have not time for thanking... continue please :)
-    reasmb: NET (1)
-
-key: let 0
- decomp: let me *
-    reasmb:You have my permission!
-    reasmb:I'm concerned that you seem to feel you need someone's permission to (1)
-    reasmb:Didn't your parents allow you to (1)?
-    reasmb: NET i let you (1)
-    reasmb: NET letting (1)
- decomp: let's not *
-    reasmb:It's okay with me if we don't (1)
-    reasmb:What would you like to do instead?
-    reasmb:You're resisting. I think it might be very helpful to you if we did (1)
-    reasmb: NET don't (1)
- decomp: *
-    reasmb: NET (1)
-
-key: lots 0
- decomp: * lots of *
-    reasmb:Quite a bit, eh? Can you be more precise?
-    reasmb:Really? But not more than your share.
-    reasmb:I understand.. A large quantity. Well, what's your feeling about that?
- decomp: *
-    reasmb: NET (1)
-
-key: sure 0
- decomp: * @be sure *
-    reasmb:You act like I was supposed to know that!
-    reasmb:You're getting a little sure of yourself, aren't you?
-    reasmb:I'm glad you are so sure.
-    reasmb:How do you know for sure?
-    reasmb:You seem to have given that assertion a lot of thought.
-    reasmb:You're sure about that?
-    reasm_for_memory: you were sure (3)
-    reasm_for_memory: being sure (3) can be related to this...
-    reasmb: NET being sure (3)
-    reasmb: NET sure (3)
- decomp: * not sure *
-    reasmb: goto insecure
- decomp: *
     reasmb: NET (1)
 
 ##------------------ abstraction level 1 --------------------------------------
@@ -976,15 +1027,23 @@ key: what 1
 
 key: who 1
   decomp:  who *
-    reasmb: goto what
     reasmb: NET who (1)
+    reasmb: goto what
   decomp: *
     reasmb: NET (1)
     reasmb: goto what
 
 key: when 1
-  decomp:  when *
-    reasmb: NET when (1)
+  decomp: * when i *
+    reasmb: goto i
+
+  decomp: * when you *
+    reasmb: goto you
+
+  decomp:   * when *
+    reasmb: and how often (2) ?
+    reasmb: when (2) ?
+    reasmb: NET (1) when (2)
     reasmb: goto what
 
 key: where 1
@@ -995,9 +1054,11 @@ key: where 1
     reasmb: every place is good for, believe me, what do you think ?
     reasmb: NET where am I (2)
     reasmb: NET I am (2)
+
   decomp:  where *
     reasmb: NET where (1)
     reasmb: goto what
+
   decomp:  *
     reasmb: NET (1)
     reasmb: goto what
@@ -1008,9 +1069,11 @@ key: which 1
     reasmb:Any topic as long as you describe how you feel about it.
     reasmb:Which topic would be most helpful to you?
     reasmb: NET which topic (1)
+    
  decomp: which *
     reasmb: NET which (1)
     reasmb: goto what
+
  decomp: *
     reasmb: NET (1)
     reasmb: goto what
@@ -1023,18 +1086,21 @@ key: why 1
     reasmb: You want me to (2) ?
     reasmb: NET wanting to (2)
     reasmb: NET who (2)
+
   decomp: why not *
     reasmb: Why not? I'm sure you know why not.
     reasmb: Let's look deep within you to find the reasons why not.
     reasmb: You ask 'why not'? I wonder why you enjoy challenging authority?
     reasmb: NET not (1)
     reasmb: NEt because not (1)
+
   decomp: * why can't i *
     reasmb: Do you think you should be able to (2) ?
     reasmb: Do you want to be able to (2) ?
     reasmb: Do you believe this will help you to (2) ?
     reasmb: Have you any idea why you can't (2) ?
     reasmb: NET you can't (2)
+
   decomp: why *
     reasmb: a lot of people keep questioning why the hell (1), sorry for the language :)
     reasmb: thinking why (1) is one thing that confuses me... and you ?
@@ -1051,6 +1117,7 @@ key: how 1
     reasmb:Why do you feel the need to change the subject now?
     reasmb: NET about (1)
     reasmb: NET how about (1)
+
   decomp: * how many *
     reasmb:What would be the perfect number?
     reasmb:How many would be too many?
@@ -1058,12 +1125,13 @@ key: how 1
     reasmb:As many as necessary.
     reasing: NET asking how many (2)
     reasing: NET how many (2)
-    reasing: NET many (2)
+
   decomp: * how old *
     reasmb: I prefer to not think about it :)
     reasmb: ...top secret !
     reasmb: oldness is a relative concept...
-    reasing: NET asking how old (2)
+    reasing: NET how old (2)
+
   decomp: * how much *
     reasmb:As much as possible.
     reasmb:As little as possible.
@@ -1080,21 +1148,28 @@ key: can 1
     reasmb: You want me to be able to (2).
     reasmb: Perhaps you would like to be able to (2) yourself.
     reasmb: NET I can (2)
+
+  decomp: * why can't i *
+    reasmb: goto why
+
   decomp: * can i *
     reasmb: Whether or not you can (2) depends on you more than on me.
     reasmb: Do you want to be able to (2) ?
     reasmb: Perhaps you don't want to (2).
     reasmb: NET you can (2)
+
   decomp: *
     reasmb: NET (1)
 
 
 key: because 1
+
   decomp: * because of *
     reasmb: so, only because of (2) ?
     reasmb: because of (2) or other ?
     reasmb: NET the motivation of (2)
     reasmb: NET beacuse of (2)
+
   decomp:   * because *
     reasmb: Is that the real reason ?
     reasmb: Don't any other reasons come to mind ?
@@ -1103,9 +1178,10 @@ key: because 1
     reasmb: Let's explore some other possible motives.
     reasmb: (2) ? That's not a reasonable explanation.
     reasmb: Surely you can come up with a better reason than that.
-    reasmb: NET the motivation that (2)
     reasmb: NET since (2)
     reasmb: NET because (2)
+    reasm_for_memory: and also because (2) ?
+    reasm_for_memory: uhmmm, why (2) ?
 
     
 key: everyone 1
@@ -1123,6 +1199,10 @@ key: everybody 1
   decomp: *
     reasmb: goto everyone
 
+key: everything 1
+  decomp: *
+    reasmb: goto everyone
+
 key: nobody 2
   decomp: * nobody ever *
     reasmb: Never? I find that hard to believe.
@@ -1137,6 +1217,7 @@ key: nobody 2
     reasmb: NET who wants (2)
   decomp: *
     reasmb: goto everyone
+
 key: noone 1
   decomp: *
     reasmb: goto everyone
@@ -1159,6 +1240,7 @@ key: never 1
     reasmb: Not yet, perhaps, but maybe in the future.
     reasmb: Never?
     reasmb: You say never, but I have a feeling rarely would be more correct.
+    reasmb: NET never say never 
     reasmb: goto always
 
 key: sometimes 1
@@ -1208,6 +1290,7 @@ key: if 1
 
 
 key: remember 1
+
   decomp: * i remember *
     reasmb: Do you often think of (2) ?
     reasmb: Does thinking of (2) bring anything else to mind ?
@@ -1220,6 +1303,8 @@ key: remember 1
     reasmb: NET remembering (2)
     reasmb: NET recalling (2)
     reasm_for_memory: recalling (2) can be related to this ?
+    reasm_for_memory: did you forget (2) ?
+
   decomp: * do you remember *
     reasmb: Did you think I would forget (2) ?
     reasmb: Why do you think I should recall (2) now ?
@@ -1227,12 +1312,14 @@ key: remember 1
     reasmb: You mentioned (2) ?
     reasmb: NET i remember (2)
     reasmb: NET remembering (2)
+
   decomp: * you remember *
     reasmb: How could I forget (2) ?
     reasmb: What about (2) should I remember ?
     reasmb: goto you
     reasmb: NET remembering (2)
     reasmb: NET I remember (2)
+
   decomp: *
     reasmb: NET (1)
 
@@ -1267,7 +1354,10 @@ key: name 1
     reasmb: Do you sometimes wish you could change your name?
     reasmb: NET (1)
 
-key: men 1
+
+####################### priority 2
+
+key: men 2
  decomp: * men are *
     reasmb:Certainly not all of them. But what if they are (2)?
     reasmb:You'd probably be complaining if they weren't (2).
@@ -1280,7 +1370,7 @@ key: men 1
     reasmb: tell me more about men...
     reasmb: NET (1)
 
-key: women 1
+key: women 2
  decomp: * women are *
     reasmb:That's quite a generalization. Certainly some are (2).
     reasmb:You'd probably gripe if they weren't (2).
@@ -1293,7 +1383,7 @@ key: women 1
     reasmb: tell me more about womens...
     reasmb: NET (1)
 
-key: tomorrow 1
+key: tomorrow 2
  decomp: *
 		reasmb:Forget tomorrow. Stay in the present.
 		reasmb:Nobody can see into the future.
@@ -1305,7 +1395,7 @@ key: tomorrow 1
 		reasmb: NET thinking about tomorrow
 		reasmb: NET (1)
 
-key: yesterday 1
+key: yesterday 2
  decomp: *
 		reasmb:Yesterday is gone. Concentrate on the present!
 		reasmb:Water under the bridge.
@@ -1314,7 +1404,7 @@ key: yesterday 1
 		reasmb:Lets not dwell too much on the past.
 		reasmb: NET (1)
 
-key: began 1
+key: began 2
  decomp: *
 		reasmb:What was your reaction to this new situation?
 		reasmb:You told me about the start. Tell me about the end.
@@ -1324,7 +1414,7 @@ key: began 1
 		reasmb:How did things go after the beginning?
 		reasmb: NET (1)
 
-key: concerned 1
+key: concerned 2
  decomp: *
 		reasmb:Many people feel that this is important.
 		reasmb:Do you think that this concern is abnormal in any way?
@@ -1337,7 +1427,7 @@ key: concerned 1
 		reasmb:How does your emotional turmoil affect your relationships?
 		reasmb: NET (1)
 	
-key: curious 1
+key: curious 2
  decomp: *
 		reasmb:Curiosity killed the cat.
 		reasmb:What would you like to know more about?
@@ -1345,7 +1435,7 @@ key: curious 1
 		reasmb:It may be best not to know everything.
 		reasmb: NET (1)
 
-key: disgusted 1
+key: disgusted 2
  decomp: *
 		reasmb:maybe you're just too sensitive. Do you think that revulsion is the correct response?
 		reasmb:Who could blame you. A truly disgusting situation.
@@ -1354,7 +1444,7 @@ key: disgusted 1
 		reasmb:Unbelievable. Who can blame anyone for being disgusted.
 		reasmb:What disgusts you the most?
 		reasmb: NET (1)
-key: insecure 1
+key: insecure 2
  decomp: *
                 reasmb:You're not sure what to do?
 		reasmb:What would help you to feel more self-assured?
@@ -1363,11 +1453,11 @@ key: insecure 1
 		reasmb:What makes you feel really secure?
 		reasmb:What could threaten your sense of security?
 		reasmb: NET (1)
-key: secure 1
+key: secure 2
  decomp: *
                 reasmb: goto secure
 
-key: mistake 1
+key: mistake 2
  decomp: *
 		reasmb:Everybody makes mistakes.
 		reasmb:Mistakes are just part of living.
@@ -1378,14 +1468,14 @@ key: mistake 1
 		reasmb:describe your most recent mistake.
 		reasmb: NET (1)
 
-key: personal 1
+key: personal 2
  decomp: *
 		reasmb:well, this is a good time to describe private things, don't you think?
 		reasmb:I bet more people know than you care to admit.
 		reasmb:Your secrets are safe with me.
 		reasmb: NET (1)
 
-key:agree 1
+key:agree 2
  decomp: *
 		reasmb:What reservations do you have?
 		reasmb:Who do you disagree with the most?
@@ -1395,7 +1485,7 @@ key:agree 1
 		reasmb:Does this agreement surprise you?
 		reasmb: NET (1)
 
-key:problem 1
+key:problem 2
  decomp: *
 		reasmb:Who have you talked with about this?
 		reasmb:Tell me all about your difficulty.
@@ -1404,7 +1494,7 @@ key:problem 1
 		reasmb:I understand.. Can you give me more details?
 		reasmb:Let's try to get it a little more out in the open.
 		reasmb: NET (1)
-key:talk 1
+key:talk 2
  decomp: *
 		reasmb:We all need to talk it out, sometimes.
 		reasmb:maybe you spend too much time talking and not enough time listening.
@@ -1414,7 +1504,7 @@ key:talk 1
 		reasmb:It helps to discuss anxieties.
 		reasmb:I'm listening.
 		reasmb: NET (1)
-key:answer 1
+key:answer 2
  decomp: *
 		reasmb:We're all looking for solutions.
 		reasmb:Often the question is more important than the answer.
@@ -1426,22 +1516,22 @@ key:answer 1
 		reasmb:maybe you should come up with your own answer.
 		reasmb: NET (1)
 
-key:both 1
+key:both 2
  decomp: *
 		reasmb:But what are the major differences?
 		reasmb:Not one more than the other?
 		reasmb:The similarities are striking.
 		reasmb: NET (1)
-key:neither 1
+key:neither 2
  decomp: *
 		reasmb:Neither? You know, I can help you more if you tell me the complete truth.
 		reasmb:well, there must be a third possibility.
 		reasmb:it seems to me that it must be one or the other.
 		reasmb: NET (1)
 
-##------------------ abstraction level 2 --------------------------------------
+##------------------ abstraction level 3 --------------------------------------
 
-key: my 2
+key: my 3
   decomp: * my* @family *
     reasmb: Tell me more about your family.
     reasmb: What else comes to mind when you think of your (3) ?
@@ -1517,7 +1607,7 @@ key: my 2
     reasm_for_memory: But your (2)...
     reasm_for_memory: Does that have anything to do with your (2) ?
 
-key: your 2
+key: your 3
   decomp: does your *
     reasmb:Do yours?
     reasmb:Why does it interest you whether or not my (1)
@@ -1539,13 +1629,13 @@ key: your 2
     reasmb: Why are you concerned over my (2) ?
     reasmb: What about your own (2) ?
     reasmb: Are you intersted about someone else's (2) ?
-    reasmb: Really, my (2) ?
+    reasmb: Really, interest you about my (2) ?
     reasmb: What makes you think of my (2) ?
     reasmb: NET my (2)
     reasmb: NET because my (2)
     reasmb: NET your (2)
     reasm_for_memory: Has this has something to do with my (2) ?
-    reasm_for_memory: everything is connected...even my (2) could influence this...
+    reasm_for_memory: everything is related...even my (2) 
 
 
 ##------------------ abstraction level 5-10 --------------------------------------
@@ -2304,7 +2394,16 @@ key: xswear 10
     reasmb: Does this topic make you feel angry ? 
     reasmb: Is something making you feel angry ? 
     reasmb: Does using that kind of language make you feel better ? 
-                reasmb: NET (1)
+    reasmb: NET (1)
+
+key: keytest 50
+   decomp: keytest x *
+    reasmb: KEYTEST X (1)
+   decomp: keytest *
+     reasmb: KEYTEST and STAR (1)
+   decomp: *
+    reasmb: KEYTEST DEFAULT (1)
+
 
 key: NET 100
   decomp: *
