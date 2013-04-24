@@ -245,7 +245,25 @@ key: tell 0
     reasmb: NET telling you (1)
     reasmb: NET telling (1)
   decomp: *
+    reasmb: telling is always a fun activity
     reasmb: NET (1)
+
+key: talk 0
+
+ decomp: talk about *
+   reasmb: I'm not expert of (1)
+   reasmb: (1) ? ok, why don't start from you
+   reasmb: NET talking about (1)
+
+ decomp: *
+	    reasmb:We all need to talk it out, sometimes.
+	    reasmb:maybe you spend too much time talking and not enough time listening.
+	    reasmb:Problems become smaller when shared.
+	    reasmb:Talking seems to be a lost art.
+	    reasmb:I enjoy a good conversation.
+	    reasmb:It helps to discuss anxieties.
+	    reasmb:I'm listening.
+	    reasmb: NET (1)
 
 key: hello 0
  decomp: *
@@ -337,7 +355,8 @@ key: this 0
     reasmb:Is it really (2)?
     reasmb:What would you do if it weren't (2)?
     reasmb: NET that is (2)
- decomp: *
+ decomp: this *
+    reasmb: this (1) ?, tell me more...
     reasmb: NET (1)
 
 key: thanks 0
@@ -373,6 +392,7 @@ key: let 0
     reasmb:You're resisting. I think it might be very helpful to you if we did (1)
     reasmb: NET don't (1)
  decomp: *
+    reasmb: goto xnone
     reasmb: NET (1)
 
 key: lots 0
@@ -381,6 +401,7 @@ key: lots 0
     reasmb:Really? But not more than your share.
     reasmb:I understand.. A large quantity. Well, what's your feeling about that?
  decomp: *
+    reasmb: goto xnone
     reasmb: NET (1)
 
 key: sure 0
@@ -398,6 +419,7 @@ key: sure 0
  decomp: * not sure *
     reasmb: goto insecure
  decomp: *
+    reasmb: goto xnone
     reasmb: NET (1)
 
 #------------------ abstraction level 1 --------------------------------------
@@ -457,6 +479,7 @@ key: was 1
     reasmb: What if I had been (2) ?
     reasmb: NET (1) was I (2)
   decomp: *
+    reasmb: goto xnone
     reasmb: NET (1)
 
 
@@ -777,19 +800,42 @@ key: you 1
     reasmb: NET being (2)
     reasmb: NET who is (2)
 
+  decomp: * where are you *
+    reasmb: goto where
+
   decomp: * are you *
     reasmb: Why are you interested in whether I am (2) or not ?
     reasmb: Would you prefer if I weren't (2) ?
-    reasmb: Perhaps I am (2) in your fantasies.
+    reasmb: Perhaps I am (2) in your fantasies :)
     reasmb: Do you sometimes think I am (2) ?
     reasmb: What if I were (2) ?
     reasmb: NET I am (2) 
-    reasmb: NET I am not (2) 
     reasmb: NET being (2)
     reasmb: NET who is (2)
     reasm_for_memory: uhmmm... i understand why you asked me if I were (2) :)
     reasm_for_memory: Just another question, why are you curious to know if I am (2) ?
     reasm_for_memory: No way related to the fact that I am (2) or not ? 
+
+  decomp: * have you *
+    reasmb: Why are you interested in whether I've (2) or not ?
+    reasmb: Would you prefer if I hadn't (2) ?
+    reasmb: Perhaps I have (2) in your fantasies :)
+    reasmb: Do you think I've (2) ?
+    reasmb: What if I had (2) ?
+    reasmb: NET I have (2) 
+    reasmb: NET having (2)
+    reasmb: NET who has (2)
+    reasm_for_memory: uhmmm... i understand why you asked me if I had (2) :)
+    reasm_for_memory: a question, why are you curious to know if I had (2) ?
+    reasm_for_memory: No way related to the fact that I have (2) ? 
+
+  decomp: * you have *
+    reasmb: What makes you think I have (2) ?
+    reasmb: Does it please you to believe I have (2) ?
+    reasmb: Do you sometimes wish you had (2) ?
+    reasmb: Perhaps you would like to have (2).
+    reasmb: NET having (2)
+    reasmb: NET who has (2)
 
   decomp:  * can you *
     reasmb: goto can
@@ -828,9 +874,15 @@ key: you 1
     reasmb: NET fans of (3)
     reasmb: NET people who like (3)
     reasmb: NET the desire of (3)
- 
+
   decomp: * let's * you
     reasmb: goto let
+
+  decomp: * asked you *
+    reasmb: i don't remember that :)
+    reasmb: ok, I would prefer other questions, go on
+    reasmb: when ?
+    reasmb: NET asked me (2)
 
   decomp: * you *
     reasmb: We were discussing you -- not me.
@@ -892,6 +944,7 @@ key: he 1
 
   decomp: *
     reasmb: NET (1)
+    reasmb: goto xnone
 
 key: it 1
  decomp: * it doesn't *
@@ -932,6 +985,7 @@ key: it 1
     reasmb: goto what
   decomp: *
     reasmb: NET (1)
+    reasmb: goto xnone
 
 key: we 1
  decomp: * when we *
@@ -942,6 +996,7 @@ key: we 1
     reasmb: goto alike
   decomp: *
     reasmb: NET (1)
+    reasmb: goto xnone
 
 key: they 1
  decomp: * they don't *
@@ -974,6 +1029,7 @@ key: they 1
     reasmb: goto alike
   decomp: *
     reasmb: NET (1)
+    reasmb: goto xnone
 
 ##------------------ abstraction level 1 --------------------------------------
 
@@ -1182,6 +1238,7 @@ key: can 1
 
   decomp: *
     reasmb: NET (1)
+    reasmb: goto xnone
 
 
 key: because 1
@@ -1344,6 +1401,7 @@ key: remember 1
 
   decomp: *
     reasmb: NET (1)
+    reasmb: goto xnone
 
 key: forget 1
   decomp: * i forget *
@@ -1355,6 +1413,7 @@ key: forget 1
     reasmb: Are you generally forgetful ?
     reasmb: Do you think you are suppressing (2) ?
     reasmb: NET remembering (2)
+
   decomp: * did you forget *
     reasmb: Why do you ask ?
     reasmb: Are you sure you told me ?
@@ -1366,6 +1425,7 @@ key: forget 1
     reasmb: NET I remember (2)
   decomp: *
     reasmb: NET (1)
+    reasmb: goto xnone
 
 key: name 1
   decomp: *
@@ -1515,16 +1575,6 @@ key:problem 2
 		reasmb:Sharing the burden sometimes lightens the load.
 		reasmb:I understand.. Can you give me more details?
 		reasmb:Let's try to get it a little more out in the open.
-		reasmb: NET (1)
-key:talk 2
- decomp: *
-		reasmb:We all need to talk it out, sometimes.
-		reasmb:maybe you spend too much time talking and not enough time listening.
-		reasmb:Problems become smaller when shared.
-		reasmb:Talking seems to be a lost art.
-		reasmb:I enjoy a good conversation.
-		reasmb:It helps to discuss anxieties.
-		reasmb:I'm listening.
 		reasmb: NET (1)
 key:answer 2
  decomp: *
@@ -1711,6 +1761,7 @@ key: volley 11
     reasmb: NET because volley 
     reasmb: NET my favourite volley player
     reasmb: NET (1)
+    reasmb: goto sport
 
 key: tennis 11
   decomp: * 
@@ -2290,6 +2341,7 @@ key: human 10
 		reasmb:are you joking ?!? ok, maybe not-so-human for some strange people...
  decomp: *
                 reasmb: NET (1)
+		reasmb: goto xnone
 
 
 #------------------ abstraction level >10 --------------------------------------
