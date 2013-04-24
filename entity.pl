@@ -32,7 +32,7 @@ sub juice
 {
     my ($raw_msg) = @_;
 #extract the part that cite the main elements of the query and that ends with a . or ?
-    $raw_msg =~ /(.*?)([\.|\?])/i;
+    $raw_msg =~ /(.*?)([\.|\?|!])/i;
     my $msg = "$1$2";
 }
 ###############################################################################
@@ -186,9 +186,9 @@ while ($true)
     print LOG "[$now] You: $message";
 
     my $reasmb = $bot->transform($message);
-    my $answer;
+    my $answer = $reasmb;  #already done if is not a NET response...
 
-# check for net powered knowledge answers
+# check for NET response
     if ($reasmb=~/NET/)
     {
 	$reasmb =~ s/(.*)NET(.*)/$2/g;
@@ -207,7 +207,7 @@ while ($true)
 SKIP_NET:
 	    print "\n  DEBUG--> skipping not searchable pattern: $reasmb" if ($debug_on);
 	    my $tmp_answer;
-	    until ( ($tmp_answer = $bot->transform($reasmb))!~/NET/  ) 
+	    until ( ($tmp_answer = $bot->transform($message))!~/NET/  ) 
 	    {
 		print "\n DEBUG--> skipping NET response $tmp_answer" if ($debug_on);
 	    };
