@@ -18,6 +18,7 @@ my $entity_name = "PGioio";
 my $debug_on = 0;
 my $net_on = 0;
 my $quick_on = 0;
+my $filter_on = 0;
 
 ###############################################################################
 sub searchable
@@ -40,11 +41,14 @@ sub sanity_check
     my ($msg) = @_;
     my $pass = 1; # ok is default
     $pass=0 if (length($msg)<15);
-
-    print "\n SANITY CHECK RETURNS $pass";
+    if ($filter_on)
+    {
+	$pass=0 if $msg=~ /sex|porn|fuck|porno/;
+    }
     $pass;
 }
 
+###############################################################################
 sub ssnet
 {
     my ($msg) = @_;
@@ -117,12 +121,11 @@ sub greetings
     my $now = localtime;
 
     print "\n______________________________________________________\n";
-    print "   c0n5c10u55n3t   v 02.10.2012 \n";
+    print "   c0n5c10u55n3t  \n";
     print "______________________________________________________\n";
-    print " Session local time: $now\n";
-    
-    print " > Connecting to system entity: ", $entity_mail, "\n";
-    print " > PLEASE WAIT\n";
+    print " session local time: $now\n";
+    print " > Initializing system entity: ", $entity_mail, "\n";
+    print " > Please wait\n";
 
     my $x = 10;
 
@@ -132,14 +135,14 @@ sub greetings
 	sleep(0.1);
     }
 
-    print "\n OK !\n";
-
+    print "\n Connected !\n";
     print "\n=====================================================\n";
 
-    typing ("Hi there, I'm doctor Gioio, prof. Patti told me we have about 3-4 minutes....");
-    typing ("Tell me something about you (family, work, hobby, ideas, etc...)");
+    typing ("Hi, I'm doctor Gioio, prof. Patti said me we have about 4-5 minutes");
+    typing ("Tell me something (family, work, hobby, ideas, etc...)");
 }
 
+###############################################################################
 sub parse_cmdline
 {
     for my $arg (@ARGV)
@@ -147,6 +150,7 @@ sub parse_cmdline
 	$debug_on = 1 if $arg eq "debug";
 	$net_on = 1 if $arg eq "net";
 	$quick_on = 1 if $arg eq "quick";
+	$filter_on = 1 if $arg eq "filter";
     }
 
 }
@@ -166,33 +170,46 @@ my $bot = new Chatbot::Eliza {
 # typing($bot->{initial}->[0] . "\n");
 
 my $true++;
+my $now = localtime;
 
-open(LOG, ">> log.txt");
+open(LOG, ">> log_$now.txt");
 
 while ($true) 
 {
     select((select(LOG), $|=1)[0]);
-    print "You> ";
-    my $message = <STDIN>;
-    print LOG $message;
 
-    my $answer = $bot->transform($message);
+    print "You> ";
+
+    my $message = <STDIN>;
+
+    $now = localtime;
+    print LOG "[$now] You: $message";
+
+    my $reasmb = $bot->transform($message);
+    my $answer;
 
 # check for net powered knowledge answers
-    if ($answer=~/NET/)
+    if ($reasmb=~/NET/)
     {
-	$answer =~ s/(.*)NET(.*)/$2/g;
-	if (&searchable($answer))
+	$reasmb =~ s/(.*)NET(.*)/$2/g;
+	if (&searchable($reasmb))
 	{
-	    $answer = &ssnet($answer)
-	}
-	else
-	{
-	    print "\n  DEBUG--> skipping not searchable $answer" if ($debug_on);
-	    my $tmp_answer;
-	    until ( ($tmp_answer = $bot->transform($answer))!~/NET/  ) 
+	    my $search_result = &ssnet($reasmb);
+	    if (!defined($search_result)) 
 	    {
-		print "\n DEBUG--> skipping NET powered response $tmp_answer" if ($debug_on);
+		print "\n  DEBUG--> skipping empty search result of: $reasmb" if ($debug_on);
+		goto SKIP_NET;
+	    }
+	    $answer = $search_result;
+	}
+	else #if not searchable (e.g. "yes" only response, too generic)
+	{
+SKIP_NET:
+	    print "\n  DEBUG--> skipping not searchable pattern: $reasmb" if ($debug_on);
+	    my $tmp_answer;
+	    until ( ($tmp_answer = $bot->transform($reasmb))!~/NET/  ) 
+	    {
+		print "\n DEBUG--> skipping NET response $tmp_answer" if ($debug_on);
 	    };
 	    $answer = $tmp_answer;
 	}
@@ -206,7 +223,8 @@ while ($true)
     }
     sleep(length($message)*0.1) if (!$quick_on);
     typing("$answer\n");
-    print LOG "$entity_name> $answer\n";
+    $now = localtime;
+    print LOG "[$now] $entity_name: $answer\n";
 }
 
 exit;
