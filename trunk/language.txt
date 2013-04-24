@@ -25,6 +25,7 @@ quit: goodbye
 quit: done
 quit: exit
 quit: quit
+
 pre: dont don't
 pre: didnt din't
 pre: cant can't
@@ -62,9 +63,8 @@ pre: thanks thank
 
 pre: kid baby
 pre: child baby
-pre: son baby
-pre: daughter baby
-pre: sons baby
+pre: kids baby
+pre: children baby
 
 pre: university school
 pre: study school
@@ -104,10 +104,14 @@ post: am are
 post: your my
 post: yours mine
 pre: were was
+
 post: me you
+
 pre: you're you are
 pre: i'm i am
+pre: im i am
 pre: it's it is
+
 post: myself yourself
 post: yourself myself
 post: i you
@@ -115,24 +119,28 @@ post: you me
 post: my your
 post: me you
 post: i'm you are
+
 pre: same alike
 pre: identical alike
 pre: equivalent alike
-synon: preferred favourite favorite prefered
+
+synon: preferred favourite favorite preferred
 synon: belief feel think believe wish
-synon: family mother mom father dad daddy sister brother mum uncle parents cousin niece
-synon: desire want like need
+synon: family mother mom father dad daddy sister brother mum uncle parents cousin niece son sons daughter
+synon: desire want like need love
 synon: sad unhappy depressed stressed
 synon: happy elated glad better
 synon: cannot can't
 synon: everyone everybody nobody noone
 synon: be am is are was
 synon: insane mad crazy
-synon: body head hands hand leg arm face feet foot knee finger hair shoulder node mouth ears eye eyes
-synon: animal cat dog cats dogs pets pet animals rabbit rabbits
+synon: body head hands hand leg arm face feet foot knee finger hair shoulder node mouth ears eye eyes heart
+synon: animal cat dog cats dogs pets pet animals rabbit rabbits bird birds
 synon: food restaurant pizza chicken pasta meat fish bread potato sausage eating eat
-synon: music guitar bass piano sax flute drum drums singing 
+synon: art paint painting museum arts artistic photography theatre film poetry drawing books literature dance dancing
+synon: music guitar bass piano sax flute drum drums singing singer band
 synon: colors color blue green red yellow white black 
+synon: he she
 
 
 key: xnone -1
@@ -354,6 +362,11 @@ key: let 0
     reasmb:Didn't your parents allow you to (1)?
     reasmb: NET i let you (1)
     reasmb: NET letting (1)
+ decomp: let's *
+    reasmb:It's okay with me if we (1)
+    reasmb:Would you like to do something other ?
+    reasmb:I think it might be very useful to you if we did (1)
+    reasmb: NET (1)
  decomp: let's not *
     reasmb:It's okay with me if we don't (1)
     reasmb:What would you like to do instead?
@@ -730,6 +743,14 @@ key: i 1
     reasmb: NET my favourite (3)
     reasmb: NET is the best (3)
 
+  decomp: * i * @art *
+    reasmb: do you think oy have artistic skills ?
+    reasmb: continue, I like discussing about arts...
+    reasmb: tell me more about your favorite artist
+    reasmb: NET i (2) (3) (4)
+    reasmb: NET my favourite (3)
+    reasmb: NET the best (3)
+
   decomp: because i *
     reasmb: goto because
 
@@ -739,7 +760,6 @@ key: i 1
     reasmb: Every time I hear that "(1)", there's some reason :)
     reasmb: NET (1)
     reasmb: NET reason (1)
-    reasmb: NET when I say (1)
     reasmb: NET told me (1)
 
 key: you 1
@@ -771,6 +791,9 @@ key: you 1
     reasm_for_memory: Just another question, why are you curious to know if I am (2) ?
     reasm_for_memory: No way related to the fact that I am (2) or not ? 
 
+  decomp:  * can you *
+    reasmb: goto can
+
   decomp: * you* me *
     reasmb: Why do you think I (2) you ?
     reasmb: You like to think I (2) you -- don't you ?
@@ -797,91 +820,76 @@ key: you 1
   decomp: * why don't you *
     reasmb: goto why
 
+  decomp: * you @desire *
+    reasmb: Suppose I got (3) soon.
+    reasmb: What if I never got (3) ?
+    reasmb: What would getting (3) mean to you ?
+    reasmb: What does wanting (3) have to do with this discussion ?
+    reasmb: NET fans of (3)
+    reasmb: NET people who like (3)
+    reasmb: NET the desire of (3)
+ 
+  decomp: * let's * you
+    reasmb: goto let
+
   decomp: * you *
     reasmb: We were discussing you -- not me.
     reasmb: You're not really talking about me, are you ?
     reasmb: that's fine, go on, I prefer to not talk about me
     reasmb: continue by talking about you...
     reasmb: ...pardon ?
-    reasmb: NET (2)
     reasmb: NET (1) you (2)
 
-key: he 1
-  decomp: * he @cannot *
-    reasmb:What did you do to make him get (3)?
-    reasmb:How hard is it for you to get (3)
-    reasmb:How often do you get (3)
-    reasmb: NET who can't (3)
-    reasmb: NET not (3)
-  decomp: * he got *
-    reasmb:What did you do to make him get (2)?
-    reasmb:How hard is it for you to get (2)?
-    reasmb:How often do you get (2)?
-    reasmb: NET getting (2)
-  decomp: * he doesn't *
-    reasmb:What if he did (2)?
-    reasmb:Since he doesn't, maybe you should.
-    reasmb:Do you believe that he can (2) ?
-    reasmb:What made you think he would (2)?
-    reasmb:How do you feel that he doesn't (2)?
-    reasmb: NET who doesn't (2)
-    reasmb: NET not (2)
-  decomp: * he stopped *
-    reasmb:How come he stopped (2)?
-    reasmb:Some people have great difficulty stopping (2)
-    reasmb:How were you involved in getting him to stop (2)?
-    reasmb: NET stopping (2)
-  decomp: * he was *
-    reasmb:Now do you want him to be (2)?
-    reasmb:And he isn't anymore?
-    reasmb:How did you react?
-    reasmb: NET who is (2)
-    reasmb: NET being (2)
-    reasmb: NET that was (2)
-  decomp: * @be *like *
-    reasmb: goto alike
-  decomp: *
-    reasmb: NET (1)
-
 key: she 1
-  decomp: * she @cannot *
-    reasmb:What did you do to make her get (2)?
-    reasmb:How hard is it for you to get (2)
-    reasmb:How often do you get (2)
-    reasmb:Can't she really? Or is it just that you don't want her to?
-    reasmb:But, she could if...
-    reasmb:it think you're really the one who'd like to (2)!
-    reasmb: NET who can't (3)
+    decomp: *
+    reasmb: goto he
+
+key: he 1
+  decomp: * @he got *
+    reasmb: (2), and what did you do to get (3)?
+    reasmb:How hard is it for you to get (3)?
+    reasmb:How often do you get (3)?
+    reasmb: NET getting (3)
+
+  decomp: * @he doesn't *
+    reasmb:What if (2) did (3)?
+    reasmb:Since (2) doesn't, maybe you should.
+    reasmb:Do you believe that (2) can (3) ?
+    reasmb:What made you think (2) would (3)?
+    reasmb:How do you feel that (2) doesn't (3)?
+    reasmb: NET who doesn't (3)
     reasmb: NET not (3)
-  decomp: * she got *
-    reasmb:What did you do to make her get (2)?
-    reasmb:How hard is it for you to get (2)?
-    reasmb:How often do you get (2)?
-    reasmb:How did you feel when she got (2)?
-    reasmb:Of course, nothing you did made her get (2).
-    reasmb: NET getting (2)
-  decomp: * she doesn't *
-    reasmb:What if she did (2)?
-    reasmb:Since she doesn't, maybe you should.
-    reasmb:Do you believe that she can (2) ?
-    reasmb:What made you think she would (2)?
-    reasmb:How do you feel that she doesn't (2)?
-    reasmb:And you feel she should (2) ?
-    reasmb:How do you feel about the fact that she doesn't (2)?
-    reasmb:How could she (2)?
-    reasmb:And you want her to (2).
-    reasmb:How would you feel if she did (2)? Be honest.
-    reasmb:You're pleased that she doesn't (2)! It's obvious.
-    reasmb: NET who doesn't (2)
-    reasmb: NET not (2)
-  decomp: * she has *
-    reasmb:How do you feel that she has (2)?
-    reasmb:How come she has (2)?
-    reasmb:Do you want to have (2)?
-    reasmb: NET who has (2)
-    reasmb: NET having (2)
+
+  decomp: * @he stopped *
+    reasmb:How come he stopped (3)?
+    reasmb:Some people have great difficulty stopping (3)
+    reasmb:How were you involved in getting him to stop (3)?
+    reasmb: NET stopping (3)
+
+  decomp: * @he was *
+    reasmb: Now (2) still wants to be (3)?
+    reasmb: And (2) isn't anymore?
+    reasmb: How did you react?
+    reasmb: NET was (3)
+    reasmb: NET being (3)
+
+  decomp: * @he is *
+    reasmb: do you think (2) likes to be (3)?
+    reasmb: And (2) isn't anymore?
+    reasmb: what do you think of being (3)
+    reasmb: (3)... and you ?
+    reasmb: NET who is (3)
+    reasmb: NET being (3)
+
+  decomp: * @he @cannot *
+    reasmb: goto can
+
+  decomp: * @he can *
+    reasmb: goto can
+
   decomp: * @be *like *
     reasmb: goto alike
+
   decomp: *
     reasmb: NET (1)
 
@@ -1006,7 +1014,7 @@ key: what 1
   decomp: * he *
     reasmb: goto he
   decomp: * she *
-    reasmb: goto she
+    reasmb: goto he
   decomp: * we *
     reasmb: goto we
   decomp: * your *
@@ -1157,6 +1165,20 @@ key: can 1
     reasmb: Do you want to be able to (2) ?
     reasmb: Perhaps you don't want to (2).
     reasmb: NET you can (2)
+
+  decomp: * he @cannot *
+    reasmb: do you make something so that him get (3)?
+    reasmb: How hard is it for you to get (3)
+    reasmb: and you ? How often do you get (3)
+    reasmb: NET who can't (3)
+    reasmb: NET not (3)
+
+  decomp: * he can *
+    reasmb:What did you do to make him (2)?
+    reasmb:How hard is it for you to (2)
+    reasmb:How often do you (2)
+    reasmb: NET who can (2)
+    reasmb: NET he can (2)
 
   decomp: *
     reasmb: NET (1)
@@ -1900,7 +1922,7 @@ key: dream 10
 	reasmb:Do you have many disturbing nightmares?
 	reasmb:Dreams sometimes reflect subconscious desires.
 	reasmb:Does your mind wander sometimes when you are awake?
-	reasmb:Do you dream sometimes about your ^?
+	reasmb:Do you dream sometimes about your childhood ?
 	reasmb:describe your favorite fantasy.
 	reasmb:maybe you would benefit from psychoanalysis based on your dreams.
 	reasmb: What does that dream suggest to you ?
@@ -2082,7 +2104,7 @@ key: friend 10
 		reasmb:Who do you usually talk to when you have a personal problem?
 		reasmb:Do you make friends easily?
 		reasmb:maybe some of your friends worry you?
-		reasmb:How well do you get along with your ^?
+		reasmb:How well do you get along with your friends ?
 		reasmb:Do you have any friends you can confide in?
 		reasmb:Our companionships are vital to our psychological well being.
 		reasmb:Talking with your friends might make you less stressd, don't you think?
@@ -2149,6 +2171,8 @@ key: school 10
 	reasmb: NET (1)
 
 key: love 10
+ decomp: * i love *
+                reasmb: goto i
  decomp: *
 		reasmb:describe your love life.
 		reasmb:What do you love most?
@@ -2229,7 +2253,7 @@ key: hurt 10
 key: angry 10
  decomp: *
 		reasmb:How does emotional turmoil influence your relationships?
-		reasmb:Would your ^ get angry in this situation?
+		reasmb:Would you really get angry in this situation?
 		reasmb:It may help to vent negative emotions.
 		reasmb:maybe a little alcohol would help quiet the inner rage.
 		reasmb:Everyone gets upset sometimes.
@@ -2395,6 +2419,12 @@ key: xswear 10
     reasmb: Is something making you feel angry ? 
     reasmb: Does using that kind of language make you feel better ? 
     reasmb: NET (1)
+
+
+key: colors 10
+    decomp: * @colors *
+    reasmb: some interesting things show (2)
+    
 
 key: keytest 50
    decomp: keytest x *
