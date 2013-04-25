@@ -381,16 +381,19 @@ key: let 0
     reasmb:Didn't your parents allow you to (1)?
     reasmb: NET i let you (1)
     reasmb: NET letting (1)
+
  decomp: let's *
     reasmb:It's okay with me if we (1)
     reasmb:Would you like to do something other ?
     reasmb:I think it might be very useful to you if we did (1)
     reasmb: NET (1)
+
  decomp: let's not *
     reasmb:It's okay with me if we don't (1)
     reasmb:What would you like to do instead?
     reasmb:You're resisting. I think it might be very helpful to you if we did (1)
     reasmb: NET don't (1)
+
  decomp: *
     reasmb: goto xnone
     reasmb: NET (1)
@@ -400,6 +403,7 @@ key: lots 0
     reasmb:Quite a bit, eh? Can you be more precise?
     reasmb:Really? But not more than your share.
     reasmb:I understand.. A large quantity. Well, what's your feeling about that?
+
  decomp: *
     reasmb: goto xnone
     reasmb: NET (1)
@@ -416,6 +420,7 @@ key: sure 0
     reasm_for_memory: being sure (3) can be related to this...
     reasmb: NET being sure (3)
     reasmb: NET sure (3)
+
  decomp: * not sure *
     reasmb: goto insecure
  decomp: *
@@ -496,7 +501,7 @@ key: i 1
     reasmb: NET people who like (3)
     reasmb: NET the desire of (3)
     reasm_for_memory: ok, but I need to know more why you need (3)...
-    reasm_for_memory: sorry, I was thinking if this can be related to your will to (3), maybe...
+    reasm_for_memory: sorry, I was thinking if this can be related to your desire of (3), maybe...
     reasm_for_memory: ...and you also desire (3) :) isn't too much ? go on, I'm joking...
   decomp: * @be *like *
     reasmb: goto alike
@@ -779,7 +784,7 @@ key: i 1
 
   decomp: *
     reasmb: Can you be more precise on that ?
-    reasmb: Do you say (1) for some special reason ?
+    reasmb: Do you say that (1) for some special reason ?
     reasmb: Every time I hear that "(1)", there's some reason :)
     reasmb: NET (1)
     reasmb: NET reason (1)
@@ -883,6 +888,9 @@ key: you 1
     reasmb: ok, I would prefer other questions, go on
     reasmb: when ?
     reasmb: NET asked me (2)
+
+  decomp: * thank you *
+    reasmb: goto thanks
 
   decomp: * you *
     reasmb: We were discussing you -- not me.
