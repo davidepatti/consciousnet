@@ -4,6 +4,7 @@ use Chatbot::Eliza;
 use WWW::Google::CustomSearch;
 use POSIX;
 use Time::HiRes qw(sleep);
+use Data qw($api_key $cx);
 
 use strict; 
 use warnings;
@@ -15,6 +16,7 @@ my $debug_on = 0;
 my $no_net = 0;
 my $quick_on = 0;
 my $filter_on = 0;
+my $engine  = WWW::Google::CustomSearch->new(api_key => $api_key, cx => $cx);
 
 ###############################################################################
 sub searchable
