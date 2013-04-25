@@ -870,7 +870,6 @@ script data only has 4 such items.
 			$reasmb =  $self->transform( shift @{ $self->memory }, "use memory" );
 
 		} else {
-		    print "\n RETURNING xnone $string";
 			$reasmb =  $self->transform("xnone $string");
 		}
 
