@@ -8,15 +8,11 @@ use Time::HiRes qw(sleep);
 use strict; 
 use warnings;
 
-my $api_key = 'AIzaSyAOZZHHWpMWo_cNt_iyCsmvLMa_XIEvofU';
-my $cx      = '002983251636507551537:jfswnqh-cd8';
-my $engine  = WWW::Google::CustomSearch->new(api_key => $api_key, cx => $cx);
-
 
 my $entity_mail = "pgiogio\@mit.edu";
 my $entity_name = "PGioio";
 my $debug_on = 0;
-my $net_on = 0;
+my $no_net = 0;
 my $quick_on = 0;
 my $filter_on = 0;
 
@@ -148,7 +144,7 @@ sub parse_cmdline
     for my $arg (@ARGV)
     {
 	$debug_on = 1 if $arg eq "debug";
-	$net_on = 1 if $arg eq "net";
+	$no_net = 1 if $arg eq "no_net";
 	$quick_on = 1 if $arg eq "quick";
 	$filter_on = 1 if $arg eq "filter";
     }
