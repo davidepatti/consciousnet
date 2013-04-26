@@ -47,7 +47,7 @@ sub sanity_check
 }
 
 ###############################################################################
-sub ssnet
+sub nett
 {
     my ($msg) = @_;
 
@@ -160,7 +160,7 @@ $|++;
 
 my $bot = new Chatbot::Eliza {
 	name       => "Paul", 
-        scriptfile => "language.txt",
+        scriptfile => "nettgw.txt",
 	debug      => 1, prompts_on => 1, memory_on  => 1,
 	myrand     => sub { my $N = defined $_[0] ? $_[0] : 1;  rand($N); },
 };
@@ -171,6 +171,8 @@ my $true++;
 my $now = localtime;
 
 open(LOG, ">> log_$now.txt");
+
+my $last_msg = "none";
 
 while ($true) 
 {
@@ -183,6 +185,7 @@ while ($true)
     $now = localtime;
     print LOG "[$now] You: $message";
 
+START:
     my $reasmb = $bot->transform($message);
     my $answer = $reasmb;  #already done if is not a NET response...
 
@@ -192,7 +195,7 @@ while ($true)
 	$reasmb =~ s/(.*)NET(.*)/$2/g;
 	if (&searchable($reasmb))
 	{
-	    my $search_result = &ssnet($reasmb);
+	    my $search_result = &nett($reasmb);
 	    if (!defined($search_result)) 
 	    {
 		print "\n  DEBUG--> skipping empty search result of: $reasmb" if ($debug_on);
@@ -219,6 +222,16 @@ SKIP_NET:
 	print $debugging;
 	$bot->_debug_memory();
     }
+
+    if ($answer eq $last_msg)
+    {
+	print "\n DEBUG--> skipping repeated: $answer" if ($debug_on);
+	goto START;
+    }
+
+    $last_msg = $answer;
+
+
     sleep(length($message)*0.1) if (!$quick_on);
     typing("$answer\n");
     $now = localtime;
