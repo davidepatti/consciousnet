@@ -16,6 +16,9 @@ my $debug_on = 0;
 my $no_net = 0;
 my $quick_on = 0;
 my $filter_on = 0;
+
+
+# initialize your data  api_key and cx
 my $engine  = WWW::Google::CustomSearch->new(api_key => $api_key, cx => $cx);
 
 ###############################################################################
@@ -51,15 +54,18 @@ sub nett
 {
     my ($msg) = @_;
 
-    if ($debug_on)
+    print "\n DEBUG: ** Google API searching ** : $msg\n" if $debug_on;
+
+    my $result = eval { $engine->search($msg) };
+
+    if (!defined($result)) 
     {
-	print "\n DEBUG--> Google API searching: ";
-	print $msg, "\n"; 
+	print "\n DEBUG: **UNDEF NET RESPONSE** " if $debug_on;
+	return undef;
     }
-    my $result = $engine->search($msg);
+
     my $clean;
     my $n = 0;
-
     my @responses;
 
     foreach my $item ($result->items) 
@@ -82,7 +88,7 @@ sub nett
 	}
     }
     my $chosen= int(rand($n));
-    $responses[$chosen];
+    return $responses[$chosen];
 }
 
 ###############################################################################
@@ -99,7 +105,7 @@ sub typing
     {
 	while ( $start<length($msg) )
 	{
-	    $count = int(rand(5));
+	    $count = int(rand(7));
 	    my $speed = (rand)*0.3;
 	    sleep($count*$speed);
 	    print substr($msg,$start,$count);
@@ -119,7 +125,7 @@ sub greetings
     my $now = localtime;
 
     print "\n______________________________________________________\n";
-    print "   c0n5c10u55n3t  \n";
+    print "   c0n5c10u5n3tt  \n";
     print "______________________________________________________\n";
     print " session local time: $now\n";
     print " > Initializing system entity: ", $entity_mail, "\n";
@@ -136,8 +142,7 @@ sub greetings
     print "\n Connected !\n";
     print "\n=====================================================\n";
 
-    typing ("Hi, I'm doctor Gioio, prof. Patti said me we have about 4-5 minutes");
-    typing ("Tell me something (family, work, hobby, ideas, etc...)");
+    typing ("Hi, I'm doctor Gioio, prof. Patti said me we have about 4-5 minutes \n Tell me something (family, work, hobby, ideas, etc...)");
 }
 
 ###############################################################################
@@ -198,22 +203,22 @@ START:
 	    my $search_result = &nett($reasmb);
 	    if (!defined($search_result)) 
 	    {
-		print "\n  DEBUG--> skipping empty search result of: $reasmb" if ($debug_on);
+		print "\n  DEBUG--> skipping empty/undef search result of: $reasmb" if ($debug_on);
 		goto SKIP_NET;
 	    }
 	    $answer = $search_result;
 	}
 	else #if not searchable (e.g. "yes" only response, too generic)
 	{
-SKIP_NET:
 	    print "\n  DEBUG--> skipping not searchable pattern: $reasmb" if ($debug_on);
+SKIP_NET:
 	    my $tmp_answer;
 	    until ( ($tmp_answer = $bot->transform($message))!~/NET/  ) 
 	    {
 		print "\n DEBUG--> skipping NET response $tmp_answer" if ($debug_on);
 	    };
 	    $answer = $tmp_answer;
-	}
+	} # not searchable
     }
 
     if ($debug_on)
@@ -232,7 +237,7 @@ SKIP_NET:
     $last_msg = $answer;
 
 
-    sleep(length($message)*0.1) if (!$quick_on);
+    sleep(length($message)*0.1) unless $quick_on;
     typing("$answer\n");
     $now = localtime;
     print LOG "[$now] $entity_name: $answer\n";
