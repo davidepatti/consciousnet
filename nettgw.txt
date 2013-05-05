@@ -152,9 +152,8 @@ key: xnone -1
     reasmb: Interesting...
     reasmb: Why did you say that?
     reasmb: Tell me more about that.
-    reasmb: NET what do you think about (1)
-    reasmb: NET do you know that (1)
-    reasmb: NET I know (1)
+    reasmb: NET saying "(1)"
+    reasmb: NET I know that (1)
     reasmb: NET talking about (1)
     reasmb: NET Why (1)?
     reasmb: NET because (1)
@@ -186,7 +185,6 @@ key: NOT_USED -1
     reasmb: Just pretend you're talking to a friend...
     reasmb: Does talking to me help?
     reasmb: Let's try to stay on the main topic.
-    reasmb: Can you focus your thoughts a little more?
     reasmb: uhmmm, what does that suggest to you?
     reasmb: ok, describe your family
     reasmb: What else would you like to talk about today?
@@ -601,7 +599,7 @@ key: i 1
     reasm_for_memory: maybe because you can't (3) ?
 
   decomp: * i don't *
-    reasmb: Don't you really (2) ?
+    reasmb: Don't you really (2) ? why ?
     reasmb: Why don't you (2) ?
     reasmb: Do you wish to be able to (2) ?
     reasmb: Does that trouble you ?
@@ -610,7 +608,7 @@ key: i 1
     reasmb: NET it's hard to (2)
     reasmb: NET trying to (2)
     reasm_for_memory: so, you said you don't (2), go on
-    reasm_for_memory: do you know other people that don't (2)
+    reasm_for_memory: do you know other people that don't (2) ?
 
   decomp: * i didn't *
     reasmb: you really not (2) ?
@@ -621,7 +619,7 @@ key: i 1
     reasmb: NET it's hard to (2)
     reasmb: NET trying to (2)
     reasm_for_memory: so, ealry you said you not (2), continue
-    reasm_for_memory: do you know other people that did not (2)
+    reasm_for_memory: do you know other people that did not (2) ?
 
   decomp: * i feel *
     reasmb: Tell me more about such feelings.
@@ -744,6 +742,16 @@ key: i 1
     reasmb: NET you are sure (2)
     reasmb: NET being sure (2)
 
+  decomp: * i have to *
+    reasmb: goto must
+
+  decomp: * i have *
+    reasmb: having (2) is very common 
+    reasmb: did you ever think of not having (2) ?
+    reasmb: what if you had not (2) ?
+    reasmb: NET having (2)
+    reasmb: NET (1) i have (2)
+
   decomp: * when i *
     reasmb:And this makes you uncomfortable?
     reasmb:How could you change this?
@@ -782,6 +790,7 @@ key: i 1
   decomp: because i *
     reasmb: goto because
 
+
   decomp: *
     reasmb: Can you be more precise on that ?
     reasmb: Do you say that (1) for some special reason ?
@@ -807,6 +816,9 @@ key: you 1
 
   decomp: * where are you *
     reasmb: goto where
+
+  decomp:  how * you *
+    reasmb: goto how
 
   decomp: * are you *
     reasmb: Why are you interested in whether I am (2) or not ?
@@ -861,6 +873,9 @@ key: you 1
     reasmb: NET when you (2)
     reasmb: NET (2)
 
+  decomp:  where * 
+    reasmb: goto where
+
   decomp: do you *
     reasmb: not sure... continue
     reasmb: can you repeat using other words ?
@@ -896,9 +911,10 @@ key: you 1
     reasmb: We were discussing you -- not me.
     reasmb: You're not really talking about me, are you ?
     reasmb: that's fine, go on, I prefer to not talk about me
-    reasmb: continue by talking about you...
+    reasmb: continue talking about you...
     reasmb: ...pardon ?
     reasmb: NET (1) you (2)
+    reasmb: NET (1) I (2)
 
 key: she 1
     decomp: *
@@ -984,7 +1000,7 @@ key: it 1
   decomp: * it is *
     reasmb: (2)....uhmmm, let's continue
     reasmb: ok, I understand the meaning of being (2), but please go on ...
-    reasmb: what do you mean exactly by (2) ?
+    reasmb: what do you mean exactly by "(2)" ?
     reasmb: NET it is (2)
     reasmb: NET being (2)
   decomp: * is it *
@@ -1119,13 +1135,12 @@ key: when 1
     reasmb: goto what
 
 key: where 1
-  decomp: * where are you *
+  decomp: * where * you *
     reasmb: dont matter "where" , but "how", remeber :) and you ?
     reasmb: sometimes all the places seems the same, what are your favourite ?
     reasmb: Did I said you that my collegues say I don't have any kind of sense-of-orientation ?
     reasmb: every place is good for, believe me, what do you think ?
-    reasmb: NET where am I (2)
-    reasmb: NET I am (2)
+    reasmb: NET where (2) I (3) ?
 
   decomp:  where *
     reasmb: NET where (1)
@@ -2487,17 +2502,15 @@ key: colors 10
     
 
 key: keytest 50
-   decomp: keytest x *
-    reasmb: KEYTEST X (1)
-   decomp: keytest *
-     reasmb: KEYTEST and STAR (1)
    decomp: *
     reasmb: KEYTEST DEFAULT (1)
+    reasmb: DEFAULT2
 
 
 key: NET 100
   decomp: *
     reasmb: NET (1)
+    reasmb: DEFAULT_net_2
 
 #------------------ abstraction level 100 --------------------------------------
 #
