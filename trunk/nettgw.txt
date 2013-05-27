@@ -138,7 +138,7 @@ synon: body head hands hand leg arm face feet foot knee finger hair shoulder nod
 synon: animal cat dog cats dogs pets pet animals rabbit rabbits bird birds
 synon: food restaurant pizza chicken pasta meat fish bread potato sausage eating eat
 synon: art paint painting museum arts artistic photography theatre film poetry drawing books literature dance dancing
-synon: music guitar bass piano sax flute drum drums singing singer band
+synon: music guitar bass piano sax flute drum drums singing singer band song
 synon: colors color blue green red yellow white black 
 synon: he she
 
@@ -211,6 +211,7 @@ key: yes 0
     reasmb: Okay, Are you sure?
     reasmb: NET (1)
     reasmb: NET when you say (1)
+    reasmb: NET saying yes (1) means
 
 key: no 0
   decomp: * no one *
@@ -230,8 +231,9 @@ key: no 0
     reasmb: What else would you like to talk about today?
     reasmb: are you sad sometimes?
     reasmb: Can you focus your thoughts a little more?
+    reasmb: what about your family ?
     reasmb: Don't be afraid to open up a little more.
-    reasmb: again, you can write other words to explain this if you want
+    reasmb: again, you can write other words to explain this if you want...
     reasmb: NET (1)
     reasmb: NET when you say (1)
 
@@ -690,10 +692,11 @@ key: i 1
     reasm_for_memory: thinking (2) can influence this ?
 
   decomp: * i think *
-    reasmb:What make you think (2)?
+    reasmb: What make you think (2)?
     reasmb: NET thinking (2)
     reasmb: NET when I think (2)
-    reasm_for_memory: thinking (2) can influence this ?
+    reasmb: why do you think (2) ?
+    reasm_for_memory: thinking (2) could influence your answers ?
 
   decomp: * i liked *
     reasmb:Do you still like (2)?
@@ -795,6 +798,8 @@ key: i 1
     reasmb: Can you be more precise on that ?
     reasmb: Do you say that (1) for some special reason ?
     reasmb: Every time I hear that "(1)", there's some reason :)
+    reasmb: ... uhm, saying this about you it's good for our chatting, go on...
+    reasmb: you... ah, really ?
     reasmb: NET (1)
     reasmb: NET reason (1)
     reasmb: NET told me (1)

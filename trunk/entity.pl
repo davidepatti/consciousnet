@@ -60,7 +60,7 @@ sub nett
 
     if (!defined($result)) 
     {
-	print "\n DEBUG: **UNDEF NET RESPONSE** " if $debug_on;
+	print "\n DEBUG: **UNDEF NET RESPONSE**, err: $@ " if $debug_on;
 	return undef;
     }
 
@@ -96,7 +96,6 @@ sub typing
 {
     my ($msg) = @_;
 #sleep(int(length($msg)/10)) unless $quick_on;
-    print "$entity_name> ";
 
     my $start = 0;
     my $count = 0;
@@ -105,10 +104,20 @@ sub typing
     {
 	while ( $start<length($msg) )
 	{
-	    $count = int(rand(7));
-	    my $speed = (rand)*0.3;
+	    $count = int(rand(2)+1);
+	    my $speed = (rand)*0.4;
 	    sleep($count*$speed);
-	    print substr($msg,$start,$count);
+	    my $snippet = substr($msg,$start,$count);
+
+	    print $snippet;
+	    if ($snippet =~ /(.*?)\s/)
+	    {
+		if (rand(5)<1) 
+		{
+		    sleep(int(rand(3)));
+		}
+	    }
+
 	    $start+=$count;
 	}
     }
@@ -237,7 +246,8 @@ SKIP_NET:
     $last_msg = $answer;
 
 
-    sleep(length($message)*0.1) unless $quick_on;
+    print "$entity_name> ";
+    sleep(length($message)*0.1+0.5) unless $quick_on;
     typing("$answer\n");
     $now = localtime;
     print LOG "[$now] $entity_name: $answer\n";
