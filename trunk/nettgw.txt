@@ -144,7 +144,7 @@ synon: he she
 
 
 key: xnone -1
-  decomp: xnone * 
+  decomp: * 
     reasmb: All right, can you tell me more?
     reasmb: Very interesting. Can you provide more details?
     reasmb: I am listening. Continue...
@@ -159,6 +159,7 @@ key: xnone -1
     reasmb: NET because (1)
     reasmb: NET (1)
     
+
 key: NOT_USED -1
   decomp: * 
     reasmb: I'm not sure I understand fully, in other words ?
