@@ -10,12 +10,13 @@ use strict;
 use warnings;
 
 
+#defaults for command line
 my $entity_mail = "pgiogio\@mit.edu";
 my $entity_name = "PGioio";
 my $debug_on = 0;
 my $no_net = 0;
 my $quick_on = 0;
-my $filter_on = 0;
+my $filter_on = 1;
 
 
 # initialize your data  api_key and cx
@@ -44,7 +45,7 @@ sub sanity_check
     $pass=0 if (length($msg)<15);
     if ($filter_on)
     {
-	$pass=0 if $msg=~ /sex|porn|fuck|porno/;
+	$pass=0 if $msg=~ /sex|porn|fuck|porno|sperm|anal|dildo|mast.rbate|pussy|vagina|whore|suck/;
     }
     $pass;
 }
@@ -104,8 +105,8 @@ sub typing
     {
 	while ( $start<length($msg) )
 	{
-	    $count = int(rand(2)+1);
-	    my $speed = (rand)*0.4;
+	    $count = int(rand(3)+1);
+	    my $speed = (rand)*0.2;
 	    sleep($count*$speed);
 	    my $snippet = substr($msg,$start,$count);
 
@@ -132,6 +133,7 @@ sub typing
 sub greetings
 {
     my $now = localtime;
+    system("clear");
 
     print "\n______________________________________________________\n";
     print "   c0n5c10u5n3tt  \n";
@@ -151,7 +153,8 @@ sub greetings
     print "\n Connected !\n";
     print "\n=====================================================\n";
 
-    typing ("Hi, I'm doctor Gioio, prof. Patti said me we have about 4-5 minutes \n Tell me something (family, work, hobby, ideas, etc...)");
+    print "$entity_name> ";
+    typing ("Hi, I'm doc Gioio, prof. Patti told me we have about 10 minutes,\n tell me something (family, work, hobby, ideas, etc...)");
 }
 
 ###############################################################################
@@ -183,6 +186,8 @@ my $bot = new Chatbot::Eliza {
 
 my $true++;
 my $now = localtime;
+
+$now =~ s/\s/_/g;
 
 open(LOG, ">> log_$now.txt");
 

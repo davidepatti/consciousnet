@@ -202,7 +202,7 @@ key: yes 0
 
   decomp: *
     reasmb: You can also explain this a little more if you want...
-    reasmb: Why don't you tell me a little more about this.
+    reasmb: Why don't you tell me a little more about you
     reasmb: If you're sure, let's continue...
     reasmb: Wonderful. What's the next step? tell me something other...
     reasmb: uhmmm, what does that suggest to you?
@@ -234,6 +234,7 @@ key: no 0
     reasmb: Can you focus your thoughts a little more?
     reasmb: what about your family ?
     reasmb: Don't be afraid to open up a little more.
+    reasmb: ok no, tell me something other about you...
     reasmb: again, you can write other words to explain this if you want...
     reasmb: NET (1)
     reasmb: NET when you say (1)
