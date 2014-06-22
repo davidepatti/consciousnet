@@ -1,19 +1,10 @@
 ####################################################################
-# ---{ B E G I N   D E F A U L T   S C R I P T   D A T A }----------
-#
-#  This script was prepared by Chris Hayden.  Hayden's Eliza 
-#  program was written in Java, however, it attempted to match 
-#  the functionality of Weizenbaum's original program as closely 
-#  as possible.  
-#
-#  Hayden's script format was quite different from Weizenbaum's, 
-#  but it maintained the same content.  I have adapted Hayden's 
-#  script format, since it was simple and convenient enough 
-#  for my purposes.  
-#
-#  I've made small modifications here and there.  
-#
-#
+#  2013 - Adapted by Davide Patti for Consciousnet
+#  davide.patti@dieei.unict.it
+# ------------------------------------------------------------------
+# - Added NET entries to create meta-responses
+# - Added abstraction levels
+# - Restructured cross entry-point references
 #
 initial: ok let's start, tell me something
 final: Goodbye.  It was nice talking to you.
