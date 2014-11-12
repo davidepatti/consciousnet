@@ -154,7 +154,8 @@ sub greetings
     print "\n=====================================================\n";
 
     print "$entity_name> ";
-    typing ("Hi, I'm doc Gioio, prof. Patti told me we have about 10 minutes,\n tell me something (family, work, hobby, ideas, etc...)");
+#typing ("Hi, I'm doc Gioio, prof. Patti told me we have about 10 minutes,\n tell me something (family, work, hobby, ideas, etc...)");
+    typing ("Hi, I'm doc Gioio, I'm testing the network \n tell me something (family, work, hobby, ideas, etc...)");
 }
 
 ###############################################################################
@@ -177,7 +178,7 @@ $|++;
 
 my $bot = new Chatbot::Eliza {
 	name       => "Paul", 
-        scriptfile => "nettgw.txt",
+        scriptfile => "attitude.dat",
 	debug      => 1, prompts_on => 1, memory_on  => 1,
 	myrand     => sub { my $N = defined $_[0] ? $_[0] : 1;  rand($N); },
 };
