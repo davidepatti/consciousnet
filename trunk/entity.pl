@@ -69,7 +69,8 @@ sub nett
     my $n = 0;
     my @responses;
 
-    foreach my $item ($result->items) 
+
+    foreach my $item (@{$result->items}) 
     {
 	$clean = &juice($item->snippet);
 	if (&sanity_check($clean))
