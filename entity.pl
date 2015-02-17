@@ -12,7 +12,7 @@ use warnings;
 
 #defaults for command line
 my $entity_mail = "pgiogio\@mit.edu";
-my $entity_name = "PGioio";
+my $entity_name = "Paul Gioio";
 my $debug_on = 0;
 my $no_net = 0;
 my $quick_on = 0;
@@ -31,7 +31,7 @@ sub searchable
     return 1 if (length($msg)>1);
 #return 0;
 
-    return 1;
+    return 0;
 }
 ###############################################################################
 sub juice
@@ -69,7 +69,7 @@ sub sanity_check
 	}
     }
 
-    print "\n--> sanity check OK!" if $debug_on;
+    print "\n--> Sanity check OK!" if $debug_on;
     return 1;
 }
 
@@ -163,26 +163,29 @@ sub greetings
     system("clear");
 
     print "\n______________________________________________________\n";
-    print "   c0n5c10u5n3t  \n";
+    print "   Welcome to the c0n5c10u5n3t Project!  \n";
     print "______________________________________________________\n";
-    print " session local time: $now\n";
-    print " > Initializing system entity: ", $entity_mail, "\n";
-    print " > Please wait\n";
+    print " Session local time: $now\n";
+    sleep(2);
+    print " Initializing system entity:  $entity_mail\n";
+    sleep(2);
+    print " Please wait\n";
+    sleep(2);
 
     my $x = 10;
 
     while ($x--)
     {
 	print ".";
-	sleep(0.1);
+	sleep(0.2);
     }
 
     print "\n Connected !\n";
     print "\n=====================================================\n";
 
-    print "$entity_name> ";
+    print "$entity_name: ";
 #typing ("Hi, I'm doc Gioio, prof. Patti told me we have about 10 minutes,\n tell me something (family, work, hobby, ideas, etc...)");
-    typing ("Hi, I'm testing the network \n just a quick chat, tell me something (family, work, hobby, etc...)");
+    typing ("Hallo, I'm testing the network \n just a quick chat, tell me something (family, work, hobby, etc...)");
 }
 
 ###############################################################################
@@ -225,7 +228,7 @@ while ($true)
 {
     select((select(LOG), $|=1)[0]);
 
-    print "You> ";
+    print "You: ";
 
     my $message = <STDIN>;
 
@@ -284,9 +287,9 @@ SKIP_NET:
     $last_msg = $answer;
 
 
-    print "$entity_name> ";
+    print "$entity_name: ";
     sleep(length($message)*0.1+0.5) unless $quick_on;
-    typing("$answer\n");
+    typing("$answer");
     $now = localtime;
     print LOG "[$now] $entity_name: $answer\n";
 }
