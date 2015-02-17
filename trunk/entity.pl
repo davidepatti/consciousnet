@@ -21,13 +21,17 @@ my $filter_on = 1;
 
 # initialize your data  api_key and cx
 my $engine  = WWW::Google::CustomSearch->new(api_key => $api_key, cx => $cx);
+open my $fh, "<", "badwords.txt" or die $!;
 
 ###############################################################################
 sub searchable
 {
     my ($msg) = @_;
-    return 1 if (length($msg)>4);
-    return 0;
+# temp deprecated, must find better patterns that make sense
+    return 1 if (length($msg)>1);
+#return 0;
+
+    return 1;
 }
 ###############################################################################
 sub juice
@@ -41,13 +45,32 @@ sub juice
 sub sanity_check
 {
     my ($msg) = @_;
-    my $pass = 1; # ok is default
-    $pass=0 if (length($msg)<15);
+
+    if (length($msg)<15)
+    {
+	print "\n --> Sanity check FAILED, discarding for short lenght..." if $debug_on;
+	return 0;
+    }
+
     if ($filter_on)
     {
-	$pass=0 if $msg=~ /sex|porn|fuck|porno|sperm|anal|dildo|mast.rbate|pussy|vagina|whore|suck/;
+	print "\n --> Applying badword filter..." if $debug_on;
+	seek $fh, 0, 0;
+
+	while (<$fh>) {
+	    chomp;
+#print "\n MESSAGE IS $msg ";
+#print "\n >>>> Filter checking for $_ ";
+            if ($msg =~ /$_/i)
+	    {
+		print "\n --> Sanity check FAILED, found forbidden work $_" if $debug_on;
+		return 0;
+	    }
+	}
     }
-    $pass;
+
+    print "\n--> sanity check OK!" if $debug_on;
+    return 1;
 }
 
 ###############################################################################
@@ -72,21 +95,24 @@ sub nett
 
     foreach my $item (@{$result->items}) 
     {
+
 	$clean = &juice($item->snippet);
+
+	if ($debug_on)
+	{
+	    print "\n --------------------------------------------------------------";
+	    print "\n Response n.$n";
+	    print "\n --------------------------------------------------------------";
+	    print "\n RAW: <<< ", $item->snippet, " >>>" if defined $item->snippet;
+	    print "\n --------------------------------------------------------------";
+	    print "\n CLEAN: <<< " , $clean, " >>>" if defined $clean;
+	    print "\n --------------------------------------------------------------";
+	}
+
 	if (&sanity_check($clean))
 	{
 	    push @responses, $clean;
 	    $n++;
-	}
-	elsif ($debug_on)
-	{
-	    print "\n DEBUG: **DISCARDING RESULT** (sanity_check false)";
-	}
-
-	if ($debug_on)
-	{
-	    print "\nDEBUG raw: <<< ", $item->snippet, " >>>" if defined $item->snippet;
-	    print "\nDEBUG clean: <<< " , $clean, " >>>\n";
 	}
     }
     my $chosen= int(rand($n));
@@ -137,7 +163,7 @@ sub greetings
     system("clear");
 
     print "\n______________________________________________________\n";
-    print "   c0n5c10u5n3tt  \n";
+    print "   c0n5c10u5n3t  \n";
     print "______________________________________________________\n";
     print " session local time: $now\n";
     print " > Initializing system entity: ", $entity_mail, "\n";
@@ -156,7 +182,7 @@ sub greetings
 
     print "$entity_name> ";
 #typing ("Hi, I'm doc Gioio, prof. Patti told me we have about 10 minutes,\n tell me something (family, work, hobby, ideas, etc...)");
-    typing ("Hi, I'm doc Gioio, I'm testing the network \n tell me something (family, work, hobby, ideas, etc...)");
+    typing ("Hi, I'm testing the network \n just a quick chat, tell me something (family, work, hobby, etc...)");
 }
 
 ###############################################################################
@@ -213,7 +239,12 @@ START:
 # check for NET response
     if ($reasmb=~/NET/)
     {
+	print "\n  DEBUG--> selected NET meta-response: $reasmb" if ($debug_on);
+
 	$reasmb =~ s/(.*)NET(.*)/$2/g;
+
+	$reasmb =~ s/(.*)xnone(.*)/$1$2/g;
+
 	if (&searchable($reasmb))
 	{
 	    my $search_result = &nett($reasmb);
