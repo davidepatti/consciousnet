@@ -11,7 +11,7 @@ use warnings;
 
 
 #defaults for command line
-my $entity_mail = "pgiogio\@mit.edu";
+my $entity_mail = "pgioio\@mit.edu";
 my $entity_name = "Paul Gioio";
 my $debug_on = 0;
 my $no_net = 0;
@@ -37,11 +37,40 @@ sub searchable
 sub juice
 {
     my ($raw_msg) = @_;
-#extract snippet with the folllowing requirements:
+    my $ret;
+
+# Regular expression to filter snippet:
 # - ending with a . or ? or !
- 
-    $raw_msg =~ /(.*?)([\.|\?|!])/si;
-    my $msg = "$1$2";
+# - when delimited by '.', shoult be a single '.'
+# - non-greedy, min lenght 20
+
+#$raw_msg =~ /(.*?)([\.|\?|!])/si;
+#$raw_msg =~ /(.{20,}?)([\.|\?|!]{1})/si;
+
+#TODO: better way than adding extra char 
+    $raw_msg = $raw_msg.'  ';
+
+    if ($raw_msg =~ /([^.]{20,}?[.?!])[^.]/si)
+    {
+	$ret = $1;
+	$ret =~ /([^.]+)/si;
+	$ret = $1;
+
+
+	my $number = () = $ret =~ /\d+/gis;
+
+	if ($number>2)
+	{
+	    return "NOT_MATCH";
+	}
+
+	return $ret;
+    }
+    else
+    {
+	return "NOT_MATCH";
+    }
+
 }
 ###############################################################################
 sub sanity_check
@@ -60,12 +89,13 @@ sub sanity_check
 	seek $fh, 0, 0;
 
 	while (<$fh>) {
-	    chomp;
+	    my $mi = $_;
+	    $mi =~ s/\r|\n//g;
 #print "\n MESSAGE IS $msg ";
-#print "\n >>>> Filter checking for $_ ";
-            if ($msg =~ /$_/i)
+#print "\n >>>> Filter checking for $mi ";
+            if ($msg =~ /$mi/si)
 	    {
-		print "\n --> Sanity check FAILED, found forbidden work $_" if $debug_on;
+		print "\n --> Sanity check FAILED, found forbidden word $mi" if $debug_on;
 		return 0;
 	    }
 	}
@@ -167,11 +197,11 @@ sub greetings
     print "   Welcome to the c0n5c10u5n3t Project!  \n";
     print "______________________________________________________\n";
     print " Session local time: $now\n";
-    sleep(2);
+    sleep(1);
     print " Initializing system entity:  $entity_mail\n";
-    sleep(2);
+    sleep(1);
     print " Please wait\n";
-    sleep(2);
+    sleep(1);
 
     my $x = 10;
 
