@@ -37,8 +37,10 @@ sub searchable
 sub juice
 {
     my ($raw_msg) = @_;
-#extract the part that cite the main elements of the query and that ends with a . or ?
-    $raw_msg =~ /(.*?)([\.|\?|!])/i;
+#extract snippet with the folllowing requirements:
+# - ending with a . or ? or !
+ 
+    $raw_msg =~ /(.*?)([\.|\?|!])/si;
     my $msg = "$1$2";
 }
 ###############################################################################
@@ -95,7 +97,6 @@ sub nett
 
     foreach my $item (@{$result->items}) 
     {
-
 	$clean = &juice($item->snippet);
 
 	if ($debug_on)
@@ -109,7 +110,7 @@ sub nett
 	    print "\n --------------------------------------------------------------";
 	}
 
-	if (&sanity_check($clean))
+	if (&sanity_check($clean)) 
 	{
 	    push @responses, $clean;
 	    $n++;
