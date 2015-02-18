@@ -790,11 +790,11 @@ key: i 1
   decomp: *
     reasmb: Can you be more precise on that ?
     reasmb: Do you say that (1) for some special reason ?
-    reasmb: Every time I hear that "(1)", there's some reason :)
+    reasmb: ok, if you say that (1), there's some reason :)
     reasmb: ... uhm, saying this about you it's good for our chatting, go on...
     reasmb: you... ah, really ?
     reasmb: NET (1)
-    reasmb: NET reason (1)
+    reasmb: NET maybe the reason (1)
     reasmb: NET told me (1)
 
 key: you 1
@@ -879,7 +879,7 @@ key: you 1
     reasmb: can you repeat using other words ?
     reasmb: NET I (1)
     reasmb: NET when people (1)
-    reasmb: NET (1)
+    reasmb: NET motivations to (1)
 
   decomp: * why don't you *
     reasmb: goto why
