@@ -334,7 +334,7 @@ SKIP_NET:
     $question_counter++;
 
 
-    if ( (time() - $starting_time) >30 || $question_counter==15)
+    if ( (time() - $starting_time) >600 || $question_counter==15)
     {
 	print "$entity_name: ";
 	sleep(1);
