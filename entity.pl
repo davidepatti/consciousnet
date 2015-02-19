@@ -43,33 +43,38 @@ sub juice
 # - ending with a . or ? or !
 # - when delimited by '.', shoult be a single '.'
 # - non-greedy, min lenght 20
+# - not containing ...
 
 #$raw_msg =~ /(.*?)([\.|\?|!])/si;
 #$raw_msg =~ /(.{20,}?)([\.|\?|!]{1})/si;
 
+#
+# Including multiple sentences separated by period, but not starting with ...
+#([.]{3}[^.]+.)?(([^.]\.[^.]|[^.]){20,}?[.?!])[^.]
+
+# Including multiple sentences separated by period
+#((([^.]\.[^.])|([^.])){20,}?[.?!])[^.]
+    
+# Single sentence ending with period
+#([^.]{20,}?[.?!])[^.]
+
 #TODO: better way than adding extra char 
     $raw_msg = $raw_msg.'  ';
 
-    if ($raw_msg =~ /([^.]{20,}?[.?!])[^.]/si)
+    if ($raw_msg =~ /([.]{3}[^.]+\.)|(([^.]\.[^.]|[^.]){20,}?[.?!])[^.]/si)
     {
-	$ret = $1;
-	$ret =~ /([^.]+)/si;
-	$ret = $1;
-
-
-	my $number = () = $ret =~ /\d+/gis;
-
-	if ($number>2)
+	if (defined($2))
 	{
-	    return "NOT_MATCH";
-	}
+	    $ret = $2;
+	    $ret =~ s/\.$//si;
 
-	return $ret;
+	    my $number = () = $ret =~ /\d+/gis;
+
+	    return $ret if ($number<3);
+	}
     }
-    else
-    {
-	return "NOT_MATCH";
-    }
+
+    return "NOT_MATCH";
 
 }
 ###############################################################################
@@ -93,7 +98,7 @@ sub sanity_check
 	    $mi =~ s/\r|\n//g;
 #print "\n MESSAGE IS $msg ";
 #print "\n >>>> Filter checking for $mi ";
-            if ($msg =~ /$mi/si)
+            if ($msg =~ /\b$mi\b/si)
 	    {
 		print "\n --> Sanity check FAILED, found forbidden word $mi" if $debug_on;
 		return 0;
@@ -215,6 +220,7 @@ sub greetings
     print "\n=====================================================\n";
 
     print "$entity_name: ";
+    sleep(2);
 #typing ("Hi, I'm doc Gioio, prof. Patti told me we have about 10 minutes,\n tell me something (family, work, hobby, ideas, etc...)");
     typing ("Hallo, I'm testing the network \n just a quick chat, tell me something (family, work, hobby, etc...)");
 }
@@ -248,12 +254,15 @@ my $bot = new Chatbot::Eliza {
 
 my $true++;
 my $now = localtime;
+my $starting_time = time();
 
 $now =~ s/\s/_/g;
 
 open(LOG, ">> log_$now.txt");
 
 my $last_msg = "none";
+my $question_counter = 0;
+my $last_to_go = 0;
 
 while ($true) 
 {
@@ -266,6 +275,7 @@ while ($true)
     $now = localtime;
     print LOG "[$now] You: $message";
 
+    exit if ($last_to_go);
 START:
     my $reasmb = $bot->transform($message);
     my $answer = $reasmb;  #already done if is not a NET response...
@@ -321,6 +331,18 @@ SKIP_NET:
     print "$entity_name: ";
     sleep(length($message)*0.1+0.5) unless $quick_on;
     typing("$answer");
+    $question_counter++;
+
+
+    if ( (time() - $starting_time) >30 || $question_counter==15)
+    {
+	print "$entity_name: ";
+	sleep(1);
+	typing("Ok, that's all. Thank you for your collaboration. Bye");
+	$last_to_go = 1;
+    }
+		
+
     $now = localtime;
     print LOG "[$now] $entity_name: $answer\n";
 }
