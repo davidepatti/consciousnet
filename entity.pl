@@ -222,7 +222,7 @@ sub greetings
     print "$entity_name: ";
     sleep(2);
 #typing ("Hi, I'm doc Gioio, prof. Patti told me we have about 10 minutes,\n tell me something (family, work, hobby, ideas, etc...)");
-    typing ("Hallo, I'm testing the network \n just a quick chat, tell me something (family, work, hobby, etc...)");
+    typing ("Hi, I'm doc Gioio, I'm testing the network \n just a quick chat, tell me something (family, work, hobby, etc...)");
 }
 
 ###############################################################################
