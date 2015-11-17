@@ -11,7 +11,7 @@ use warnings;
 
 
 #defaults for command line
-my $entity_mail = "pgioio\@mit.edu";
+my $entity_mail = "gioio\@work";
 my $entity_name = "Paul Gioio";
 my $debug_on = 0;
 my $no_net = 0;
@@ -61,7 +61,7 @@ sub juice
 #TODO: better way than adding extra char 
     $raw_msg = $raw_msg.'  ';
 
-    if ($raw_msg =~ /([.]{3}[^.]+\.)|(([^.]\.[^.]|[^.]){20,}?[.?!])[^.]/si)
+    if ($raw_msg =~ /([.]{3}[^.]+\.)?(([^.]\.[^.]|[^.]){20,}?[.?!])[^.]/si)
     {
 	if (defined($2))
 	{
@@ -199,13 +199,11 @@ sub greetings
     system("clear");
 
     print "\n______________________________________________________\n";
-    print "   Welcome to the c0n5c10u5n3t Project!  \n";
+    print "   Welcome to the c0n5c10u5n3t \n";
     print "______________________________________________________\n";
     print " Session local time: $now\n";
     sleep(1);
     print " Initializing system entity:  $entity_mail\n";
-    sleep(1);
-    print " Please wait\n";
     sleep(1);
 
     my $x = 10;
@@ -221,8 +219,7 @@ sub greetings
 
     print "$entity_name: ";
     sleep(2);
-#typing ("Hi, I'm doc Gioio, prof. Patti told me we have about 10 minutes,\n tell me something (family, work, hobby, ideas, etc...)");
-    typing ("Hi, I'm doc Gioio, I'm testing the network \n just a quick chat, tell me something (family, work, hobby, etc...)");
+    typing ("Hi, I'm Doctor Gioio, I'm testing the network \n just a quick chat, tell me about something (family, work, hobby, etc...)");
 }
 
 ###############################################################################
@@ -244,8 +241,8 @@ $|++;
 &greetings;
 
 my $bot = new Chatbot::Eliza {
-	name       => "Paul", 
-        scriptfile => "attitude.dat",
+	name       => "Gioio", 
+        scriptfile => "attitude.meta",
 	debug      => 1, prompts_on => 1, memory_on  => 1,
 	myrand     => sub { my $N = defined $_[0] ? $_[0] : 1;  rand($N); },
 };
