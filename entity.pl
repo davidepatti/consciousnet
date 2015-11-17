@@ -17,6 +17,7 @@ my $debug_on = 0;
 my $no_net = 0;
 my $quick_on = 0;
 my $filter_on = 1;
+my $timeout = 0;
 
 
 # initialize your data  api_key and cx
@@ -231,6 +232,7 @@ sub parse_cmdline
 	$no_net = 1 if $arg eq "no_net";
 	$quick_on = 1 if $arg eq "quick";
 	$filter_on = 1 if $arg eq "filter";
+	$timeout = 1 if $arg eq "timeout";
     }
 
 }
@@ -331,12 +333,15 @@ SKIP_NET:
     $question_counter++;
 
 
-    if ( (time() - $starting_time) >600 || $question_counter==15)
+    if ($timeout)
     {
-	print "$entity_name: ";
-	sleep(1);
-	typing("Ok, that's all. Thank you for your collaboration. Bye");
-	$last_to_go = 1;
+	if ( (time() - $starting_time) >600 || $question_counter==15)
+	{
+	    print "$entity_name: ";
+	    sleep(1);
+	    typing("Ok, that's all. Thank you for your collaboration. Bye");
+	    $last_to_go = 1;
+	}
     }
 		
 
