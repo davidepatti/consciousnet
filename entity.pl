@@ -68,6 +68,7 @@ sub juice
 	{
 	    $ret = $2;
 	    $ret =~ s/\.$//si;
+	    $ret =~ s/\n//si;
 
 	    my $number = () = $ret =~ /\d+/gis;
 
@@ -220,7 +221,7 @@ sub greetings
 
     print "$entity_name: ";
     sleep(2);
-    typing ("Hi, I'm Doctor Gioio, I'm testing the network \n just a quick chat, tell me about something (family, work, hobby, etc...)");
+    typing ("Hi, I'm Doctor Gioio, I'm testing the network, tell me about something (family, work, hobby, etc...)");
 }
 
 ###############################################################################
@@ -243,7 +244,7 @@ $|++;
 &greetings;
 
 my $bot = new Chatbot::Eliza {
-	name       => "Gioio", 
+	name       => "Paul Gioio", 
         scriptfile => "attitude.meta",
 	debug      => 1, prompts_on => 1, memory_on  => 1,
 	myrand     => sub { my $N = defined $_[0] ? $_[0] : 1;  rand($N); },
