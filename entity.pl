@@ -92,7 +92,7 @@ sub sanity_check
 
     if ($filter_on)
     {
-	print "\n --> Applying badword filter..." if $debug_on;
+#print "\n --> Applying badword filter..." if $debug_on;
 	seek $fh, 0, 0;
 
 	while (<$fh>) {
@@ -108,7 +108,7 @@ sub sanity_check
 	}
     }
 
-    print "\n--> Sanity check OK!" if $debug_on;
+#print "\n--> Sanity check OK!" if $debug_on;
     return 1;
 }
 
@@ -138,12 +138,12 @@ sub nett
 
 	if ($debug_on)
 	{
-	    print "\n --------------------------------------------------------------";
+	    print "\n\n --------------------------------------------------------------";
 	    print "\n Response n.$n";
 	    print "\n --------------------------------------------------------------";
-	    print "\n RAW: <<< ", $item->snippet, " >>>" if defined $item->snippet;
+	    print "\n RAW: ", $item->snippet, " >>>" if defined $item->snippet;
 	    print "\n --------------------------------------------------------------";
-	    print "\n CLEAN: <<< " , $clean, " >>>" if defined $clean;
+	    print "\n CLEAN: " , $clean, " >>>" if defined $clean;
 	    print "\n --------------------------------------------------------------";
 	}
 
