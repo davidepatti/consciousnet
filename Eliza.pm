@@ -520,6 +520,7 @@ during the parse of the script.
 =cut
 
 sub preprocess {
+
 	my ($self,$string) = @_;
 
 	my ($i, @wordsout, @wordsin, $keyword);
@@ -701,8 +702,10 @@ sub transform{
 
 	# Convert punctuation to periods.  We will assume that commas
 	# and certain conjunctions separate distinct thoughts/sentences.  
-	$string =~ s/[?!,]/./g;
-	$string =~ s/but/./g;   #   Yikes!  This is English-specific. 
+
+#REMOVED for consciousnet model by davide.patti@dieei.unict.it
+#$string =~ s/[?!,]/./g;
+#$string =~ s/but/./g;   #   Yikes!  This is English-specific. 
 
 	# Split the string by periods into an array
 	@string_parts = split /\./, $string ;
@@ -712,6 +715,7 @@ sub transform{
 
 	# Run through the whole list of keywords.  
 	KEYWORD: foreach $keyword (keys %{ $self->{decomplist} }) {
+
 
 		# Check to see if the input string contains a keyword
 		# which outranks any we have found previously
