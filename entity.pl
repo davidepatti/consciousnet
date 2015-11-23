@@ -19,6 +19,8 @@ my $quick_on = 0;
 my $filter_on = 1;
 my $timeout = 0;
 
+my $bot;
+
 
 # initialize your data  api_key and cx
 my $engine  = WWW::Google::CustomSearch->new(api_key => $api_key, cx => $cx);
@@ -203,10 +205,24 @@ sub greetings
     print "\n______________________________________________________\n";
     print "   Welcome to the c0n5c10u5n3t \n";
     print "______________________________________________________\n";
+    sleep(0.5);
     print " Session local time: $now\n";
-    sleep(1);
+    sleep(0.5);
     print " Initializing system entity:  $entity_mail\n";
-    sleep(1);
+    $bot = new Chatbot::Eliza {
+#name       => "Paul Gioio", 
+	    scriptfile => "attitude.meta",
+	    debug      => 1, prompts_on => 1, memory_on  => 1,
+	    myrand     => sub { my $N = defined $_[0] ? $_[0] : 1;  rand($N); },
+    };
+    if ( !($bot->name eq "Paul Gioio") )
+    {
+	print "Cannot initialize Consciousnet entity, please replace Eliza.pm with the provided repository version...\n";
+	exit;
+    }
+    sleep(0.5);
+    print " No experience to remember\n";
+    sleep(0.5);
 
     my $x = 10;
 
@@ -243,13 +259,6 @@ $|++;
 &parse_cmdline;
 &greetings;
 
-my $bot = new Chatbot::Eliza {
-	name       => "Paul Gioio", 
-        scriptfile => "attitude.meta",
-	debug      => 1, prompts_on => 1, memory_on  => 1,
-	myrand     => sub { my $N = defined $_[0] ? $_[0] : 1;  rand($N); },
-};
-
 # typing($bot->{initial}->[0] . "\n");
 
 my $true++;
@@ -275,7 +284,18 @@ while ($true)
     $now = localtime;
     print LOG "[$now] You: $message";
 
+# if timeout enabled
     exit if ($last_to_go);
+
+# quit message
+    if ($message eq "see you later\n") 
+    {
+	print "$entity_name: ";
+	sleep(1);
+	typing("ok, bye bye");
+	exit;
+    }
+	
 START:
     my $reasmb = $bot->transform($message);
     my $answer = $reasmb;  #already done if is not a NET response...
