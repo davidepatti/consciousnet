@@ -277,7 +277,7 @@ just by reading the source code.
 
 
 my %fields = (
-	name 		=> 'Paul Gioio',
+	name 		=> 'PaulGioio',
 	scriptfile	=> '',
 
 	debug 		=> 0,
