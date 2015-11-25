@@ -346,15 +346,16 @@ SKIP_NET:
 	} # not searchable
     }
 #Check for Recurrent experience
-    if ($reasmb=~/EXP/)
+    if ($reasmb=~/REXP/)
     {
-	print "\nDEBUG: selected NET meta-response: $reasmb" if ($debug_on);
+	print "\nDEBUG: selected REXP meta-response: $reasmb" if ($debug_on);
 
-	$reasmb =~ s/(.*)EXP(.*)/$2/g;
-	$reasmb =~ s/(.*)xnone(.*)/$1$2/g;
+	$message =~ s/(.*)REXP (.*)/$2/g;
+	$message =~ s/\n//si;
 
 	my $thcmd = "th sample.lua $rnnexp -temperature 0.5 -primetext \"\@\@\@: $message ___\" ";
-	print "\n $thcmd ";
+	print "\n$thcmd\n";
+	print "\n REXP rexponses currently unsupported, quitting\n";
 	exit;
     }
 
