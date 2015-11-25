@@ -13,11 +13,14 @@ use warnings;
 #defaults for command line
 my $entity_mail = "gioio\@work";
 my $entity_name = "Paul Gioio";
+my $metaresponse = "metaresponse.meta";
 my $debug_on = 0;
 my $no_net = 0;
 my $quick_on = 0;
 my $filter_on = 1;
 my $timeout = 0;
+my $rnnexp = "annettexp_1.12.t7";
+my $version = 0.9;
 
 my $bot;
 
@@ -72,6 +75,9 @@ sub juice
 	    $ret =~ s/\.$//si;
 	    $ret =~ s/\n//si;
 
+	    $ret =~ s/Best Answer://si;
+	    $ret =~ s/Update://si;
+
 	    my $number = () = $ret =~ /\d+/gis;
 
 	    return $ret if ($number<3);
@@ -88,7 +94,7 @@ sub sanity_check
 
     if (length($msg)<15)
     {
-	print "\n --> Sanity check FAILED, discarding for short lenght..." if $debug_on;
+	print "\n\t--> Sanity check FAILED, discarding for short lenght..." if $debug_on;
 	return 0;
     }
 
@@ -104,7 +110,7 @@ sub sanity_check
 #print "\n >>>> Filter checking for $mi ";
             if ($msg =~ /\b$mi\b/si)
 	    {
-		print "\n --> Sanity check FAILED, found forbidden word $mi" if $debug_on;
+		print "\n\t--> Sanity check FAILED, found forbidden word $mi" if $debug_on;
 		return 0;
 	    }
 	}
@@ -119,13 +125,13 @@ sub nett
 {
     my ($msg) = @_;
 
-    print "\n DEBUG: ** Google API searching ** : $msg\n" if $debug_on;
+    print "\nDEBUG: Google API searching ** : $msg\n" if $debug_on;
 
     my $result = eval { $engine->search($msg) };
 
-    if (!defined($result)) 
+    if (!defined($result->items))
     {
-	print "\n DEBUG: **UNDEF NET RESPONSE**, err: $@ " if $debug_on;
+	print "\nDEBUG: UNDEF NET RESPONSE, err: $@ " if $debug_on;
 	return undef;
     }
 
@@ -140,13 +146,14 @@ sub nett
 
 	if ($debug_on)
 	{
-	    print "\n\n --------------------------------------------------------------";
-	    print "\n Response n.$n";
-	    print "\n --------------------------------------------------------------";
-	    print "\n RAW: ", $item->snippet, " >>>" if defined $item->snippet;
-	    print "\n --------------------------------------------------------------";
-	    print "\n CLEAN: " , $clean, " >>>" if defined $clean;
-	    print "\n --------------------------------------------------------------";
+	    print "\n";
+	    print "\nDEBUG: **************************************************************";
+	    print "\nDEBUG: NET Response n.$n";
+	    print "\nDEBUG: --------------------------------------------------------------";
+	    print "\nDEBUG: RAW: ", $item->snippet , " " if defined $item->snippet;
+	    print "\nDEBUG: --------------------------------------------------------------";
+	    print "\nDEBUG: CLEAN: $clean" if defined $clean;
+	    print "\nDEBUG: --------------------------------------------------------------";
 	}
 
 	if (&sanity_check($clean)) 
@@ -163,8 +170,6 @@ sub nett
 sub typing
 {
     my ($msg) = @_;
-#sleep(int(length($msg)/10)) unless $quick_on;
-
     my $start = 0;
     my $count = 0;
 
@@ -178,10 +183,13 @@ sub typing
 	    my $snippet = substr($msg,$start,$count);
 
 	    print $snippet;
+
 	    if ($snippet =~ /(.*?)\s/)
 	    {
+		print "ƒ";
 		if (rand(5)<1) 
 		{
+		    print "ø";
 		    sleep(int(rand(3)));
 		}
 	    }
@@ -202,42 +210,52 @@ sub greetings
     my $now = localtime;
     system("clear");
 
-    print "\n______________________________________________________\n";
-    print "   Welcome to the c0n5c10u5n3t \n";
+    print "______________________________________________________\n";
+    print "   Consciousnet System v.$version\n";
     print "______________________________________________________\n";
     sleep(0.5);
-    print " Session local time: $now\n";
+    print "\n--> Starting session time: $now\n";
     sleep(0.5);
-    print " Initializing system entity:  $entity_mail\n";
+    print "--> Initializing system entity:  $entity_name\n";
+
     $bot = new Chatbot::Eliza {
-#name       => "Paul Gioio", 
-	    scriptfile => "attitude.meta",
+	    scriptfile => $metaresponse,
 	    debug      => 1, prompts_on => 1, memory_on  => 1,
 	    myrand     => sub { my $N = defined $_[0] ? $_[0] : 1;  rand($N); },
     };
-    if ( !($bot->name eq "Paul Gioio") )
+    if ( !($bot->name eq $entity_name) )
     {
-	print "Cannot initialize Consciousnet entity, please replace Eliza.pm with the provided repository version...\n";
+	print "Cannot initialize entity, please replace Eliza.pm with the provided repository version...\n";
 	exit;
     }
     sleep(0.5);
-    print " No experience to remember\n";
+    if (defined $rnnexp)
+    {
+	print "--> Trying to remember my past [$rnnexp] ";
+	if (-e $rnnexp)
+	{
+	    print " ...Ok!\n";
+	}
+	else
+	{
+	    print " ...sorry, I can't remember\n";
+	}
+    }
+    else
+    {
+	print " No past to remember...\n";
+    }
+
     sleep(0.5);
 
     my $x = 10;
 
-    while ($x--)
-    {
-	print ".";
-	sleep(0.2);
-    }
-
-    print "\n Connected !\n";
+    print "\n--> Ready to exist\n";
     print "\n=====================================================\n";
 
     print "$entity_name: ";
-    sleep(2);
-    typing ("Hi, I'm Doctor Gioio, I'm testing the network, tell me about something (family, work, hobby, etc...)");
+    sleep(0.5);
+    typing ("Hi, I'm Paul Gioio, I'm testing my existence. Tell me about something (family, work, hobby, etc...)");
 }
 
 ###############################################################################
@@ -267,7 +285,7 @@ my $starting_time = time();
 
 $now =~ s/\s/_/g;
 
-open(LOG, ">> log_$now.txt");
+open(LOG, ">> log_$now.$metaresponse.txt");
 
 my $last_msg = "none";
 my $question_counter = 0;
@@ -303,10 +321,9 @@ START:
 # check for NET response
     if ($reasmb=~/NET/)
     {
-	print "\n  DEBUG--> selected NET meta-response: $reasmb" if ($debug_on);
+	print "\nDEBUG: selected NET meta-response: $reasmb" if ($debug_on);
 
 	$reasmb =~ s/(.*)NET(.*)/$2/g;
-
 	$reasmb =~ s/(.*)xnone(.*)/$1$2/g;
 
 	if (&searchable($reasmb))
@@ -314,23 +331,36 @@ START:
 	    my $search_result = &nett($reasmb);
 	    if (!defined($search_result)) 
 	    {
-		print "\n  DEBUG--> skipping empty/undef search result of: $reasmb" if ($debug_on);
+		print "\nDEBUG: skipping empty/undef search result of: $reasmb" if ($debug_on);
 		goto SKIP_NET;
 	    }
 	    $answer = $search_result;
 	}
 	else #if not searchable (e.g. "yes" only response, too generic)
 	{
-	    print "\n  DEBUG--> skipping not searchable pattern: $reasmb" if ($debug_on);
+	    print "\nDEBUG: skipping not searchable pattern: $reasmb" if ($debug_on);
 SKIP_NET:
 	    my $tmp_answer;
 	    until ( ($tmp_answer = $bot->transform($message))!~/NET/  ) 
 	    {
-		print "\n DEBUG--> skipping NET response $tmp_answer" if ($debug_on);
+		print "DEBUG: skipping NET response $tmp_answer" if ($debug_on);
 	    };
 	    $answer = $tmp_answer;
 	} # not searchable
     }
+#Check for Recurrent experience
+    if ($reasmb=~/EXP/)
+    {
+	print "\nDEBUG: selected NET meta-response: $reasmb" if ($debug_on);
+
+	$reasmb =~ s/(.*)EXP(.*)/$2/g;
+	$reasmb =~ s/(.*)xnone(.*)/$1$2/g;
+
+	my $thcmd = "th sample.lua $rnnexp -temperature 0.5 -primetext \"\@\@\@: $message ___\" ";
+	print "\n $thcmd ";
+	exit;
+    }
+
 
     if ($debug_on)
     {
@@ -341,7 +371,7 @@ SKIP_NET:
 
     if ($answer eq $last_msg)
     {
-	print "\n DEBUG--> skipping repeated: $answer" if ($debug_on);
+	print "\nDEBUG: skipping repeated: $answer" if ($debug_on);
 	goto START;
     }
 
