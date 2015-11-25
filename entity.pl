@@ -12,7 +12,7 @@ use warnings;
 
 #defaults for command line
 my $entity_mail = "gioio\@work";
-my $entity_name = "Paul Gioio";
+my $entity_name = "PaulGioio";
 my $metaresponse = "metaresponse.meta";
 my $debug_on = 0;
 my $no_net = 0;
@@ -178,19 +178,17 @@ sub typing
 	while ( $start<length($msg) )
 	{
 	    $count = int(rand(3)+1);
-	    my $speed = (rand)*0.2;
+	    my $speed = (rand)*0.3;
 	    sleep($count*$speed);
 	    my $snippet = substr($msg,$start,$count);
 
 	    print $snippet;
 
-	    if ($snippet =~ /(.*?)\s/)
+	    if ($snippet =~ /\s$/)
 	    {
-		print "ƒ";
 		if (rand(5)<1) 
 		{
-		    print "ø";
-		    sleep(int(rand(3)));
+		    sleep(int(rand(2))+0.5);
 		}
 	    }
 
@@ -216,7 +214,7 @@ sub greetings
     sleep(0.5);
     print "\n--> Starting session time: $now\n";
     sleep(0.5);
-    print "--> Initializing system entity:  $entity_name\n";
+    print "--> Contacting system entity:  $entity_name\n";
 
     $bot = new Chatbot::Eliza {
 	    scriptfile => $metaresponse,
@@ -225,10 +223,11 @@ sub greetings
     };
     if ( !($bot->name eq $entity_name) )
     {
-	print "Cannot initialize entity, please replace Eliza.pm with the provided repository version...\n";
+	print "Cannot contact entity, please replace Eliza.pm with the provided repository version...\n";
 	exit;
     }
     sleep(0.5);
+    print "--> Here I am... \n";
     if (defined $rnnexp)
     {
 	print "--> Trying to remember my past [$rnnexp] ";
@@ -248,12 +247,10 @@ sub greetings
 
     sleep(0.5);
 
-    my $x = 10;
-
-    print "\n--> Ready to exist\n";
+    print "--> Ready to exist\n";
     print "\n=====================================================\n";
 
-    print "$entity_name: ";
+    print "\t$entity_name: ";
     sleep(0.5);
     typing ("Hi, I'm Paul Gioio, I'm testing my existence. Tell me about something (family, work, hobby, etc...)");
 }
@@ -295,7 +292,7 @@ while ($true)
 {
     select((select(LOG), $|=1)[0]);
 
-    print "You: ";
+    print "\tYou: ";
 
     my $message = <STDIN>;
 
@@ -308,7 +305,7 @@ while ($true)
 # quit message
     if ($message eq "see you later\n") 
     {
-	print "$entity_name: ";
+	print "\t$entity_name: ";
 	sleep(1);
 	typing("ok, bye bye");
 	exit;
@@ -378,7 +375,7 @@ SKIP_NET:
     $last_msg = $answer;
 
 
-    print "$entity_name: ";
+    print "\t$entity_name: ";
     sleep(length($message)*0.1+0.5) unless $quick_on;
     typing("$answer");
     $question_counter++;
@@ -388,7 +385,7 @@ SKIP_NET:
     {
 	if ( (time() - $starting_time) >600 || $question_counter==15)
 	{
-	    print "$entity_name: ";
+	    print "\t$entity_name: ";
 	    sleep(1);
 	    typing("Ok, that's all. Thank you for your collaboration. Bye");
 	    $last_to_go = 1;
