@@ -112,6 +112,7 @@ synon: art paint painting museum arts artistic photography theatre film poetry d
 synon: music guitar bass piano sax flute drum drums singing singer band song
 synon: colors color blue green red yellow white black 
 synon: he she
+synon: yes no
 
 
 key: xnone -1
@@ -168,26 +169,6 @@ key: NOT_USED -1
 
 key: yes 0
 
-  decomp: yes but *
-    reasmb: uhmm, it's a problems that (1) ?
-    reasmb: uhmm, now I know (1)...continue please 
-    reasmb: NET yes but (1)
-    reasmb: NET (1)
-  decomp: *
-    reasmb: You can also explain this a little more if you want...
-    reasmb: Why don't you tell me a little more about you
-    reasmb: If you're sure, let's continue
-    reasmb: Wonderful. What's the next step? tell me something other
-    reasmb: uhmmm, what does that suggest to you?
-    reasmb: ok, continue describing your family...
-    reasmb: Can you focus your thoughts a little more?
-    reasmb: again, don't have to say that just to please me
-    reasmb: NET (1)
-    reasmb: NET when you say (1)
-    reasmb: NET saying (1) 
-
-key: no 0
-
   decomp: * no one *
     reasmb: Are you sure, no one (2) ?
     reasmb: Surely someone (2) 
@@ -197,19 +178,23 @@ key: no 0
     reasmb: Who do you think you are talking about ?
     reasmb: NET someone (2)
     reasmb: NET nobody (2)
-  decomp: no *
-    reasmb: Are you saying no just to be negative?
+  decomp: * @yes *
+    reasmb: Why (2) ?
     reasmb: Does this make you feel unhappy? 
-    reasmb: Why not ?
-    reasmb: no... ok, continue please
-    reasmb: What else would you like to talk about today?
-    reasmb: Can you focus your thoughts a little more?
-    reasmb: what about your family ?
+    reasmb: You can also explain this a little more if you want...
+    reasmb: Why don't you tell me a little more about you
+    reasmb: If you're sure, let's continue
+    reasmb: Wonderful. What's the next step? tell me something other
+    reasmb: uhmmm, what does that suggest to you?
     reasmb: Don't be afraid to open up a little more
-    reasmb: ok no, tell me something other about you
-    reasmb: again, you can write other words to explain this if you want...
-    reasmb: NET saying no
-    reasmb: NET when you answer no
+    reasmb: ok, continue describing your family...
+    reasmb: Can you focus your thoughts a little more?
+    reasmb: again, don't have to say that just to please me
+    reasmb: NET (1) (2) (3)
+    reasmb: NET motivation to say (2) (3)
+    reasmb: NET I said (2) (3)
+    reasmb: NET (2) but (3)
+
 
 key: tell 0
 
@@ -248,6 +233,8 @@ key: hello 0
   reasmb: NET hallo, someone say I am
   reasmb: NET hi, did you know that
   reasmb: NET a different way to say hallo
+  reasmb: NET (1)
+
 
 key: sorry 0
 
@@ -269,7 +256,6 @@ key: please 0
 
   decomp: *
     reasmb: All right, but first describe yourself
-    reasmb: You should be able to do most things on your own
     reasmb: What do you want me to do?
     reasmb: Certainly
     reasmb: Actually, I would rather not
@@ -903,6 +889,7 @@ key: you 1
     reasmb: that's fine, go on, I prefer to not talk about me
     reasmb: continue talking about you
     reasmb: ...pardon ?
+    reasmb: goto xnone
     reasmb: NET (1) you (2)
     reasmb: NET (1) I (2)
     reasmb: NET (1) me (2)
