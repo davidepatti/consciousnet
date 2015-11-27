@@ -704,8 +704,9 @@ sub transform{
 	# and certain conjunctions separate distinct thoughts/sentences.  
 
 #REMOVED for consciousnet model by davide.patti@dieei.unict.it
-#$string =~ s/[?!,]/./g;
-#$string =~ s/but/./g;   #   Yikes!  This is English-specific. 
+        #$string =~ s/[?!,]/./g;
+        $string =~ s/[?!]/./g;
+        $string =~ s/but/./g;   #   Yikes!  This is English-specific. 
 
 	# Split the string by periods into an array
 	@string_parts = split /\./, $string ;
