@@ -29,18 +29,22 @@ my $bot;
 my $engine  = WWW::Google::CustomSearch->new(api_key => $api_key, cx => $cx);
 open my $fh, "<", "badwords.txt" or die $!;
 
-###############################################################################
-sub searchable
-{
-    my ($msg) = @_;
-# temp deprecated, must find better patterns that make sense
-    return 1 if (length($msg)>1);
-#return 0;
 
-    return 0;
+sub preprocess
+{
+    my ($user_input) = @_;
+    my $ret = ucfirst($user_input);
+
+    $ret =~ s/%/ percent/sig;
+    $ret =~ s/\.$//si;
+    $ret =~ s/^\s+//;
+
+    return $ret;
 }
+
 ###############################################################################
 sub juice
+###############################################################################
 {
     my ($raw_msg) = @_;
     my $ret;
@@ -48,21 +52,9 @@ sub juice
 # Regular expression to filter snippet:
 # - ending with a . or ? or !
 # - when delimited by '.', shoult be a single '.'
+# - Including multiple sentences separated by period, but not starting with ...
 # - non-greedy, min lenght 20
 # - not containing ...
-
-#$raw_msg =~ /(.*?)([\.|\?|!])/si;
-#$raw_msg =~ /(.{20,}?)([\.|\?|!]{1})/si;
-
-#
-# Including multiple sentences separated by period, but not starting with ...
-#([.]{3}[^.]+.)?(([^.]\.[^.]|[^.]){20,}?[.?!])[^.]
-
-# Including multiple sentences separated by period
-#((([^.]\.[^.])|([^.])){20,}?[.?!])[^.]
-    
-# Single sentence ending with period
-#([^.]{20,}?[.?!])[^.]
 
 #TODO: better way than adding extra char 
     $raw_msg = $raw_msg.'  ';
@@ -74,21 +66,22 @@ sub juice
 	    $ret = $2;
 	    $ret =~ s/\.$//si;
 	    $ret =~ s/\n//si;
+	    $ret =~ s/^\s+//;
 
 	    $ret =~ s/Best Answer://si;
 	    $ret =~ s/Update://si;
 
 	    my $number = () = $ret =~ /\d+/gis;
+	    $ret = ucfirst($ret);
 
 	    return $ret if ($number<3);
 	}
     }
-
     return "NOT_MATCH";
-
 }
 ###############################################################################
 sub sanity_check
+###############################################################################
 {
     my ($msg) = @_;
 
@@ -115,13 +108,13 @@ sub sanity_check
 	    }
 	}
     }
-
 #print "\n--> Sanity check OK!" if $debug_on;
     return 1;
 }
 
 ###############################################################################
 sub nett
+###############################################################################
 {
     my ($msg) = @_;
 
@@ -168,6 +161,7 @@ sub nett
 
 ###############################################################################
 sub typing
+###############################################################################
 {
     my ($msg) = @_;
     my $start = 0;
@@ -177,18 +171,25 @@ sub typing
     {
 	while ( $start<length($msg) )
 	{
-	    $count = int(rand(3)+1);
-	    my $speed = (rand)*0.3;
+	    $count = int(rand(2)+1);
+	    my $speed = (rand)*0.2;
 	    sleep($count*$speed);
 	    my $snippet = substr($msg,$start,$count);
 
 	    print $snippet;
 
-	    if ($snippet =~ /\s$/)
+# pause when typing particular last chars in the snippet
+	    if ($snippet =~ /[^.]\.(\s)?$/)
 	    {
-		if (rand(5)<1) 
+		sleep(1);
+	    }
+
+# as above, but not always
+	    if ($snippet =~ /(\s|\.|,|:)$/)
+	    {
+		if (rand(4)<1) 
 		{
-		    sleep(int(rand(2))+0.5);
+		    sleep(0.5);
 		}
 	    }
 
@@ -204,6 +205,7 @@ sub typing
 
 ###############################################################################
 sub greetings
+###############################################################################
 {
     my $now = localtime;
     system("clear");
@@ -257,6 +259,7 @@ sub greetings
 
 ###############################################################################
 sub parse_cmdline
+###############################################################################
 {
     for my $arg (@ARGV)
     {
@@ -270,11 +273,11 @@ sub parse_cmdline
 }
 
 ######################################################################
+# main source code
+######################################################################
 $|++;
 &parse_cmdline;
 &greetings;
-
-# typing($bot->{initial}->[0] . "\n");
 
 my $true++;
 my $now = localtime;
@@ -284,38 +287,37 @@ $now =~ s/\s/_/g;
 
 open(LOG, ">> log_$now.$metaresponse.txt");
 
-my $last_msg = "none";
+my $last_msg = "";
 my $question_counter = 0;
 my $last_to_go = 0;
 
 while ($true) 
 {
-    select((select(LOG), $|=1)[0]);
-
     print "\tYou: ";
-
     my $message = <STDIN>;
+    $message = &preprocess($message);
 
     $now = localtime;
+    select((select(LOG), $|=1)[0]);
     print LOG "[$now] You: $message";
 
 # if timeout enabled
     exit if ($last_to_go);
 
 # quit message
-    if ($message eq "see you later\n") 
+    if ($message=~/(.*)see you later/si) 
     {
 	print "\t$entity_name: ";
-	sleep(1);
+	sleep(0.5);
 	typing("ok, bye bye");
 	exit;
     }
 	
 START:
     my $reasmb = $bot->transform($message);
-    my $answer = $reasmb;  #already done if is not a NET response...
+    my $answer = ucfirst($reasmb);  #already done if is not a NET response...
 
-# check for NET response
+# check for NET metaresponse
     if ($reasmb=~/NET/)
     {
 	print "\nDEBUG: selected NET meta-response: $reasmb" if ($debug_on);
@@ -323,27 +325,22 @@ START:
 	$reasmb =~ s/(.*)NET(.*)/$2/g;
 	$reasmb =~ s/(.*)xnone(.*)/$1$2/g;
 
-	if (&searchable($reasmb))
+	my $search_result = &nett($reasmb);
+
+	if (defined($search_result)) 
 	{
-	    my $search_result = &nett($reasmb);
-	    if (!defined($search_result)) 
-	    {
-		print "\nDEBUG: skipping empty/undef search result of: $reasmb" if ($debug_on);
-		goto SKIP_NET;
-	    }
-	    $answer = $search_result;
+	    $answer = ucfirst($search_result);
 	}
-	else #if not searchable (e.g. "yes" only response, too generic)
+	else
 	{
-	    print "\nDEBUG: skipping not searchable pattern: $reasmb" if ($debug_on);
-SKIP_NET:
+	    print "\nDEBUG: skipping empty/undef search result of: $reasmb" if ($debug_on);
 	    my $tmp_answer;
 	    until ( ($tmp_answer = $bot->transform($message))!~/NET/  ) 
 	    {
 		print "DEBUG: skipping NET response $tmp_answer" if ($debug_on);
 	    };
-	    $answer = $tmp_answer;
-	} # not searchable
+	    $answer = ucfirst($tmp_answer);
+	}
     }
 #Check for Recurrent experience
     if ($reasmb=~/REXP/)
@@ -358,8 +355,6 @@ SKIP_NET:
 	print "\n REXP rexponses currently unsupported, quitting\n";
 	exit;
     }
-
-
     if ($debug_on)
     {
 	my $debugging  = $bot->debug_text;
@@ -375,20 +370,18 @@ SKIP_NET:
 
     $last_msg = $answer;
 
-
     print "\t$entity_name: ";
-    sleep(length($message)*0.1+0.5) unless $quick_on;
+    sleep(length($message)*0.05+0.5) unless $quick_on;
     typing("$answer");
     $question_counter++;
-
 
     if ($timeout)
     {
 	if ( (time() - $starting_time) >600 || $question_counter==15)
 	{
 	    print "\t$entity_name: ";
-	    sleep(1);
-	    typing("Ok, that's all. Thank you for your collaboration. Bye");
+	    sleep(0.5);
+	    typing("Ok, that's all. Thank you for your collaboration. Bye!");
 	    $last_to_go = 1;
 	}
     }
