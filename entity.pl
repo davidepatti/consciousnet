@@ -64,17 +64,21 @@ sub juice
 	if (defined($2))
 	{
 	    $ret = $2;
-	    $ret =~ s/\.$//si;
-	    $ret =~ s/\n//si;
-	    $ret =~ s/^\s+//;
+	    $ret =~ s/\.$//si; # remove last .
+	    $ret =~ s/\n//si;  # remove newlines
+	    $ret =~ s/^\s+//;  # remove spaces at beginning
 
-	    $ret =~ s/Best Answer://si;
+# typical bad results
+	    $ret =~ s/Best Answer://si; 
 	    $ret =~ s/Update://si;
 
-	    my $number = () = $ret =~ /\d+/gis;
+	    my $numbers = () = $ret =~ /\d+/gis;
+	    my @text_words = split(/\s+/, $ret);
+	    my $num_words = scalar(@text_words);
 	    $ret = ucfirst($ret);
 
-	    return $ret if ($number<3);
+	    return $ret if ($numbers<3 && $num_words>4);
+
 	}
     }
     return "NOT_MATCH";
@@ -122,9 +126,15 @@ sub nett
 
     my $result = eval { $engine->search($msg) };
 
+    if (!defined($result))
+    {
+	print "\nDEBUG: UNDEF result in NET RESPONSE, err: $@ " if $debug_on;
+	return undef;
+    }
+    
     if (!defined($result->items))
     {
-	print "\nDEBUG: UNDEF NET RESPONSE, err: $@ " if $debug_on;
+	print "\nDEBUG: UNDEF items in  NET RESPONSE, err: $@ " if $debug_on;
 	return undef;
     }
 
