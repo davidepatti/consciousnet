@@ -664,12 +664,12 @@ key: you 0
     reasmb: NET about (1)
     reasmb: NET my opinion (1)
 
-  decomp: do you *
+  decomp: * do you *
     reasmb: not sure... continue
     reasmb: can you repeat using other words ?
-    reasmb: NET I (1)
-    reasmb: NET when people (1)
-    reasmb: NET motivations to (1)
+    reasmb: NET (1) I (2)
+    reasmb: NET asking (1) do you (2)
+    reasmb: NET motivations to (2)
 
   decomp: * why don't you *
     reasmb: goto why
@@ -1101,12 +1101,8 @@ key: what 1
     reasmb: NET what is my (2)
   decomp: * what is *
     reasmb: NET what is (2)
- decomp: * what *
-    reasmb: The choice is entirely up to you
-    reasmb: anything you like
-    reasmb: so, why not describe something you remember, for a start
-    reasmb: NET what (2) 
-    reasmb: NET about what (2) 
+ decomp: * what * name *
+    reasmb: goto name
   decomp: * I *
     reasmb: goto i
   decomp: * you *
@@ -1121,15 +1117,17 @@ key: what 1
     reasmb: goto your
   decomp: * my *
     reasmb: goto my
-  decomp: *
+  decomp: * what time *
+    reasmb: don't care about time
+    reasmb: NET (1) what time (2) ?
+    reasmb: NET asking what time (2)
+  decomp: * 
+    reasmb: anything you like
     reasmb: Why do you ask ?
     reasmb: Does that question really interest you ?
     reasmb: What is it you really want to know ?
     reasmb: Are such questions very often on your mind ?
-    reasmb: What do you think when asking this ?
-    reasmb: Have you asked anyone else ?
-    reasmb: ...uhmmm, I don't know, tell me something other
-    reasmb: NET (1)
+    reasmb: NET (1) 
     reasmb: NET asking (1)
     reasmb: NET who knows (1)
 
@@ -1618,7 +1616,7 @@ key: your 2
     reasmb: What about your own (2) ?
     reasmb: Are you interested about someone else's (2) ?
     reasmb: Really, interest you about my (2) ?
-    reasmb: What makes you think of my (2) ?
+    reasmb: What makes you think about my (2) ?
     reasmb: NET my (2)
     reasmb: NET because my (2)
     reasmb: NET your (2)

@@ -389,6 +389,7 @@ shiz
 skribz
 skurwysyn
 sphencter
+sperm
 spic
 spierdalaj
 splooge
@@ -403,3 +404,5 @@ Chrome
 server
 click
 www
+http
+https
