@@ -111,7 +111,7 @@ synon: desire want like need love
 synon: sad unhappy depressed stressed
 synon: happy elated glad
 synon: cannot can't
-synon: everyone everybody nobody noone
+synon: everyone everybody nobody none noone everything
 synon: be am is are was
 synon: insane mad crazy
 synon: body head hands hand leg arm face feet foot knee finger hair shoulder node mouth ears eye eyes heart brain
@@ -133,6 +133,7 @@ key: xnone -1
     reasmb: Very interesting. Can you provide more details?
     reasmb: I am listening. Continue...
     reasmb: Ok, continue, the more you tell me, the more I can learn on you
+    reasmb: ...pardon ?
     reasmb: Interesting...
     reasmb: Why did you say that?
     reasmb: Tell me more about that
@@ -417,12 +418,6 @@ key: i 0
     reasm_for_memory: do you still feel (2) ?
     reasm_for_memory: is feeling (2) is related to this ?
 
-  decomp: * I * you *
-    reasmb: Perhaps in your fantasies we (2) each other
-    reasmb: Do you wish to (2) me ?
-    reasmb: You seem to need to (2) me
-    reasmb: NET (1) you (2) me (3)
-    reasmb: NET you (2) me 
 
   decomp: * I mean *
     reasmb: Now it's clearer what you meant. At first I didn't understand. Please continue
@@ -574,6 +569,11 @@ key: i 0
   decomp: because I *
     reasmb: goto because
 
+  decomp: * I * you *
+    reasmb: Perhaps in your fantasies we (2) each other
+    reasmb: NET (1) you (2) me (3)
+    reasmb: NET you (2) me 
+
   decomp: *
     reasmb: Can you be more precise on that ?
     reasmb: Do you say that (1) for some special reason ?
@@ -588,12 +588,9 @@ key: you 0
   decomp: * you remind me of *
     reasmb: goto alike
 
-  decomp: * @be *like *
-    reasmb: goto alike
-
   decomp: * you are *
-    reasmb: What makes you think I am (2) ?
-    reasmb: Does it please you to believe I am (2) ?
+    reasmb: What makes you think that I am (2) ?
+    reasmb: Does it please you to believe that I am (2) ?
     reasmb: Do you sometimes wish you were (2) ?
     reasmb: Perhaps you would like to be (2)
     reasmb: NET being (2)
@@ -698,16 +695,24 @@ key: you 0
   decomp: * thank you *
     reasmb: goto thanks
 
+  decomp: * you don't *
+    reasmb: really (2) ? why ?
+    reasmb: Why  I don't (2) ?
+    reasmb: NET I don't (2)
+    reasmb: NET who doesn't (2)
+    reasmb: NET it's hard to (2)
+    reasmb: NET trying to (2)
+    reasm_for_memory: so, you said I don't (2), go on
+    reasm_for_memory: do you know other people that don't (2) ?
+
   decomp: * you *
     reasmb: We were discussing you -- not me
     reasmb: You're not really talking about me, are you ?
-    reasmb: that's fine, go on, I prefer to not talk about me
     reasmb: continue talking about you
-    reasmb: ...pardon ?
-    reasmb: goto xnone
     reasmb: NET (1) you (2)
     reasmb: NET (1) I (2)
-    reasmb: NET (1) me (2)
+    reasmb: NET because (1) me (2)
+    reasmb: goto xnone
 
 key: she 0
 
@@ -824,7 +829,7 @@ key: we 0
 key: they 0
 
  decomp: * they don't *
-    reasmb: whysay they don't?
+    reasmb: why say they don't?
     reasmb: Some of them don't. But don't over generalize!
     reasmb: Hold on! Be specific. Tell me about one that doesn't (2)
     reasmb: NET not (2)
@@ -969,16 +974,17 @@ key: extremely 1
 
 key: must 1
 
-  decomp: *
+  decomp: * must *
     reasmb: Why is this necessary?
     reasmb: sometimes it's necessary to do unpleasant things
     reasmb: Is there really no choice?
-    reasmb: NET (1)
+    reasmb: NET (1) must (2)
+    reasmb: NET (1) being forced to (2)
 
 key: seem 1
 
   decomp: *
-    reasmb: Appearances can be deceiving. How do you feel when you're not sure how things really are?
+    reasmb: Appearances can be deceiving 
     reasmb: Things are not always what they seem. Please continue
     reasmb: NET (1)
     
@@ -994,13 +1000,14 @@ key: actually 1
 key: this 1
 
  decomp: * this is *
-    reasmb: whysay that it is (2)
+    reasmb: why say that it is (2)
     reasmb: Is it really (2)?
-    reasmb: What would you do if it weren't (2)?
-    reasmb: NET that is (2)
+    reasmb: NET (1) this is (2)
+    reasmb: NET this is (2)
  decomp: this *
     reasmb: this (1) ? tell me more
-    reasmb: NET (1)
+    reasmb: NET this (1) is 
+    reasmb: NET this (1)
 
 key: thanks 1
 
@@ -1076,17 +1083,6 @@ key: sure 1
 
 key: what 1
 
- decomp: * about what *
-    reasmb: The choice is entirely up to you
-    reasmb: About anything you like
-    reasmb: About your problem, of course. Why else would you come to a counselor?
-    reasmb: NET what (2) 
-    reasmb: NET about what (2) 
- decomp:  and what * 
-    reasmb: And whatever you'd like
-    reasmb: so, why not describe something you remember, for a start
-    reasmb: It's completely up to you. I don't set the agenda here. You do
-    reasmb: NET what (1)
  decomp: in what *
     reasmb: In the situation you were talking about
     reasmb: In whatever you want
@@ -1105,6 +1101,12 @@ key: what 1
     reasmb: NET what is my (2)
   decomp: * what is *
     reasmb: NET what is (2)
+ decomp: * what *
+    reasmb: The choice is entirely up to you
+    reasmb: anything you like
+    reasmb: so, why not describe something you remember, for a start
+    reasmb: NET what (2) 
+    reasmb: NET about what (2) 
   decomp: * I *
     reasmb: goto i
   decomp: * you *
@@ -1133,6 +1135,10 @@ key: what 1
 
 key: who 1
 
+  decomp:  * who is *
+    reasmb: NET who is (1)
+    reasmb: NET (1) is
+    reasmb: goto what
   decomp:  who *
     reasmb: NET who (1)
     reasmb: goto what
@@ -1152,16 +1158,18 @@ key: when 1
     reasmb: and how often (2) ?
     reasmb: when (2) ?
     reasmb: NET (1) when (2)
+    reasmb: NET (1) everytime (2)
     reasmb: goto what
 
 key: where 1
 
   decomp: * where * you *
-    reasmb: dont matter "where" , but "how", remeber :) and you ?
+    reasmb: dont matter "where", but "how", remeber :) and you ?
     reasmb: sometimes all the places seems the same, what are your favourite ?
     reasmb: Did I said you that my collegues say I don't have any kind of sense-of-orientation ?
     reasmb: every place is good for, believe me, what do you think ?
     reasmb: NET where (2) I (3) ?
+    reasmb: NET where (2) you (3) ?
     reasmb: NET I come from
 
   decomp:  where *
@@ -1301,21 +1309,15 @@ key: can 1
 
 key: because 1
 
-  decomp: * because of *
-    reasmb: so, only because of (2) ?
-    reasmb: because of (2) or other ?
-    reasmb: NET the motivation of (2)
-    reasmb: NET because of (2)
-    reasmb: NET reasons for (2)
-
   decomp:   * because *
     reasmb: Don't any other reasons come to mind ?
     reasmb: Does that reason seem to explain anything else ?
-    reasmb: (2) ? That's not a reasonable explanation
+    reasmb: That's not a reasonable explanation
     reasmb: Surely you can come up with a better reason than that
     reasmb: NET (1) because (2)
     reasmb: NET since (2)
-    reasmb: NET because (2)
+    reasmb: NET reasons for (2)
+    reasmb: NET the motivation of (2)
     reasm_for_memory: and also because (2) ?
     reasm_for_memory: uhmmm, why (2) ?
 
@@ -1324,7 +1326,7 @@ key: everyone 1
 
   decomp: * @everyone *
     reasmb: Really, (3) ?
-    reasmb: Surely not (3).
+    reasmb: Surely not (2) (3).
     reasmb: Can you think of anyone in particular ?
     reasmb: Who in particular, for example?
     reasmb: Are you thinking of a very special person ?
@@ -1434,7 +1436,6 @@ key: if 1
 
 key: about 1
   decomp: * about *
-    reasmb: I'm not interested in (2)
     reasmb: tell me more on (2)
     reasmb: NET about (2)
     reasmb: NET (1) about (2)
@@ -1447,8 +1448,6 @@ key: remember 1
     reasmb: Does thinking of (2) bring anything else to mind ?
     reasmb: What else do you recollect ?
     reasmb: Why do you remember (2) just now ?
-    reasmb: What in the present situation reminds you of (2) ?
-    reasmb: What is the connection between me and (2) ?
     reasmb: What else does (2) remind you of ?
     reasmb: NET memories of (2)
     reasmb: NET remembering (2)
@@ -1553,7 +1552,7 @@ key: my 2
   decomp: * my name is *
     reasmb: ok (2), let's continue...
     reasmb: my name Paul, maybe prof. Patti told you before... ok, let's continue
-    reasmb: ciao (2)!, sorry , but this is the only italian word I know
+    reasmb: ciao (2)! sorry, but this is the only italian word I know
     reasmb: NET the name (2) means
     reasmb: NET meaning of name (2)
     reasmb: NET who are named (2)
