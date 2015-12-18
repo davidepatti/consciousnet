@@ -703,8 +703,7 @@ sub transform{
 	# Convert punctuation to periods.  We will assume that commas
 	# and certain conjunctions separate distinct thoughts/sentences.  
 
-#REMOVED for consciousnet model by davide.patti@dieei.unict.it
-        #$string =~ s/[?!,]/./g;
+        $string =~ s/[?!,]/./g;
         $string =~ s/[?!]/./g;
         $string =~ s/but/./g;   #   Yikes!  This is English-specific. 
 
