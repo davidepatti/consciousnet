@@ -43,7 +43,7 @@ sub preprocess
 }
 
 ###############################################################################
-sub juice
+sub snippet_juice
 ###############################################################################
 {
     my ($raw_msg) = @_;
@@ -72,12 +72,8 @@ sub juice
 	    $ret =~ s/Best Answer://si; 
 	    $ret =~ s/Update://si;
 
-	    my $numbers = () = $ret =~ /\d+/gis;
-	    my @text_words = split(/\s+/, $ret);
-	    my $num_words = scalar(@text_words);
-	    $ret = ucfirst($ret);
+	    return ucfirst($ret);
 
-	    return $ret if ($numbers<3 && $num_words>4);
 
 	}
     }
@@ -89,40 +85,46 @@ sub sanity_check
 {
     my ($msg) = @_;
 
-    if (length($msg)<15)
+    my $numbers = () = $msg =~ /\d+/gis;
+    if ($numbers > 3)
     {
-	print "\n\t--> Sanity check FAILED, discarding for short lenght..." if $debug_on;
+	print "\n\t--> Sanity check FAILED: too much numbers " if $debug_on;
+	return 0;
+    }
+
+    my @text_words = split(/\s+/, $msg);
+    my $num_words = scalar(@text_words);
+
+    if ($num_words<4)
+    {
+	print "\n\t--> Sanity check FAILED: short lenght " if $debug_on;
 	return 0;
     }
 
     if ($filter_on)
     {
-#print "\n --> Applying badword filter..." if $debug_on;
 	seek $fh, 0, 0;
 
 	while (<$fh>) {
 	    my $mi = $_;
 	    $mi =~ s/\r|\n//g;
-#print "\n MESSAGE IS $msg ";
-#print "\n >>>> Filter checking for $mi ";
             if ($msg =~ /\b$mi\b/si)
 	    {
-		print "\n\t--> Sanity check FAILED, found forbidden word $mi" if $debug_on;
+		print "\n\t--> Sanity check FAILED: found forbidden word $mi" if $debug_on;
 		return 0;
 	    }
 	}
     }
-#print "\n--> Sanity check OK!" if $debug_on;
     return 1;
 }
 
 ###############################################################################
-sub nett
+sub net_inject
 ###############################################################################
 {
     my ($msg) = @_;
 
-    print "\nDEBUG: Google API searching ** : $msg\n" if $debug_on;
+    print "\nDEBUG: Google API searching: $msg\n" if $debug_on;
 
     my $result = eval { $engine->search($msg) };
 
@@ -142,10 +144,9 @@ sub nett
     my $n = 0;
     my @responses;
 
-
     foreach my $item (@{$result->items}) 
     {
-	$clean = &juice($item->snippet);
+	$clean = &snippet_juice($item->snippet);
 
 	if ($debug_on)
 	{
@@ -335,7 +336,7 @@ START:
 	$reasmb =~ s/(.*)NET(.*)/$2/g;
 	$reasmb =~ s/(.*)xnone(.*)/$1$2/g;
 
-	my $search_result = &nett($reasmb);
+	my $search_result = &net_inject($reasmb);
 
 	if (defined($search_result)) 
 	{
