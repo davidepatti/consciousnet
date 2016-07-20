@@ -1,8 +1,8 @@
-INSTALLING INSTRUCTIONS
+** INSTALLING INSTRUCTIONS **
 =======================
 - Install perl
 - Download consciousnet source code:
-- = git clone https://github.com/davidepatti/consciousnet =
+> git clone https://github.com/davidepatti/consciousnet 
 - edit Data_example.pm, putting your cx and api_key
 - rename it to Data.pm
 - Install Eliza using cpan: 
