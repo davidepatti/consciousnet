@@ -1,4 +1,4 @@
-** INSTALLING INSTRUCTIONS **
+**INSTALLING INSTRUCTIONS**
 =======================
 - Install perl
 - Download Consciousnet source code:
