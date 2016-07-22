@@ -16,11 +16,15 @@ https://console.developers.google.com/apis
 ```
 sudo cpan install Chatbot::Eliza
 ```
-- Now, copy the modified Eliza.pm  provided with consciousnet in order to replace the original file provided by the Eliza cpan module. For example, in macosx:
+- Now, copy the modified Eliza.pm  provided with consciousnet in order to replace the original file provided by the Eliza cpan module. For example, in macosx you could try:
 ```
-sudo cp Eliza.pm /opt/local/lib/perl5/site_perl/5.16.3/Chatbot
+sudo cp Eliza.pm /opt/local/lib/perl5/site_perl/PERL_VERSION/Chatbot
 ```
-Change the last command according to your cpan installation directory.
+or 
+```
+sudo cp Eliza.pm /Library/Perl/PERL_VERSION/Chatbot 
+```
+Of course, change this last command according to your cpan installation directory.
 
 Now, you are ready to go:
 ```
