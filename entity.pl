@@ -13,7 +13,7 @@ use warnings;
 #defaults for command line
 my $entity_mail = "gioio\@work";
 my $entity_name = "PaulGioio";
-my $metaresponse = "metaresponse.meta";
+my $metaresponse = "annette.meta";
 my $debug_on = 0;
 my $no_net = 0;
 my $quick_on = 0;
