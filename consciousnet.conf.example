@@ -12,7 +12,7 @@ brave_endpoint=https://api.search.brave.com/res/v1/web/search
 brave_country=us
 brave_search_lang=en
 brave_ui_lang=en-US
-brave_safesearch=moderate
+brave_safesearch=off
 brave_spellcheck=1
 
 # Runtime tuning.

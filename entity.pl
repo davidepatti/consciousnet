@@ -152,7 +152,7 @@ sub load_config
 	brave_country     => "us",
 	brave_search_lang => "en",
 	brave_ui_lang     => "en-US",
-	brave_safesearch  => "moderate",
+	brave_safesearch  => "off",
 	brave_spellcheck  => 1,
 	meta_file         => "annette.meta",
 	max_answer_words  => 25,
@@ -270,6 +270,8 @@ sub clean_search_text
     $text =~ s/&amp;/&/g;
     $text =~ s/&lt;/</g;
     $text =~ s/&gt;/>/g;
+    $text =~ s/&#x([0-9a-fA-F]+);/chr(hex($1))/eg;
+    $text =~ s/&#([0-9]+);/chr($1)/eg;
     $text =~ s/\s+/ /g;
     $text =~ s/^\s+|\s+$//g;
 
