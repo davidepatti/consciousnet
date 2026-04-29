@@ -3,6 +3,12 @@
 Consciousnet is an old Perl chatbot experiment built around a modified
 `Chatbot::Eliza` script and internet snippets.
 
+Reference paper: V. Catania, S. Monteleone, M. Palesi, and D. Patti, "Impact of
+Users' Beliefs in Text-Based Linguistic Interaction," IEEE Access, vol. 8,
+pp. 46861-46867, 2020, doi:
+[10.1109/ACCESS.2020.2978977](https://doi.org/10.1109/ACCESS.2020.2978977)
+([IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/9026943)).
+
 ## Current status
 
 The old Google Programmable Search / Custom Search setup is deprecated and is no
