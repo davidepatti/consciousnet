@@ -1,0 +1,20 @@
+# Consciousnet runtime configuration.
+#
+# Copy this file to consciousnet.conf and keep consciousnet.conf private.
+# The setup script does this automatically.
+
+# Brave Search API credentials. Keep the real token private in consciousnet.conf
+# or set BRAVE_SEARCH_API_KEY in the environment.
+brave_api_key=YOUR_BRAVE_SEARCH_API_KEY
+
+# Brave Search request options.
+brave_endpoint=https://api.search.brave.com/res/v1/web/search
+brave_country=us
+brave_search_lang=en
+brave_ui_lang=en-US
+brave_safesearch=moderate
+brave_spellcheck=1
+
+# Runtime tuning.
+page_size=5
+http_timeout=10
