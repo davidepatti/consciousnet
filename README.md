@@ -62,7 +62,9 @@ http_timeout=10
 the project directory. To use the Italian conversation script, set it to
 `gioio-ita.meta` in your private `consciousnet.conf`.
 
-`max_answer_words` limits candidate web-search answers before one is selected.
+`max_answer_words` rejects overlong candidate web-search answers before one is
+selected. Answers are not truncated.
+Search snippets are first reduced to one complete sentence.
 
 An Italian example config is available at `consciousnet-it.conf.example`; it
 uses `gioio-ita.meta` and Italian Brave Search settings.

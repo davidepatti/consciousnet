@@ -75,34 +75,23 @@ sub snippet_juice
 ###############################################################################
 {
     my ($raw_msg) = @_;
-    my $ret;
 
-# Regular expression to filter snippet:
-# - ending with a . or ? or !
-# - when delimited by '.', should be a single '.'
-# - including multiple sentences separated by period, but not starting with ...
-# - non-greedy, min length 20
-# - not containing ...
-
-# TODO: better way than adding extra char
-    $raw_msg = $raw_msg.'  ';
-
-    if ($raw_msg =~ /([.]{3}[^.]+\.)?(([^.]\.[^.]|[^.]){20,}?[.?!])[^.]/si)
-    {
-	if (defined($2))
-	{
-	    $ret = $2;
-	    $ret =~ s/\.$//si; # remove last .
-	    $ret =~ s/\n//si;  # remove newlines
-	    $ret =~ s/^\s+//;  # remove spaces at beginning
+    $raw_msg =~ s/\s+/ /g;
+    $raw_msg =~ s/^\s+|\s+$//g;
 
 # Typical bad results.
-	    $ret =~ s/Best Answer://si;
-	    $ret =~ s/Update://si;
+    $raw_msg =~ s/Best Answer://si;
+    $raw_msg =~ s/Update://si;
 
-	    return ucfirst($ret);
-	}
+# Return the first complete sentence with enough content.
+    while ($raw_msg =~ /([^.?!]{20,}?[.?!])(?:\s+|$)/g)
+    {
+	my $ret = $1;
+	$ret =~ s/[.?!]$//si; # remove sentence terminator.
+	$ret =~ s/^\s+|\s+$//g;
+	return ucfirst($ret) if length($ret) >= 20;
     }
+
     return "NOT_MATCH";
 }
 
@@ -125,6 +114,13 @@ sub sanity_check
     if ($num_words<4)
     {
 	print "\n\t--> Sanity check FAILED: short length " if $debug_on;
+	return 0;
+    }
+
+    my $max_words = max_answer_words(load_config());
+    if ($num_words>$max_words)
+    {
+	print "\n\t--> Sanity check FAILED: long length " if $debug_on;
 	return 0;
     }
 
@@ -291,28 +287,11 @@ sub max_answer_words
 }
 
 ###############################################################################
-sub limit_answer_words
-###############################################################################
-{
-    my ($text, $max_words) = @_;
-    return "" if !defined($text);
-
-    my @words = split(/\s+/, $text);
-    return $text if scalar(@words) <= $max_words;
-
-    my $limited = join(" ", @words[0 .. $max_words - 1]);
-    $limited =~ s/[,:;]\s*$//;
-    return $limited;
-}
-
-###############################################################################
 sub choose_search_response
 ###############################################################################
 {
     my (@raw_responses) = @_;
     my @responses;
-    my $cfg = load_config();
-    my $max_words = max_answer_words($cfg);
 
     for my $raw (@raw_responses)
     {
@@ -321,7 +300,6 @@ sub choose_search_response
 
 	my $clean = &snippet_juice($snippet);
 	$clean = ucfirst($snippet) if $clean eq "NOT_MATCH";
-	$clean = limit_answer_words($clean, $max_words);
 
 	if ($debug_on)
 	{
