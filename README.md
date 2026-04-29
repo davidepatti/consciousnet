@@ -52,9 +52,20 @@ brave_search_lang=en
 brave_ui_lang=en-US
 brave_safesearch=moderate
 brave_spellcheck=1
+meta_file=annette.meta
+max_answer_words=25
 page_size=5
 http_timeout=10
 ```
+
+`meta_file` points to the Eliza meta script. Relative paths are resolved from
+the project directory. To use the Italian conversation script, set it to
+`gioio-ita.meta` in your private `consciousnet.conf`.
+
+`max_answer_words` limits candidate web-search answers before one is selected.
+
+An Italian example config is available at `consciousnet-it.conf.example`; it
+uses `gioio-ita.meta` and Italian Brave Search settings.
 
 Or keep the key out of the file:
 

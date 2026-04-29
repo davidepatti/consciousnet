@@ -158,6 +158,8 @@ sub load_config
 	brave_ui_lang     => "en-US",
 	brave_safesearch  => "moderate",
 	brave_spellcheck  => 1,
+	meta_file         => "annette.meta",
+	max_answer_words  => 25,
 	page_size         => 5,
 	http_timeout      => 10,
     );
@@ -199,6 +201,29 @@ sub config_value_set
 {
     my ($value) = @_;
     return defined($value) && $value ne "" && $value !~ /^YOUR_/;
+}
+
+###############################################################################
+sub project_path
+###############################################################################
+{
+    my ($path) = @_;
+    return $path if File::Spec->file_name_is_absolute($path);
+    return File::Spec->catfile($base_dir, $path);
+}
+
+###############################################################################
+sub apply_runtime_config
+###############################################################################
+{
+    my $cfg = load_config();
+
+    if (config_value_set($cfg->{meta_file}))
+    {
+	$metaresponse = project_path($cfg->{meta_file});
+	my (undef, undef, $file_name) = File::Spec->splitpath($metaresponse);
+	$metaresponse_log_name = $file_name if $file_name ne "";
+    }
 }
 
 ###############################################################################
@@ -256,11 +281,38 @@ sub clean_search_text
 }
 
 ###############################################################################
+sub max_answer_words
+###############################################################################
+{
+    my ($cfg) = @_;
+    my $max_words = $cfg->{max_answer_words};
+    return 25 if !defined($max_words) || $max_words !~ /^\d+$/;
+    return $max_words > 0 ? int($max_words) : 25;
+}
+
+###############################################################################
+sub limit_answer_words
+###############################################################################
+{
+    my ($text, $max_words) = @_;
+    return "" if !defined($text);
+
+    my @words = split(/\s+/, $text);
+    return $text if scalar(@words) <= $max_words;
+
+    my $limited = join(" ", @words[0 .. $max_words - 1]);
+    $limited =~ s/[,:;]\s*$//;
+    return $limited;
+}
+
+###############################################################################
 sub choose_search_response
 ###############################################################################
 {
     my (@raw_responses) = @_;
     my @responses;
+    my $cfg = load_config();
+    my $max_words = max_answer_words($cfg);
 
     for my $raw (@raw_responses)
     {
@@ -269,6 +321,7 @@ sub choose_search_response
 
 	my $clean = &snippet_juice($snippet);
 	$clean = ucfirst($snippet) if $clean eq "NOT_MATCH";
+	$clean = limit_answer_words($clean, $max_words);
 
 	if ($debug_on)
 	{
@@ -509,6 +562,7 @@ sub parse_cmdline
 ######################################################################
 $|++;
 &parse_cmdline;
+&apply_runtime_config;
 &greetings;
 
 my $true = 1;

@@ -1,4 +1,5 @@
 consciousnet.conf
+consciousnet-*.conf
 Data.pm
 local/
 log_*.annette.meta.txt

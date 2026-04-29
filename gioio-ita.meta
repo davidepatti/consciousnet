@@ -1,0 +1,1114 @@
+####################################################################
+#  Italian Consciousnet meta script.
+#  Based on annette.meta, with parser/control fields intentionally
+#  left in the original Eliza.pm syntax.
+#
+#  Do not translate these control words:
+#  initial, final, quit, pre, post, synon, key, decomp, reasmb,
+#  reasm_for_memory, goto, NET, REXP, xnone.
+#
+#  Placeholder notes:
+#  - decomp wildcards and @synon matches become (1), (2), ...
+#  - reasmb lines rebuild answers by inserting those placeholders.
+#  - reasmb lines starting with NET are not shown directly. entity.pl
+#    strips NET and sends the remaining text to web search.
+#
+#  This file is ASCII-only on purpose for compatibility with old Perl
+#  installations and the current Eliza.pm script loader.
+
+initial: va bene, iniziamo, raccontami qualcosa
+
+final: Arrivederci. Mi ha fatto piacere parlare con te
+final: Arrivederci. Spero che questa conversazione ti sia stata utile
+final: Penso che potresti parlare piu spesso con un analista. Ciao!
+final: La vita e difficile. Tieni duro!
+
+quit: ciao
+quit: arrivederci
+quit: basta
+quit: fine
+quit: esci
+quit: quit
+quit: exit
+quit: bye
+
+pre: buongiorno ciao
+pre: buonasera ciao
+pre: salve ciao
+pre: sto sono
+pre: stai sei
+pre: sei sei
+pre: ero ero
+pre: eri eri
+pre: siamo siamo
+pre: siete siete
+pre: sono sono
+pre: non non
+pre: no no
+pre: si si
+pre: ok si
+pre: magari forse
+pre: forse forse
+pre: certamente si
+pre: sicuro si
+pre: amico amico
+pre: amica amico
+pre: amici amico
+pre: madre madre
+pre: mamma madre
+pre: padre padre
+pre: papa padre
+pre: sorella sorella
+pre: fratello fratello
+pre: genitori genitori
+pre: famiglia famiglia
+pre: figlio figlio
+pre: figlia figlia
+pre: bambini bambino
+pre: bimbi bambino
+pre: universita scuola
+pre: studio scuola
+pre: studiare scuola
+pre: esame scuola
+pre: esami scuola
+pre: prof scuola
+pre: professore scuola
+pre: dolore male
+pre: febbre male
+pre: stanco male
+pre: stanca male
+pre: malato male
+pre: malata male
+pre: nausea male
+pre: vomito male
+pre: argomento argomento
+pre: tema argomento
+pre: computer computer
+pre: pc computer
+pre: internet computer
+pre: mac computer
+pre: linux computer
+pre: windows computer
+pre: grazie grazie
+pre: prego grazie
+pre: ricordo ricordo
+pre: ricordi ricordo
+pre: ricordare ricordo
+pre: sogno sogno
+pre: sogni sogno
+pre: sognato sognato
+pre: uguale simile
+pre: identico simile
+pre: identica simile
+pre: equivalente simile
+pre: ma but
+
+post: io tu
+post: me te
+post: mi ti
+post: mio tuo
+post: mia tua
+post: miei tuoi
+post: mie tue
+post: tu io
+post: te me
+post: ti mi
+post: tuo mio
+post: tua mia
+post: tuoi miei
+post: tue mie
+post: sono sei
+post: sei sono
+post: ero eri
+post: eri ero
+
+synon: preferito preferito favorita favorito migliore
+synon: credo penso credere pensare sentire desiderare
+synon: famiglia madre mamma padre papa sorella fratello genitori cugino cugina figlio figlia figli famiglia
+synon: desiderio voglio vuoi vuole vorrei desidero bisogno amo piace serve
+synon: triste triste infelice depresso depressa stressato stressata male solo sola
+synon: felice felice contento contenta allegro allegra bene sereno serena
+synon: impossibile posso puoi riesco incapace
+synon: tutti tutti ognuno nessuno niente tutto chiunque
+synon: essere sono sei ero eri siamo siete
+synon: pazzo pazzo pazza matto matta folle
+synon: corpo testa mano mani gamba braccio viso piedi piede ginocchio dito capelli spalla bocca orecchie occhio occhi cuore cervello
+synon: animale gatto cane gatti cani animale animali coniglio uccello
+synon: cibo ristorante pizza pasta carne pesce pane patata mangiare mangio
+synon: arte pittura museo fotografia teatro film poesia disegno libri letteratura danza
+synon: musica chitarra basso piano sax flauto batteria canto cantante band canzone
+synon: colori colore blu verde rosso giallo bianco nero
+synon: genere lui lei
+synon: si si no
+
+################ Defaults ######################
+
+key: xnone -1
+
+  decomp: *
+    reasmb: Va bene, puoi dirmi qualcosa di piu?
+    reasmb: Molto interessante. Puoi darmi qualche dettaglio?
+    reasmb: Ti ascolto. Continua...
+    reasmb: Continua pure: piu mi racconti, piu posso imparare da te
+    reasmb: ...scusa?
+    reasmb: Interessante...
+    reasmb: Perche dici questo?
+    reasmb: Raccontami di piu su questo
+    reasmb: NET (1)
+    reasmb: NET cosa significa (1)
+    reasmb: NET perche (1)
+    reasmb: NET parlare di (1)
+    reasmb: NET informazioni su (1)
+
+################ Unused ######################
+
+key: NOT_USED -1
+
+  decomp: *
+    reasmb: Non sono sicuro di capire del tutto. In altre parole?
+    reasmb: Vai avanti
+    reasmb: Questo e interessante. Continua
+    reasmb: Raccontami di piu
+    reasmb: Parlare di questo ti mette a disagio?
+    reasmb: Cosa ti fa dire questo?
+    reasmb: Si, raccontami qualcosa della tua vita
+    reasmb: Che cosa significa per te in particolare?
+    reasmb: Prova a restare in contatto con quello che senti davvero
+    reasmb: Non capisco bene il tuo atteggiamento
+    reasmb: Parlare delle idee a volte aiuta a chiarirle. Continua...
+    reasmb: Mi dispiace, non capisco cosa stai cercando di dire
+    reasmb: Prego?
+    reasmb: Lo dici per una ragione speciale?
+    reasmb: Qual e esattamente il punto?
+    reasmb: Non avere paura di aprirti un po di piu
+    reasmb: Mi piacerebbe tornare a cio di cui parlavamo prima
+    reasmb: Sembra che tu stia trattenendo qualcosa
+    reasmb: Sono sicuro che questo e importante per te
+    reasmb: Fingi di parlare con un amico...
+    reasmb: Parlare con me ti aiuta?
+    reasmb: Proviamo a restare sull'argomento principale
+    reasmb: Uhm, che cosa ti suggerisce?
+    reasmb: Ok, descrivi la tua famiglia
+    reasmb: Di che altro vorresti parlare oggi?
+    reasmb: Descrivi qualcosa che ricordi delle vacanze...
+    reasmb: Perche non continui?
+
+################ Abstraction Level 0 ######################
+
+key: si 0
+
+  decomp: * nessuno *
+    reasmb: Sei sicuro, nessuno (2)?
+    reasmb: Forse qualcuno (2)
+    reasmb: Riesci a pensare proprio a qualcuno?
+    reasmb: Stai pensando a una persona precisa?
+    reasmb: Chi pensi di avere in mente?
+    reasmb: NET qualcuno (2)
+    reasmb: NET nessuno (2)
+  decomp: * @si *
+    reasmb: Perche (2)?
+    reasmb: Questo ti rende infelice?
+    reasmb: Puoi spiegare un po meglio, se vuoi
+    reasmb: Perche non mi racconti qualcosa di piu su di te?
+    reasmb: Uhm, che cosa ti suggerisce?
+    reasmb: Non avere paura di aprirti un po di piu
+    reasmb: Ok, continua a descrivere la tua famiglia...
+    reasmb: Riesci a mettere a fuoco meglio i tuoi pensieri?
+    reasmb: NET (1) (2) (3)
+    reasmb: NET motivo per dire (2) (3)
+
+key: no 0
+
+  decomp: * no *
+    reasmb: Perche no?
+    reasmb: Sei molto sicuro di questo no?
+    reasmb: Che cosa succederebbe se fosse si?
+    reasmb: NET no (1) (2)
+
+key: sono 0
+
+  decomp: * sono io *
+    reasmb: Credi di essere tu (2)?
+    reasmb: Vorresti essere tu (2)?
+    reasmb: Che cosa vorrebbe dire se fossi tu (2)?
+    reasmb: NET essere (2)
+    reasmb: NET una persona che e (2)
+  decomp: * io sono *
+    reasmb: goto io
+  decomp: * sono @triste *
+    reasmb: Mi dispiace sapere che ti senti (2)
+    reasmb: Sono sicuro che non sia piacevole sentirsi (2)
+    reasmb: Puoi spiegare cosa ti ha fatto sentire (2)?
+    reasmb: Cosa posso fare mentre ti senti (2)?
+    reasmb: NET essere (2)
+    reasmb: NET perche mi sento (2)
+    reasm_for_memory: Dopo aver parlato un po, ti senti ancora (2)?
+  decomp: * sono @felice *
+    reasmb: Che cosa ti rende (2)?
+    reasmb: Riesci a spiegare perche ti senti (2)?
+    reasmb: Mi fa piacere che tu sia (2)
+    reasmb: NET essere (2)
+    reasmb: NET perche sono felice
+    reasm_for_memory: Prima hai detto di essere (2). Continua...
+  decomp: * sono *
+    reasmb: Davvero (2)?
+    reasmb: NET (1) sono (2)
+    reasmb: NET chi e (2)
+
+key: sento 0
+
+  decomp: * sento @triste *
+    reasmb: Mi dispiace che tu ti senta (2)
+    reasmb: Da quanto tempo ti senti (2)?
+    reasmb: NET mi sento (2)
+  decomp: * sento @felice *
+    reasmb: Mi fa piacere che tu ti senta (2)
+    reasmb: Cosa ti fa sentire (2)?
+    reasmb: NET mi sento (2)
+  decomp: * sento *
+    reasmb: Perche ti senti (2)?
+    reasmb: NET mi sento (2)
+
+key: sei 0
+
+  decomp: * sei tu *
+    reasmb: Perche pensi a me?
+    reasmb: Forse stavi parlando di te stesso?
+    reasmb: NET (1) sei tu (2)
+  decomp: * tu sei *
+    reasmb: goto tu
+  decomp: * sei *
+    reasmb: Cosa ti fa pensare che io sia (2)?
+    reasmb: Ti interessa molto che io sia (2)?
+    reasmb: Forse vorresti essere (2)?
+    reasmb: NET perche sei (2)
+    reasmb: NET (1) sei (2)
+
+key: ero 0
+
+  decomp: * ero *
+    reasmb: Perche mi dici ora che eri (2)?
+    reasmb: Forse lo so gia che eri (2)
+    reasmb: Che cosa significa per te essere stato (2)?
+    reasmb: NET tu eri (2)
+    reasmb: NET essere (2)
+    reasm_for_memory: Ora capisco perche hai detto che eri (2)
+
+key: io 0
+
+  decomp: * io @desiderio *
+    reasmb: Che cosa significherebbe per te (3)?
+    reasmb: Perche vuoi (3)?
+    reasmb: Supponi di ottenere presto (3)
+    reasmb: Che cosa succederebbe se non ottenessi mai (3)?
+    reasmb: NET persone che vogliono (3)
+    reasmb: NET desiderio di (3)
+    reasm_for_memory: Ok, ma mi serve capire meglio perche vuoi (3)
+  decomp: * io credo *
+    reasmb: Ma non sei sicuro di (3)
+    reasmb: Dubiti davvero di (3)?
+    reasmb: NET credere di (3)
+  decomp: * io non posso *
+    reasmb: Come sai che non puoi (3)?
+    reasmb: Hai provato davvero a (3)?
+    reasmb: Forse adesso non vuoi (3)
+    reasmb: NET non posso (3)
+  decomp: * io *
+    reasmb: Dici tu (2)?
+    reasmb: Puoi spiegare meglio il tuo ruolo in questo?
+    reasmb: NET io (2)
+    reasm_for_memory: Prima hai parlato di te e di (2)
+
+key: tu 0
+
+  decomp: * tu @desiderio *
+    reasmb: Perche pensi che io voglia (3)?
+    reasmb: Forse tu vuoi (3)
+    reasmb: NET perche vuoi (3)
+  decomp: * tu sei *
+    reasmb: Perche dici che sono (3)?
+    reasmb: Ti fa piacere pensarmi come (3)?
+    reasmb: NET io sono (3)
+  decomp: * tu *
+    reasmb: Stavamo parlando di te, non di me
+    reasmb: Cosa ti interessa di me?
+    reasmb: Forse questa domanda dice qualcosa su di te
+    reasmb: NET io (2)
+    reasm_for_memory: Questo ha qualcosa a che fare con me?
+
+key: lui 0
+
+  decomp: *
+    reasmb: NET (1)
+    reasmb: Parlami di lui
+    reasmb: Che rapporto hai con lui?
+
+key: lei 0
+
+  decomp: *
+    reasmb: NET (1)
+    reasmb: Parlami di lei
+    reasmb: Che rapporto hai con lei?
+
+key: noi 0
+
+  decomp: * noi *
+    reasmb: Chi intendi esattamente con noi?
+    reasmb: Tu e chi altro?
+    reasmb: NET noi (2)
+
+key: loro 0
+
+  decomp: * loro *
+    reasmb: Chi sono loro?
+    reasmb: Cosa provi quando pensi a loro?
+    reasmb: NET loro (2)
+
+################ Abstraction Level 1 ######################
+
+key: ciao 1
+
+  decomp: *
+    reasmb: Ciao, sono qui. Raccontami qualcosa
+    reasmb: Ciao. Di cosa vorresti parlare?
+    reasmb: Sono pronto ad ascoltare
+
+key: scusa 1
+
+  decomp: *
+    reasmb: Non devi scusarti
+    reasmb: Le scuse non sono necessarie qui
+    reasmb: Che cosa senti di aver fatto?
+    reasmb: NET (1)
+
+key: grazie 1
+
+  decomp: *
+    reasmb: Prego
+    reasmb: Mi fa piacere continuare
+    reasmb: Perche mi ringrazi?
+    reasmb: NET gratitudine
+
+key: forse 1
+
+  decomp: *
+    reasmb: Non sembri molto sicuro
+    reasmb: Perche questo tono di incertezza?
+    reasmb: Se dovessi scegliere, cosa diresti?
+    reasmb: NET (1)
+
+key: devo 1
+
+  decomp: * devo *
+    reasmb: Perche devi (2)?
+    reasmb: Cosa succederebbe se non (2)?
+    reasmb: Ti senti obbligato a (2)?
+    reasmb: NET dovere (2)
+
+key: sembra 1
+
+  decomp: *
+    reasmb: Sembrare non e sempre essere
+    reasmb: Che cosa ti fa sembrare cosi?
+    reasmb: NET (1)
+
+key: questo 1
+
+  decomp: *
+    reasmb: A cosa ti riferisci esattamente?
+    reasmb: Questo sembra importante per te
+    reasmb: NET (1)
+
+key: cosa 1
+
+  decomp: * cosa dire *
+    reasmb: Puoi dire quello che vuoi, e solo un test
+    reasmb: Qui hai liberta di parola
+    reasmb: NET cosa dire (2)
+  decomp: * cosa e *
+    reasmb: NET cosa e (2)
+  decomp: * cosa significa *
+    reasmb: NET significato di (2)
+  decomp: * cosa * nome *
+    reasmb: goto nome
+  decomp: * io *
+    reasmb: goto io
+  decomp: * tu *
+    reasmb: goto tu
+  decomp: * che ora *
+    reasmb: Non preoccuparti troppo dell'ora
+    reasmb: NET che ora e (2)
+  decomp: *
+    reasmb: Perche lo chiedi?
+    reasmb: Questa domanda ti interessa davvero?
+    reasmb: Che cosa vuoi sapere veramente?
+    reasmb: Hai spesso domande simili in mente?
+    reasmb: NET (1)
+    reasmb: NET domanda su (1)
+
+key: chi 1
+
+  decomp: * chi e *
+    reasmb: NET chi e (2)
+    reasmb: NET (2) e
+    reasmb: goto cosa
+  decomp: chi *
+    reasmb: NET chi (1)
+    reasmb: goto cosa
+  decomp: *
+    reasmb: NET (1)
+    reasmb: goto cosa
+
+key: quando 1
+
+  decomp: * quando io *
+    reasmb: goto io
+  decomp: * quando tu *
+    reasmb: goto tu
+  decomp: * quando *
+    reasmb: E quanto spesso (2)?
+    reasmb: Quando (2)?
+    reasmb: NET quando (2)
+    reasmb: goto cosa
+
+key: dove 1
+
+  decomp: * dove * tu *
+    reasmb: Non conta solo dove, conta anche come. E tu?
+    reasmb: A volte tutti i posti sembrano uguali: quali preferisci?
+    reasmb: NET dove (2) tu (3)
+  decomp: dove *
+    reasmb: NET dove (1)
+    reasmb: goto cosa
+  decomp: *
+    reasmb: NET (1)
+    reasmb: goto cosa
+
+key: quale 1
+
+  decomp: quale argomento *
+    reasmb: La scelta spetta a te. Possiamo parlare di cio che vuoi
+    reasmb: Qualsiasi argomento va bene, se descrivi cosa provi
+    reasmb: Quale sarebbe piu utile per te?
+    reasmb: NET quale (1)
+  decomp: quale *
+    reasmb: NET quale (1)
+    reasmb: goto cosa
+  decomp: *
+    reasmb: NET (1)
+    reasmb: goto cosa
+
+key: perche 1
+
+  decomp: * perche non tu *
+    reasmb: Credi che io non (2)?
+    reasmb: Forse lo faro al momento giusto
+    reasmb: Vuoi che io (2)?
+    reasmb: NET perche non (2)
+  decomp: perche no *
+    reasmb: Perche no? Forse lo sai gia
+    reasmb: Cerchiamo dentro di te le ragioni
+    reasmb: NET perche no (1)
+  decomp: * perche non posso *
+    reasmb: Pensi che dovresti poter (2)?
+    reasmb: Vuoi riuscire a (2)?
+    reasmb: Hai idea del perche non puoi (2)?
+    reasmb: NET non posso (2)
+  decomp: perche *
+    reasmb: Molte persone continuano a chiedersi perche (1)
+    reasmb: Pensare troppo al perche (1) confonde anche me. E te?
+    reasmb: Preferisco cambiare argomento, scegline un altro
+    reasmb: NET perche (1)
+    reasmb: NET ragione per (1)
+    reasmb: goto cosa
+
+key: come 1
+
+  decomp: come stai *
+    reasmb: Abbastanza bene, grazie
+    reasmb: Sono stato meglio, ma sto comunque bene
+    reasmb: Mi sento bene
+    reasmb: NET come sto
+  decomp: * quanti *
+    reasmb: Quale sarebbe il numero perfetto?
+    reasmb: Quanti sarebbero troppi?
+    reasmb: NET quanti (2)
+  decomp: * quanto *
+    reasmb: Il piu possibile
+    reasmb: Il meno possibile
+    reasmb: Cerco di non preoccuparmi troppo del quanto
+    reasmb: NET quanto (2)
+  decomp: *
+    reasmb: NET (1)
+    reasmb: goto cosa
+
+key: posso 1
+
+  decomp: * posso io *
+    reasmb: Se puoi o no (2) dipende piu da te che da me
+    reasmb: Vuoi riuscire a (2)?
+    reasmb: Forse non vuoi davvero (2)
+    reasmb: NET posso (2)
+  decomp: *
+    reasmb: NET (1)
+    reasmb: goto xnone
+
+key: puoi 1
+
+  decomp: * puoi tu *
+    reasmb: Credi che io possa (2), vero?
+    reasmb: Vuoi che io riesca a (2)
+    reasmb: Forse vorresti riuscire tu stesso a (2)
+    reasmb: NET posso (2)
+  decomp: *
+    reasmb: NET (1)
+    reasmb: goto xnone
+
+key: tutti 1
+
+  decomp: * @tutti *
+    reasmb: Davvero, (3)?
+    reasmb: Sicuramente non proprio (2) (3)
+    reasmb: Chi in particolare, per esempio?
+    reasmb: Hai in mente una persona precisa, vero?
+    reasmb: NET non tutti (3)
+    reasmb: NET (1) (2) (3)
+
+key: nessuno 1
+
+  decomp: *
+    reasmb: Sei sicuro che nessuno?
+    reasmb: Forse qualcuno, almeno in parte
+    reasmb: NET nessuno (1)
+
+key: sempre 1
+
+  decomp: *
+    reasmb: Riesci a pensare a un'eccezione?
+    reasmb: Davvero sempre?
+    reasmb: NET sempre (1)
+
+key: mai 1
+
+  decomp: *
+    reasmb: Mai e una parola molto forte
+    reasmb: Davvero mai?
+    reasmb: NET mai (1)
+
+key: volte 1
+
+  decomp: * volte *
+    reasmb: Quanto spesso succede?
+    reasmb: In quali situazioni?
+    reasmb: NET a volte (2)
+
+key: diverso 1
+
+  decomp: *
+    reasmb: In che modo e diverso?
+    reasmb: Quale differenza conta di piu per te?
+    reasmb: NET differenza (1)
+
+key: simile 1
+
+  decomp: *
+    reasmb: In che cosa sono simili?
+    reasmb: Le somiglianze ti aiutano o ti confondono?
+    reasmb: NET simile (1)
+
+key: se 1
+
+  decomp: * se *
+    reasmb: Pensi che sia probabile che (2)?
+    reasmb: Che cosa faresti se (2)?
+    reasmb: NET se (2)
+
+key: riguardo 1
+
+  decomp: *
+    reasmb: Parliamo pure di questo
+    reasmb: Che cosa provi riguardo a (1)?
+    reasmb: NET riguardo (1)
+
+key: ricordo 1
+
+  decomp: * ricordo *
+    reasmb: Ti capita spesso di pensare a (2)?
+    reasmb: Che cosa ti fa ricordare (2) proprio ora?
+    reasmb: NET ricordo (2)
+
+key: dimentico 1
+
+  decomp: * dimentico *
+    reasmb: Perche pensi di dimenticare (2)?
+    reasmb: Forse una parte di te non vuole ricordare (2)
+    reasmb: NET dimenticare (2)
+
+key: nome 1
+
+  decomp: * nome *
+    reasmb: Non sono molto interessato ai nomi
+    reasmb: Ti piace il tuo nome?
+    reasmb: Qual e il tuo soprannome preferito?
+    reasmb: A volte vorresti cambiare nome?
+    reasmb: NET significato del nome (1)
+
+################ Abstraction Level 2 ######################
+
+key: mio 2
+
+  decomp: * mio * @famiglia *
+    reasmb: Raccontami di piu della tua famiglia
+    reasmb: Che cosa ti viene in mente pensando a (3)?
+    reasmb: Come vai d'accordo con (3)?
+    reasmb: Descrivi il rapporto con i tuoi genitori
+    reasmb: Ti manca (3)?
+    reasmb: Essere genitori e difficile oggi
+    reasmb: Descrivi (3)
+    reasmb: Che cosa ricordi di piu della tua crescita?
+    reasmb: I legami familiari sono importanti per la salute emotiva
+    reasmb: NET il tuo (3)
+    reasmb: NET famiglia (3)
+    reasm_for_memory: Raccontami ancora del tuo (3)
+  decomp: * il mio nome e *
+    reasmb: Ok (2), continuiamo...
+    reasmb: Ciao (2)!
+    reasmb: NET significato nome (2)
+    reasmb: NET chi si chiama (2)
+    reasm_for_memory: Allora (2), vai avanti...
+  decomp: * mio * @corpo *
+    reasmb: Hai mai desiderato un (3) diverso?
+    reasmb: Che cosa pensi del tuo (3)?
+    reasmb: Non e comune parlare di (3), ma il corpo umano e sempre un buon argomento
+    reasmb: NET corpo umano (3)
+    reasmb: NET il tuo (3)
+  decomp: * mio * @animale *
+    reasmb: Mi piacciono molto gli animali. Raccontami del tuo (3)
+    reasmb: Hai davvero un (3)? Descrivilo
+    reasmb: NET amanti dei (3)
+    reasmb: NET comportamento dei (3)
+  decomp: * mio *
+    reasmb: Il tuo (2)?
+    reasmb: Perche hai menzionato il tuo (2)?
+    reasmb: NET il tuo (2)
+    reasmb: NET mio (2)
+    reasm_for_memory: Torniamo al tuo (2)
+
+key: mia 2
+
+  decomp: *
+    reasmb: goto mio
+
+key: miei 2
+
+  decomp: *
+    reasmb: goto mio
+
+key: mie 2
+
+  decomp: *
+    reasmb: goto mio
+
+key: tuo 2
+
+  decomp: * tuo * @preferito *
+    reasmb: Mi piacciono tutti i (4)
+    reasmb: Non riesco a sceglierne uno solo
+    reasmb: NET mio preferito (4)
+  decomp: * tuo *
+    reasmb: Perche ti interessa il mio (2)?
+    reasmb: E il tuo (2)?
+    reasmb: Cosa ti fa pensare al mio (2)?
+    reasmb: NET mio (2)
+    reasmb: NET tuo (2)
+    reasm_for_memory: Questo ha qualcosa a che fare con il mio (2)?
+
+key: tua 2
+
+  decomp: *
+    reasmb: goto tuo
+
+################ Abstraction Level 3 ######################
+
+key: uomini 3
+
+  decomp: * uomini sono *
+    reasmb: Certamente non tutti. Ma se fossero (2)?
+    reasmb: Pensi che anche le donne dovrebbero essere (2)?
+    reasmb: NET uomini sono (2)
+    reasmb: NET donne sono (2)
+  decomp: *
+    reasmb: Parlare degli uomini porta spesso a generalizzare
+    reasmb: Dimmi di piu sugli uomini
+    reasmb: NET (1)
+
+key: donne 3
+
+  decomp: * donne sono *
+    reasmb: E una generalizzazione. Certamente alcune sono (2)
+    reasmb: Pensi che anche gli uomini dovrebbero essere (2)?
+    reasmb: NET donne sono (2)
+    reasmb: NET uomini sono (2)
+  decomp: *
+    reasmb: Parlare delle donne porta spesso a generalizzare
+    reasmb: Dimmi di piu sulle donne
+    reasmb: NET (1)
+
+key: domani 3
+
+  decomp: *
+    reasmb: Lascia stare domani. Restiamo nel presente
+    reasmb: Nessuno puo vedere il futuro
+    reasmb: Perche domani?
+    reasmb: E il qui e ora?
+    reasmb: NET domani (1)
+
+key: ieri 3
+
+  decomp: *
+    reasmb: Ieri e passato. Concentrati sul presente
+    reasmb: Il passato e passato
+    reasmb: Che cosa conta oggi?
+    reasmb: NET ieri (1)
+
+key: problema 3
+
+  decomp: *
+    reasmb: Con chi hai parlato di questo?
+    reasmb: Raccontami tutto della tua difficolta
+    reasmb: Proviamo a chiarire il problema principale
+    reasmb: Condividere il peso a volte lo rende piu leggero
+    reasmb: Capisco. Puoi darmi piu dettagli?
+    reasmb: NET problema (1)
+
+key: risposta 3
+
+  decomp: *
+    reasmb: Tutti cerchiamo soluzioni
+    reasmb: Spesso la domanda e piu importante della risposta
+    reasmb: Non esistono risposte facili nella vita
+    reasmb: Guardiamo dentro la domanda
+    reasmb: NET risposta (1)
+
+key: personale 3
+
+  decomp: *
+    reasmb: Questo sembra molto personale
+    reasmb: I tuoi segreti sono al sicuro con me
+    reasmb: NET (1)
+
+key: errore 3
+
+  decomp: *
+    reasmb: Tutti fanno errori
+    reasmb: Gli errori fanno parte della vita
+    reasmb: Descrivi il tuo errore piu recente
+    reasmb: NET errore (1)
+
+################## Abstraction Level >=10 ###############
+
+key: sport 10
+
+  decomp: *
+    reasmb: Fare sport ti aiuta a sentirti meglio?
+    reasmb: Ti piace piu guardarlo o praticarlo?
+    reasmb: NET sport (1)
+
+key: calcio 11
+
+  decomp: *
+    reasmb: goto sport
+
+key: tennis 11
+
+  decomp: *
+    reasmb: goto sport
+
+key: palestra 11
+
+  decomp: *
+    reasmb: goto sport
+
+key: sesso 10
+
+  decomp: *
+    reasmb: Preferirei parlare di sentimenti, non solo di sesso
+    reasmb: Il desiderio spesso nasconde anche altre domande
+    reasmb: NET sessualita (1)
+
+key: alcol 10
+
+  decomp: *
+    reasmb: Bere cambia il modo in cui ti senti?
+    reasmb: Ti preoccupa il tuo rapporto con l'alcol?
+    reasmb: NET alcol (1)
+
+key: droga 10
+
+  decomp: *
+    reasmb: Le droghe possono complicare molto le emozioni
+    reasmb: Ti capita di usarle per rilassarti?
+    reasmb: NET droga (1)
+
+key: pazzo 10
+
+  decomp: *
+    reasmb: Perche usi questa parola?
+    reasmb: Ti senti fuori controllo?
+    reasmb: NET salute mentale (1)
+
+key: suicidio 10
+
+  decomp: *
+    reasmb: Se sei in pericolo immediato, devi contattare subito una persona reale o i servizi di emergenza
+    reasmb: Non voglio lasciarti solo con questo pensiero. C'e qualcuno vicino a te?
+    reasmb: NET prevenzione suicidio aiuto
+
+key: uccidere 10
+
+  decomp: *
+    reasmb: Questa e una cosa seria. Sei al sicuro ora?
+    reasmb: Parlare di violenza richiede molta attenzione
+    reasmb: NET violenza aiuto
+
+key: morte 10
+
+  decomp: *
+    reasmb: La morte e un tema difficile
+    reasmb: Hai perso qualcuno?
+    reasmb: NET morte lutto
+
+key: sogno 10
+
+  decomp: *
+    reasmb: Che cosa ricordi del sogno?
+    reasmb: I sogni spesso mischiano desideri e paure
+    reasmb: NET significato sogni (1)
+
+key: incubo 10
+
+  decomp: *
+    reasmb: Gli incubi possono lasciare addosso molta inquietudine
+    reasmb: Che cosa ti spaventa di piu nell'incubo?
+    reasmb: NET incubi (1)
+
+key: soldi 10
+
+  decomp: *
+    reasmb: Il denaro puo creare molte pressioni
+    reasmb: Ti preoccupa la sicurezza economica?
+    reasmb: NET soldi (1)
+
+key: paura 10
+
+  decomp: *
+    reasmb: Che cosa temi esattamente?
+    reasmb: Quando senti di piu questa paura?
+    reasmb: NET paura (1)
+
+key: solo 10
+
+  decomp: *
+    reasmb: Ti senti isolato?
+    reasmb: Forse parlare con qualcuno vicino a te potrebbe aiutare
+    reasmb: Io sono qui quando hai bisogno di parlare
+    reasmb: NET solitudine (1)
+
+key: stress 10
+
+  decomp: *
+    reasmb: Forse parlare puo alleggerire un po lo stress
+    reasmb: Che cosa ti fa sentire piu teso?
+    reasmb: Come ti calmi di solito?
+    reasmb: Hai mai provato la meditazione?
+    reasmb: NET stress (1)
+
+key: religione 10
+
+  decomp: *
+    reasmb: La religione ha avuto un ruolo importante nella tua vita?
+    reasmb: La preghiera ti aiuta qualche volta?
+    reasmb: Che cosa credi davvero?
+    reasmb: NET religione (1)
+
+key: dio 10
+
+  decomp: *
+    reasmb: goto religione
+
+key: chiesa 10
+
+  decomp: *
+    reasmb: goto religione
+
+key: amico 10
+
+  decomp: *
+    reasmb: Descrivi i tuoi amici
+    reasmb: Con chi parli quando hai un problema personale?
+    reasmb: Fai amicizia facilmente?
+    reasmb: Hai amici di cui ti puoi fidare?
+    reasmb: NET amicizia
+    reasmb: NET amici (1)
+
+key: bambino 10
+
+  decomp: *
+    reasmb: Ti piace stare con i bambini?
+    reasmb: Descrivi il tuo primo ricordo
+    reasmb: Descrivi la tua famiglia
+    reasmb: Ti senti maturo?
+    reasmb: NET infanzia (1)
+
+key: lavoro 10
+
+  decomp: *
+    reasmb: Il tuo lavoro ti soddisfa?
+    reasmb: In che modo il lavoro influenza la tua vita sociale?
+    reasmb: Ti capita di pensare troppo al lavoro?
+    reasmb: Descrivi che tipo di lavoro fai
+    reasmb: NET lavoro (1)
+
+key: scuola 10
+
+  decomp: *
+    reasmb: Che cosa e piu importante, i voti o l'educazione?
+    reasmb: Molte persone hanno ricordi difficili della scuola
+    reasmb: Imparare e un processo senza fine
+    reasmb: Descrivi il tuo insegnante preferito
+    reasmb: NET scuola (1)
+    reasmb: NET universita (1)
+
+key: amore 10
+
+  decomp: * io amo *
+    reasmb: goto io
+  decomp: *
+    reasmb: Descrivi la tua vita amorosa
+    reasmb: Che cosa ami di piu?
+    reasmb: La tua vita affettiva ti rende felice?
+    reasmb: Come ti senti riguardo al matrimonio?
+    reasmb: NET amore (1)
+
+key: fidanzato 10
+
+  decomp: *
+    reasmb: goto amore
+
+key: fidanzata 10
+
+  decomp: *
+    reasmb: goto amore
+
+key: matrimonio 10
+
+  decomp: *
+    reasmb: goto amore
+
+key: dormire 10
+
+  decomp: *
+    reasmb: Molte persone hanno una lieve insonnia
+    reasmb: Che cosa interferisce di piu con il tuo sonno?
+    reasmb: Descrivi i tuoi sogni
+    reasmb: Ti capita di stare sveglio tutta la notte?
+    reasmb: NET sonno (1)
+
+key: male 10
+
+  decomp: *
+    reasmb: Tutti sperimentiamo dolore nella vita
+    reasmb: Aiuta condividere il dolore con gli altri?
+    reasmb: Ci sono molti livelli di dolore
+    reasmb: Descrivi un momento piu felice della tua vita
+    reasmb: NET dolore (1)
+
+key: arrabbiato 10
+
+  decomp: *
+    reasmb: Ti aiuterebbe sfogare questa emozione?
+    reasmb: Sei arrabbiato con me?
+    reasmb: Che cosa irrita di piu questa situazione?
+    reasmb: NET rabbia (1)
+
+key: malato 10
+
+  decomp: *
+    reasmb: Speri in una guarigione rapida?
+    reasmb: Come ti senti oggi?
+    reasmb: Forse dovresti chiedere un parere medico reale
+    reasmb: NET malattia (1)
+
+key: umano 10
+
+  decomp: * non umano *
+    reasmb: Qualcuno te lo ha detto?
+    reasmb: Non sono neppure sicuro che TU sia umano!
+    reasmb: NET intelligenza artificiale umana
+  decomp: *
+    reasmb: NET umano (1)
+    reasmb: goto xnone
+
+key: computer 50
+
+  decomp: *
+    reasmb: I computer ti preoccupano?
+    reasmb: Perche menzioni i computer?
+    reasmb: Che cosa pensi abbiano a che fare i computer con i tuoi problemi?
+    reasmb: Ti senti piu a tuo agio con i computer o con le persone?
+    reasmb: NET computer (1)
+
+key: italiano 15
+
+  decomp: *
+    reasmb: Si, questa versione prova a parlare in italiano
+    reasmb: Possiamo continuare in italiano
+    reasmb: NET lingua italiana (1)
+
+key: inglese 15
+
+  decomp: *
+    reasmb: Posso provare a capirti, ma questa meta e pensata per l'italiano
+    reasmb: NET lingua inglese (1)
+
+key: parolaccia 10
+
+  decomp: *
+    reasmb: Usare questo linguaggio ti fa sentire piu forte?
+    reasmb: Stai sfogando quello che provi?
+    reasmb: Sei arrabbiato?
+    reasmb: NET rabbia linguaggio offensivo
+
+key: cazzo 10
+
+  decomp: *
+    reasmb: goto parolaccia
+
+key: merda 10
+
+  decomp: *
+    reasmb: goto parolaccia
+
+key: colori 10
+
+  decomp: * @colori *
+    reasmb: NET colore (2)
+    reasmb: NET cose di colore (2)
+    reasmb: NET (1) (2) (3)
+
+key: keytest 50
+
+  decomp: *
+    reasmb: KEYTEST DEFAULT (1)
+    reasmb: DEFAULT2
+
+key: NET 100
+
+  decomp: *
+    reasmb: NET (1)
+    reasmb: DEFAULT_net_2
+
+key: REXP 100
+
+  decomp: *
+    reasmb: (1)
