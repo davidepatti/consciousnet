@@ -35,6 +35,7 @@ The setup script:
 - copies the repository's modified `Eliza.pm` into `local/Chatbot/Eliza.pm`
   instead of replacing a system Perl module
 - creates `consciousnet.conf` from `consciousnet.conf.example`
+- creates `logs/` for session logs
 - runs a Perl syntax check
 
 `consciousnet.conf` is ignored by Git and should not be committed.
@@ -71,19 +72,19 @@ Useful Brave docs:
 Start Consciousnet:
 
 ```sh
-perl entity.pl
+./docgioio
 ```
 
 For faster local testing:
 
 ```sh
-perl entity.pl --quick
+./docgioio --quick
 ```
 
 Debug logging is opt-in:
 
 ```sh
-perl entity.pl --quick --debug
+./docgioio --quick --debug
 ```
 
 Then type a query-like prompt, for example:
@@ -101,7 +102,7 @@ DEBUG: Brave Search query: ...
 For an offline smoke test without network calls:
 
 ```sh
-perl entity.pl --quick --no-net
+./docgioio --quick --no-net
 ```
 
 If Perl reports `Can't verify SSL peers without knowing which Certificate
@@ -111,13 +112,13 @@ Authorities to trust`, rerun `./setup.sh`. The setup script installs
 To use a different credential file:
 
 ```sh
-perl entity.pl --config=/path/to/consciousnet.conf
+./docgioio --config=/path/to/consciousnet.conf
 ```
 
 or:
 
 ```sh
-CONSCIOUSNET_CONFIG=/path/to/consciousnet.conf perl entity.pl
+CONSCIOUSNET_CONFIG=/path/to/consciousnet.conf ./docgioio
 ```
 
 ## Old Google Version

@@ -33,6 +33,10 @@ use POSIX;
 use Time::HiRes qw(sleep);
 use URI::Escape qw(uri_escape_utf8);
 
+binmode STDIN, ":encoding(UTF-8)";
+binmode STDOUT, ":encoding(UTF-8)";
+binmode STDERR, ":encoding(UTF-8)";
+
 # Defaults for command line.
 my $base_dir = $FindBin::Bin;
 my $entity_mail = "gioio\@work";
@@ -510,10 +514,15 @@ $|++;
 my $true = 1;
 my $now = localtime;
 my $starting_time = time();
+my $log_dir = File::Spec->catdir($base_dir, "logs");
 
 $now =~ s/\s/_/g;
 
-open(LOG, ">> log_$now.$metaresponse_log_name.txt");
+if (!-d $log_dir) {
+    mkdir $log_dir or die "Cannot create $log_dir: $!";
+}
+open(LOG, ">>", File::Spec->catfile($log_dir, "log_$now.$metaresponse_log_name.txt")) or die $!;
+binmode LOG, ":encoding(UTF-8)";
 
 my $last_msg = "";
 my $question_counter = 0;

@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Portable launcher for entity.pl. It resolves the real location of this
+# script, so the launcher can also be symlinked from a directory in PATH.
+script_path=$0
+
+case $script_path in
+    */*) ;;
+    *)
+        resolved_path=$(command -v "$script_path" 2>/dev/null)
+        if [ -n "$resolved_path" ]; then
+            script_path=$resolved_path
+        fi
+        ;;
+esac
+
+while [ -L "$script_path" ]; do
+    link_target=$(readlink "$script_path") || exit 1
+    case $link_target in
+        /*) script_path=$link_target ;;
+        *) script_path=$(dirname "$script_path")/$link_target ;;
+    esac
+done
+
+script_dir=$(CDPATH= cd "$(dirname "$script_path")" && pwd -P) || exit 1
+
+exec perl "$script_dir/entity.pl" "$@"

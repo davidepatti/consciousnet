@@ -406,3 +406,23 @@ click
 www
 http
 https
+whois
+registrar
+domain
+dns
+ip address
+nameserver
+lookup
+search result
+snippet
+cached
+subscribe
+sign in
+login
+advertisement
+sponsored
+cookie
+privacy policy
+terms of service
+read more
+click here

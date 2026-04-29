@@ -81,6 +81,7 @@ PROJECT_PERL5LIB="$ROOT_DIR/local/lib/perl5:$ROOT_DIR/local/lib/perl5/$PERL_ARCH
 install_perl_modules
 
 mkdir -p "$ROOT_DIR/local/Chatbot"
+mkdir -p "$ROOT_DIR/logs"
 cp "$ROOT_DIR/Eliza.pm" "$ROOT_DIR/local/Chatbot/Eliza.pm"
 
 if [ ! -f "$ROOT_DIR/consciousnet.conf" ]; then
@@ -104,7 +105,7 @@ Setup complete.
 
 Next steps:
 1. Set brave_api_key in consciousnet.conf, or set BRAVE_SEARCH_API_KEY.
-2. Run: perl entity.pl
-3. For an offline smoke test, run: perl entity.pl --quick --no-net
+2. Run: ./docgioio
+3. For an offline smoke test, run: ./docgioio --quick --no-net
 
 MSG
