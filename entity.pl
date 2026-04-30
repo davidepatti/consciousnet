@@ -453,6 +453,18 @@ sub typing
 }
 
 ###############################################################################
+sub initial_chat_sentence
+###############################################################################
+{
+    return "" if !defined($bot);
+
+    my $initials = $bot->initial;
+    return "" if ref($initials) ne "ARRAY" || !@$initials;
+
+    return $initials->[int(rand(scalar(@$initials)))];
+}
+
+###############################################################################
 sub greetings
 ###############################################################################
 {
@@ -503,7 +515,8 @@ sub greetings
 
     print "\t$entity_name: ";
     sleep(0.5);
-    typing ("Hi, I'm Paul Gioio, I'm testing my existence. Tell me about something (family, work, hobby, etc...)");
+    my $initial_sentence = initial_chat_sentence();
+    typing($initial_sentence) if $initial_sentence ne "";
 }
 
 ###############################################################################

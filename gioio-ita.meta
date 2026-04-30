@@ -16,7 +16,7 @@
 #  This file is ASCII-only on purpose for compatibility with old Perl
 #  installations and the current Eliza.pm script loader.
 
-initial: va bene, iniziamo, raccontami qualcosa
+initial: Ciao, sono Paul Gioio, sto testando la mia esistenza. Raccontami qualcosa (famiglia, lavoro, hobby, ecc...)
 
 final: Arrivederci. Mi ha fatto piacere parlare con te
 final: Arrivederci. Spero che questa conversazione ti sia stata utile

@@ -7,7 +7,7 @@
 # - Restructured cross entry-point references
 # - Recurrent Neural experience support
 
-initial: ok let's start, tell me something
+initial: Hi, I'm Paul Gioio, I'm testing my existence. Tell me about something (family, work, hobby, etc...)
 
 final: Goodbye.  It was nice talking to you
 final: Goodbye.  I hope you found this session helpful
@@ -2728,5 +2728,4 @@ key: NET 100
 key: REXP 100
   decomp: *
     reasmb: (1)
-
 
